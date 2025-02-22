@@ -1,0 +1,47 @@
+{
+    "section_name": "Subscribe - Section",
+    "section_slug": "subscribe",
+    "unique_section_slug": "subscribe",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Subscribe Title",
+            "slug" :  "subscribe_title",
+            "text" : "<b> Subscribe and get </b> -20% off",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Subscribe Description",
+            "slug" :  "subscribe_description",
+            "text" : "you will start receiving emails from the newsletter publisher. The emails will usually contain news, updates, and information about the publisher's products or services.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Subscribe Sub Title",
+            "slug" :  "subscribe_sub_title",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image_right":{
+            "lable" : "Subscribe Image",
+            "slug" :  "subscribe_image_right",
+            "text" : "themes/eyewear/assets/images/newsletter-right-glass.png",
+            "image" : "themes/eyewear/assets/images/newsletter-right-glass.png",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        },
+        "image_left":{
+            "lable" : "Subscribe Image",
+            "slug" :  "subscribe_image_left",
+            "text" : "themes/eyewear/assets/images/sub-banner.jpg",
+            "image" : "themes/eyewear/assets/images/sub-banner.jpg",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

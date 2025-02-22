@@ -1,0 +1,32 @@
+{
+    "section_name": "Newest Category",
+    "section_slug": "newest_category",
+    "unique_section_slug": "newest_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" : "newest_category_title",
+            "text" : "Testimonials",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" : "newest_category_description",
+            "text" : "Though we offer amazing, tech-forward ways to connect people to Christ, we cannot do it without your help! We offer multiple ways to give.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "background_image":{
+            "lable" : "Background Image",
+            "slug" : "newest_category_background_image",
+            "text" : "themes/gifts/assets/img/review-main.png",
+            "image": "themes/gifts/assets/img/review-main.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

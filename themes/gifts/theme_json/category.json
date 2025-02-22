@@ -1,0 +1,31 @@
+{
+    "section_name": "Category",
+    "section_slug": "category",
+    "unique_section_slug": "category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Category Title",
+            "slug" : "category_title",
+            "text" : "<b>Gifts By</b> Category",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Category Button",
+            "slug" : "category_button",
+            "text" : "Show More Products",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "button_second":{
+            "lable" : "Category Slider Button",
+            "slug" : "category_slider_button",
+            "text" : "Show More",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

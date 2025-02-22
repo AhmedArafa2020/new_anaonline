@@ -1,0 +1,31 @@
+{
+    "section_name": "Subscribe - Section",
+    "section_slug": "subscribe",
+    "unique_section_slug": "subscribe",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Subscribe Title",
+            "slug" :  "subscribe_title",
+            "text" : "<b> Subscribe newsletter and get -20% off</b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Subscribe Description",
+            "slug" :  "subscribe_description",
+            "text" : "Chocolate, food product made from cocoa beans, consumed as candy and used to make beverage and bakery products.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+            "subtitle":{
+            "lable" : "Subscribe Subtitle",
+            "slug" :  "subscribe_subtitle",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

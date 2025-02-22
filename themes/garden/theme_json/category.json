@@ -1,0 +1,48 @@
+{
+    "section_name": "Category",
+    "section_slug": "category",
+    "unique_section_slug": "category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+
+        "title":{
+            "lable" : "Category Title",
+            "slug" :  "category_title",
+            "text" : "The Perfect Pot for Your <br><b> Succulent Plants </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Category Button",
+            "slug" :  "category_button",
+            "text" : "Check More Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Category Sub Title",
+            "slug" :  "category_sub_title",
+            "text" : "<b> Plants&Pots  </b> ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Category Description",
+            "slug" :  "Category_description",
+            "text" : "Plants&Pots is a professional producer of ceramic plant pots with a natural flexible and stable flexible body.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+
+        "background_image":{
+            "lable" : "Category Background Image",
+            "slug" :  "Category_background_image",
+            "text" : "themes/garden/assets/images/img1.png",
+            "image": "themes/garden/assets/images/img1.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

@@ -1,0 +1,62 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Title",
+            "slug" :  "footer_title",
+            "text" : "SHARE:",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "subtitle":{
+            "lable" : "Footer Subtitle",
+            "slug" :  "footer_subtitle",
+            "text" : " © 2024 Chocolate. All rights reserved ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/chocolate/assets/images/youtube.png",
+                    "image":"themes/chocolate/assets/images/youtube.png"
+                },{
+                    "text":"themes/chocolate/assets/images/facebook.png",
+                    "image":"themes/chocolate/assets/images/facebook.png"
+                },{
+                    "text":"themes/chocolate/assets/images/insta.png",
+                    "image":"themes/chocolate/assets/images/insta.png"
+                },{
+                    "text":"themes/chocolate/assets/images/twitter.png",
+                    "image":"themes/chocolate/assets/images/twitter.png"
+                }
+            ]
+        },
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 3,
+            "footer_menu_ids":[]
+        }
+    }
+}

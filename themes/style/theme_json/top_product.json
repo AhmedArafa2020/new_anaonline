@@ -1,0 +1,39 @@
+{
+    "section_name": "Top - Product",
+    "section_slug": "top_product",
+    "unique_section_slug": "top_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Top Product Title",
+            "slug" :  "top_product_title",
+            "text" : "<b>Modern</b> Category",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Top Product Subtitle",
+            "slug" :  "top_product_sub_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Top Product Description",
+            "slug" :  "top_product_description",
+            "text" : " Swiss Flex glasses come from Switzerland, and they are famous because they are extremely lightweight frames. SwissFlex glasses offer the best wearing comfort in every respect. ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+           "image":{
+            "lable" : "Top Product Image",
+            "slug" :  "top_Product_image",
+            "text" : "themes/style/assets/images/twocol-left.png",
+            "image" : "themes/style/assets/images/twocol-left.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

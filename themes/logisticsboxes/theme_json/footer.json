@@ -1,0 +1,85 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Title",
+            "slug" :  "footer_text",
+            "text" : "<b> Subscribe newsletter and </b> get -20% off",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "A subscription is a contract between a customer and a service provider. The customer agrees to pay a regular fee, and the service provider agrees to provide the customer",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_description":{
+            "lable" : "Footer Section Sub Description",
+            "slug" :  "footer_sub_description",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/logisticsboxes/assets/images/youtube.png",
+                    "image":"themes/logisticsboxes/assets/images/youtube.png"
+                },{
+                    "text":"themes/logisticsboxes/assets/images/facebook.png",
+                    "image":"themes/logisticsboxes/assets/images/facebook.png"
+                },{
+                    "text":"themes/logisticsboxes/assets/images/insta.png",
+                    "image":"themes/logisticsboxes/assets/images/insta.png"
+                },{
+                    "text":"themes/logisticsboxes/assets/images/twitter.png",
+                    "image":"themes/logisticsboxes/assets/images/twitter.png"
+                }
+            ]
+        },
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 2,
+            "footer_menu_ids":[]
+        },
+
+        "support_title":{
+            "lable" : "footer Title",
+            "slug" :  "footer_title",
+            "text" : "Call an get your storage!",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "support_value":{
+            "lable" : "footer Value",
+            "slug" :  "footer_value",
+            "text" : "+48 222-512-234",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "menu_type": {
+            "lable" : "Menu Type",
+            "slug" :  "menu_type",
+            "text" : "menu_bar",
+            "type" : "select",
+            "placeholder" : "Please select..",
+            "menu_ids":[]
+        }
+    }
+}

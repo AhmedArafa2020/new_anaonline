@@ -1,0 +1,54 @@
+{
+    "section_name": "Category",
+    "section_slug": "category",
+    "unique_section_slug": "category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "button":{
+            "lable" : "category  Button",
+            "slug" :  "category_button",
+            "text" : "Special Offer",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "category Sub Title",
+            "slug" :  "category_sub_title",
+            "text" : "Get 1 storage for 30 days free. More",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "title":{
+            "lable" : "category Title",
+            "slug" :  "category_title",
+            "text" : "Fast Delivers <b> Easy Travel  </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+
+        "description":{
+            "lable" : "category Description",
+            "slug" :  "category_description",
+            "text" : "It allows for maximum use of available space and is ideal for packing vertically straight goods such as paint tins, plant pots, screw boxes, cardboard boxes etc It allows for maximum use of available space.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "category Button Second",
+            "slug" :  "category_button_second",
+            "text" : "Get your storage",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "category Background Image",
+            "slug" :  "category_background_image",
+            "text" : "themes/logisticsboxes/assets/images/easy-travel.jpg",
+            "image": "themes/logisticsboxes/assets/images/easy-travel.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

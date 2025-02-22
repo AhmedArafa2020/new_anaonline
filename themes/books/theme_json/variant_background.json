@@ -1,0 +1,32 @@
+{
+    "section_name": "Variant Background",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "<b>Audiobook’s</b><br> Online Store", 
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Variant Background Button",
+            "slug" :  "variant_background_button",
+            "text" : "Show audiobooks",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Variant Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/books/assets/images/images-content-img.png",
+            "image" : "themes/books/assets/images/images-content-img.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

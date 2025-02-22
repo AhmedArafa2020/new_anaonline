@@ -1,0 +1,32 @@
+
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Best Product Title",
+            "slug" :  "best_product_title",
+            "text" : "Choose package <b> and send for whomever you want </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Best Product Button",
+            "slug" :  "best_product_button",
+            "text" : "Get your storage",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Best Product Description",
+            "slug" :  "best_product_description",
+            "text" : "It allows for maximum use of available space and is ideal for packing vertically straight goods such as paint tins, plant pots, screw boxes",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "section_name": "Product Category",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Category Title",
+            "slug" :  "product_category_title",
+            "text" :  "Personalised Gifts",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Product Category  Description",
+            "slug" :  "product_category _description",
+            "text" : "Explore the desk organizer is made of High-quality Melamine board over MDF with 4 different colors.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "product_category_button",
+            "text" : "Read More",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "product_category_image",
+            "text" : "themes/gifts/assets/images/add-banner-2.png",
+            "image": "themes/gifts/assets/images/add-banner-2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

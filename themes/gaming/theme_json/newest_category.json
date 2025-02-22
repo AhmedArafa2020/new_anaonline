@@ -1,0 +1,45 @@
+{
+    "section_name": "Newest - Category",
+    "section_slug": "newest_category",
+    "unique_section_slug": "newest_category",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 4,
+    "section":{
+        "service_title":{
+            "lable" : "Newest category Title",
+            "slug" :  "newest_category_title",
+            "text" : "About our shop",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "service_description":{
+            "lable" : "Newest Category Description",
+            "slug" :  "newest_category_description",
+            "text" : "Gaming can help to improve cognitive skills such as problem-solving, memory, and attention.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "title":{
+            "lable" : "Newest Category Service Title",
+            "slug" :  "newest_category_service_title",
+            "text" : ["01","02","03","04"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Newest Category Service subtitle",
+            "slug" :  "newest_category_service_sub_title",
+            "text" : ["Gift boxes","Promotions","Shipping","Quality"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Newest Category Service Description",
+            "slug" :  "newest_category_service_description",
+            "text" : ["Finished products products and gift wrapping","Large promotions with numerous discounts", "Free shipping on any order from $ 150","All products are made by engineers from India"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

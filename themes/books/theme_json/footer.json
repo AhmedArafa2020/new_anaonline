@@ -1,0 +1,69 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Section Title",
+            "slug" :  "footer_title",
+            "text" : "Share :",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/books/assets/images/youtube.png",
+                    "image":"themes/books/assets/images/youtube.png"
+                },{
+                    "text":"themes/books/assets/images/facebook.png",
+                    "image":"themes/books/assets/images/facebook.png"
+                },{
+                    "text":"themes/books/assets/images/insta.png",
+                    "image":"themes/books/assets/images/insta.png"
+                },{
+                    "text":"themes/books/assets/images/twitter.png",
+                    "image":"themes/books/assets/images/twitter.png"
+                }
+            ]
+        },
+        "newsletter_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_title",
+            "text" : "<b>Subscribe newsletter and </b> <br> get -20% off",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_description": {
+            "lable" : "Footer Newsletter Description",
+            "slug" :  "footer_newsletter_description",
+            "text" : "The intellectual content in a physical book need not be a composition, nor even be called a book.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_sub_title": {
+            "lable" : "Footer Newsletter Subtitle",
+            "slug" :  "footer_newsletter_sub_title",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+            "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 2,
+            "footer_menu_ids":[]
+        }
+    }
+}

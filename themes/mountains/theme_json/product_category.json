@@ -1,0 +1,52 @@
+{
+    "section_name": "Product Category",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Category Title",
+            "slug" : "product_category_title",
+            "text" : "BESTSELLERS",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Product Category Subtitle",
+            "slug" : "product_category_subtitle",
+            "text" : "MOUNTAIN",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Product Category Description",
+            "slug" : "product_category_description",
+            "text" : "FEATURE PRODUCT",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Product Category Button",
+            "slug" : "product_category_button",
+            "text" : "Check More Product",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "service_title":{
+            "lable" : "Product Category Service Title",
+            "slug" : "product_category_service_title",
+            "text" : "CATEGORY",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "service_button":{
+            "lable" : "Product Category Service Button",
+            "slug" :  "product_category_service_button",
+            "text" : "Show More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

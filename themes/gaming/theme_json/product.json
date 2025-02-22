@@ -1,0 +1,26 @@
+{
+    "section_name": "Product",
+    "section_slug": "product",
+    "unique_section_slug": "product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "image_left":{
+            "lable" : "Product Image",
+            "slug" :  "product_image_left",
+            "text" : "themes/gaming/assets/images/double-bluthoth.png",
+            "image" : "themes/gaming/assets/images/double-bluthoth.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "image_right":{
+            "lable" : "Product Image Second",
+            "slug" :  "product_image_right",
+            "text" : "themes/gaming/assets/images/full-width-bluthhoth.png",
+            "image" : "themes/gaming/assets/images/full-width-bluthhoth.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

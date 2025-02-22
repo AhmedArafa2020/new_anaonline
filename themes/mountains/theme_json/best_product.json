@@ -1,0 +1,78 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Best Product Title",
+            "slug" : "best_product_title",
+            "text" : "<b>The place of a </b> <br> true mountain climber",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Best Product Button",
+            "slug" : "best_product_button",
+            "text" : "All Products",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Best Product Sub Title",
+            "slug" : "best_product_subtitle",
+            "text" : "MOUNTAINS",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" : "best_product_description",
+            "text" : "Mountain: A mountain is typically characterized as a tall, steep-sided landform that rises above the surrounding terrain.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Best Product First Image",
+            "slug" : "image",
+            "text" : "themes/mountains/assets/images/place-left-one.png",
+            "image": "themes/mountains/assets/images/place-left-one.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "background_image":{
+            "lable" : "Best Product Second Image",
+            "slug" : "background_image",
+            "text" : "themes/mountains/assets/images/place-left-two.png",
+            "image": "themes/mountains/assets/images/place-left-two.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "service_image":{
+            "lable" : "Best Product Third Image",
+            "slug" : "service_image",
+            "text" : "themes/mountains/assets/images/place-right-three.png",
+            "image": "themes/mountains/assets/images/place-right-three.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "service_second_image":{
+            "lable" : "Best Product Fourth Image",
+            "slug" : "service_second_image",
+            "text" : "themes/mountains/assets/images/place-right-two.png",
+            "image": "themes/mountains/assets/images/place-right-two.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "service_third_image":{
+            "lable" : "Best Product Fifth Image",
+            "slug" : "service_third_image",
+            "text" : "themes/mountains/assets/images/place-right-one.png",
+            "image": "themes/mountains/assets/images/place-right-one.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

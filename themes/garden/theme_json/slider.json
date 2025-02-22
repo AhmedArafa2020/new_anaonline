@@ -1,0 +1,61 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : [" Plants&Pots"," Plants&Pots"," Plants&Pots"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : ["Create a tropical interior <br> <b>  in your home  </b> ","Create a tropical interior <br> <b>  in your home  </b> ","Create a tropical interior <br> <b>  in your home  </b> "],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy.","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy.","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy."],
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button_first":{
+            "lable" : "Slider First Button",
+            "slug" :  "slider_first_button",
+            "text" : ["Check more Products","Check more Products","Check more Products"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "Video Title",
+            "slug" :  "slider_video_title",
+            "text" : ["Play video","Play video","Play video"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Slider Background Image",
+            "slug" :  "slider_background_image",
+            "text" : "themes/garden/assets/images/leaf-design.png",
+            "image": "themes/garden/assets/images/leaf-design.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

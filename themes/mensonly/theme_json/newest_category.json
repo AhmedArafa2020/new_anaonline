@@ -1,0 +1,24 @@
+{
+    "section_name": "Newest Category",
+    "section_slug": "newest_category",
+    "unique_section_slug": "newest_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Newest Category Title",
+            "slug" :  "newest_category_title",
+            "text" : "Testimonials",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Newest Category Description",
+            "slug" :  "newest_category_description",
+            "text" : "Though we offer amazing, tech-forward ways to connect people to Christ, we cannot do it without your help! We offer multiple ways to give.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

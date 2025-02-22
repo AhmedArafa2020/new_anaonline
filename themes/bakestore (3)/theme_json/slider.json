@@ -1,0 +1,78 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "service_title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : "Bread baked <br> <b> with love every day. </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider SubTitle",
+            "slug" :  "slider_sub_title",
+            "text" : "Bakery",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : "Bakestore is a bakery that specializes in cakes, pastries, and other baked goods. We use only the freshest ingredients and our recipes are made with love.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Slider Button",
+            "slug" :  "slider_button",
+            "text" : "Check more products",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Background Image",
+            "slug" :  "slider_background_image",
+            "text" : "themes/bakestore/assets/images/home-bg.png",
+            "image": "themes/bakestore/assets/images/home-bg.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "title":{
+            "lable" : "Service Title",
+            "slug" :  "slider_title",
+            "loop_number":3,
+            "text" : ["<b>Finished products</b><span>products and gift wrapping</span>","<b>Finished products</b><span>products and gift wrapping</span>", "<b>Finished products</b><span>products and gift wrapping</span>"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "slider_image",
+            "loop_number":3,
+            "text" : ["themes/bakestore/assets/images/service1.png","themes/bakestore/assets/images/service2.png","themes/bakestore/assets/images/service3.png"],
+            "image": ["themes/bakestore/assets/images/service1.png","themes/bakestore/assets/images/service2.png","themes/bakestore/assets/images/service3.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "button_second":{
+            "lable" : "Video Title",
+            "slug" :  "slider_button_second",
+            "text" : "Play Video",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "section_name": "Subscribe - Section",
+    "section_slug": "subscribe",
+    "unique_section_slug": "subscribe",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section": {
+        "title": {
+            "lable": "Title",
+            "slug": "product_banner_slider_title",
+            "text": "<b>Subscribe newsletter </b> <br> and get -20% off",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "sub_title": {
+            "lable": "Sub Title",
+            "slug": "product_banner_slider_sub_title",
+            "text": "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "description": {
+            "lable": "Deacription",
+            "slug": "product_banner_slider_description",
+            "text": "Discover Your Dream Home with Our Home Decor Newsletter! Stay inspired and informed with the latest trends, tips, and exclusive offers on home decor.",
+            "type": "textarea",
+            "placeholder": "Please enter here.."
+        },
+        "button": {
+            "lable": "Button",
+            "slug": "product_banner_slider_button",
+            "text": "Subscribe",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "image": {
+            "lable": "Varinat Background Image",
+            "slug": "product_banner_slider_image",
+            "text": "themes/homedecor/assets/images/custom-banner.png",
+            "image": "themes/homedecor/assets/images/custom-banner.png",
+            "type": "photoupload",
+            "placeholder": "Please enter here.."
+        }
+    }
+}

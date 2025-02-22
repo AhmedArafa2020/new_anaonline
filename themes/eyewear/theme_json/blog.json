@@ -1,0 +1,31 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Blog Title",
+            "slug" :  "blog_title",
+            "text" : "Articles from our blog",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Blog Description",
+            "slug" :  "blog_description",
+            "text" : "The Eyewear Blog is a one-stop shop for all things eyewear. We offer news, reviews, and tips on the latest eyewear trends, as well as advice on how to choose the right glasses for your face shape and lifestyle.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "blog_button",
+            "text" : "READ MORE",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

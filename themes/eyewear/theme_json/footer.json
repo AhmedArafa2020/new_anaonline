@@ -1,0 +1,55 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "Glasses are typically used for vision correction, such as with reading glasses and glasses used for nearsightedness; however, without the specialized lenses.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/eyewear/assets/images/youtube.png",
+                    "image":"themes/eyewear/assets/images/youtube.png"
+                },{
+                    "text":"themes/eyewear/assets/images/facebook.png",
+                    "image":"themes/eyewear/assets/images/facebook.png"
+                },{
+                    "text":"themes/eyewear/assets/images/insta.png",
+                    "image":"themes/eyewear/assets/images/insta.png"
+                },{
+                    "text":"themes/eyewear/assets/images/twitter.png",
+                    "image":"themes/eyewear/assets/images/twitter.png"
+                }
+            ]
+        },
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 3,
+            "footer_menu_ids":[]
+        },
+        "copy_right":{
+            "lable" : "Footer Section Copyright",
+            "slug" :  "footer_copyright",
+            "text" : "© 2024 eyewear. All rights reserved",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

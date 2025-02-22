@@ -1,0 +1,31 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Blog Title",
+            "slug" :  "blog_title",
+            "text" : "OUR <br>BLOG POSTS",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Newest Category Title",
+            "slug" :  "newest_category_subtitle",
+            "text" : "MOUNTAIN",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Blog Description",
+            "slug" :  "blog_description",
+            "text" : "Mountain biking means a lot of things to a lot of people. Depending on the style, a mountain bike can be used for everything from unpaved roads to steep, goat-path single track.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

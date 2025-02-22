@@ -1,0 +1,25 @@
+
+{
+    "section_name": "Homepage Logos",
+    "section_slug": "logo_slider",
+    "unique_section_slug": "logo_slider",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 4,
+    "section":{
+        "title":{
+            "lable" : "Logo Slider Title",
+            "slug" :  "logo_slider_title",
+            "text" : ["orders in month","plants and flowers categories","years of experience","happy clients and partners"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "number":{
+            "lable" : "Logo Slider Number",
+            "slug" :  "logo_slider_number",
+            "text" : ["3000","17","10","4"],
+            "type" : "number",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

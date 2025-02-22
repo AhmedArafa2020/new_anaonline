@@ -1,0 +1,38 @@
+{
+    "section_name": "Review",
+    "section_slug": "review",
+    "unique_section_slug": "review",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Review Title",
+            "slug" :  "review_title",
+            "text" : "TESTIMONIALS",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Review Title",
+            "slug" :  "review_subtitle",
+            "text" : "MOUNTAIN",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Review Button",
+            "slug" :  "review_button",
+            "text" : "All Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Review Description",
+            "slug" :  "review_description",
+            "text" : "Mountain climbers require a wide range of technical skills, such as rope handling, knot tying, route finding, and equipment management.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

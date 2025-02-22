@@ -1,0 +1,61 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : "Best <b>Pro Gaming</b> <br>Accessories",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : "New featured collection ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : "Gaming accessories include gear such as headsets, extra controllers, charging stations, memory devices, carrying cases and much more.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Slider First Button",
+            "slug" :  "slider_button",
+            "text" : "Go to Shop",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "Slider Second Button",
+            "slug" :  "slider_button_second",
+            "text" : "Show more products",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image_left":{
+            "lable" : "Slider Image Left",
+            "slug" :  "slider_image_left",
+            "text" : "themes/gaming/assets/images/Half-bluthooth.png",
+            "image" : "themes/gaming/assets/images/Half-bluthooth.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "image_right":{
+            "lable" : "Slider Image right",
+            "slug" :  "slider_image_right",
+            "text" : "themes/gaming/assets/images/Half-bluthooth-right.png",
+            "image" : "themes/gaming/assets/images/Half-bluthooth-right.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

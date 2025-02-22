@@ -1,0 +1,17 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product_second",
+    "unique_section_slug": "best_product_second",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "best_product_second_title",
+            "text" : "Bread baked <br> <b>with love every day. </b> ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "section_name": "Product",
+    "section_slug": "product",
+    "unique_section_slug": "product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Title",
+            "slug" :  "product_title",
+            "text" : "NEW  <br>ARRIVALS",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Product Title",
+            "slug" :  "product_subtitle",
+            "text" : "MOUNTAIN",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Product Description",
+            "slug" :  "product_description",
+            "text" : "That profusion of options presents you, the eager buyer, with a challenge: How do you know which type of bike is right for you and the riding you’ll do?",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

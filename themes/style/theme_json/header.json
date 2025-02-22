@@ -1,0 +1,32 @@
+{
+    "section_name": "Homepage - Header",
+    "section_slug": "header",
+    "unique_section_slug": "header",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Announcement Title",
+            "slug" :  "announcement_text",
+            "text" : "<b>7 days a week </b> from 9:00 am to 7:00 pm",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "menu_type": {
+            "lable" : "Menu Type",
+            "slug" :  "menu_type",
+            "text" : "menu_bar",
+            "type" : "select",
+            "placeholder" : "Please select..",
+            "menu_ids":[]
+        },
+        "button": {
+            "lable" : "Button",
+            "slug" :  "button",
+            "text" : "Call us :<b> 610-403-403</b>",
+            "type" : "text",
+            "placeholder" : "see more."
+        }
+    }
+}

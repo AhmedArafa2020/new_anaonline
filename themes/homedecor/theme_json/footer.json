@@ -1,0 +1,69 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "sub_title":{
+            "lable" : "Copy Right Title",
+            "slug" :  "footer_sub_title",
+            "text" : "© 2023, Homedecor. All rights reserved",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "Discover Your Dream Home with Our Home Decor Newsletter! Stay inspired and informed with the latest trends, tips, and exclusive offers on home decor.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/homedecor/assets/images/youtube.png",
+                    "image":"themes/homedecor/assets/images/youtube.png"
+                },{
+                    "text":"themes/homedecor/assets/images/facebook.png",
+                    "image":"themes/homedecor/assets/images/facebook.png"
+                },{
+                    "text":"themes/homedecor/assets/images/insta.png",
+                    "image":"themes/homedecor/assets/images/insta.png"
+                },{
+                    "text":"themes/homedecor/assets/images/twitter.png",
+                    "image":"themes/homedecor/assets/images/twitter.png"
+                }
+            ]
+        },
+        "newsletter_title":{
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_title",
+            "text" : "Subscribe newsletter and get -20% off",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_description":{
+            "lable" : "Footer Newsletter Description",
+            "slug" :  "footer_newsletter_description",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 2,
+            "footer_menu_ids":[]
+        }
+    }
+}

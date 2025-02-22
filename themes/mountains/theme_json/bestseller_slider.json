@@ -1,0 +1,39 @@
+{
+    "section_name": "Bestseller - Slider",
+    "section_slug": "bestseller_slider",
+    "unique_section_slug": "bestseller_slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Bestseller Title",
+            "slug" :  "bestseller_title",
+            "text" : "<b> Top </b> products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Bestseller Button",
+            "slug" :  "bestseller_button",
+            "text" : "Show more products",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Bestseller Description",
+            "slug" :  "bestseller_description",
+            "text" : "FEATURE PRODUCT",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Bestseller Image",
+            "slug" :  "bestseller_image",
+            "text" : "themes/mountains/assets/images/image-product-bg.jpg",
+            "image": "themes/mountains/assets/images/image-product-bg.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }  
+    }
+}

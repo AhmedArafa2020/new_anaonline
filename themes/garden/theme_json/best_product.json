@@ -1,0 +1,47 @@
+
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Best Product Title",
+            "slug" :  "best_product_title",
+            "text" : "Get started with pots and plants, today!",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Best Product Sub Title",
+            "slug" :  "best_product_subtitle",
+            "text" : "Plants&Pots",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Best Product Button",
+            "slug" :  "best_product_button",
+            "text" : "Show More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Best Product Description",
+            "slug" :  "best_product_description",
+            "text" : "Its white work surface is easy to clean with an automatic production line, quality assurance and professional support.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Best Product Image",
+            "slug" :  "best_product_image",
+            "text" : "themes/garden/assets/images/img2.png",
+            "image" : "themes/garden/assets/images/img2.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

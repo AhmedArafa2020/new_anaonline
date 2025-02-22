@@ -1,0 +1,18 @@
+{
+    "section_name": "Homepage Logo",
+    "section_slug": "logo_slider",
+    "unique_section_slug": "logo_slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "image":{
+            "lable" : "Logo Slider Image",
+            "slug" :  "logo_slider_image",
+            "text" : ["themes/mountains/assets/images/clietn-logo.png"],
+            "image": ["themes/mountains/assets/images/clietn-logo.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

@@ -1,0 +1,56 @@
+
+<section class="testimonials-section padding-bottom" style="position: relative;@if(isset($option) && $option->is_hide == 1) opacity: 0.5; @else opacity: 1; @endif" data-index="{{ $option->order ?? '' }}" data-id="{{ $option->order ?? '' }}" data-value="{{ $option->id ?? '' }}" data-hide="{{ $option->is_hide ?? '' }}" data-section="{{ $option->section_name ?? '' }}"  data-store="{{ $option->store_id ?? '' }}" data-theme="{{ $option->theme_id ?? '' }}">
+<div class="custome_tool_bar"></div>
+            <div class="container">
+                    <div class="section-title">
+                        <h2 id="{{ $section->review->section->title->slug ?? '' }}_preview">
+                        {!! $section->review->section->title->text ?? '' !!}
+                        </h2>
+                    </div>
+                <div class="testimonials-slider flex-slider">
+                    @foreach ($reviews as $review)
+                        <div class="testimonials-itm">
+                            <div class="testimonials-itm-inner">
+                                <div class="testimonials-img">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="42"
+                                        viewBox="0 0 52 42" fill="none">
+                                        <path
+                                            d="M23.5328 5.1403L14.2968 22.191L8.47689 23.8209C9.15166 22.5672 9.91079 21.5642 10.7543 20.8119C11.5977 19.9761 12.5677 19.5582 13.6642 19.5582C16.1103 19.5582 18.3033 20.5612 20.2433 22.5672C22.2676 24.4896 23.2798 26.997 23.2798 30.0896C23.2798 33.3493 22.1411 36.1493 19.8637 38.4896C17.6707 40.8299 14.9294 42 11.6399 42C8.51906 42 5.77778 40.8716 3.41606 38.6149C1.13869 36.2746 0 33.4328 0 30.0896C0 28.7522 0.253041 27.206 0.759124 25.4507C1.34955 23.6955 2.40389 21.397 3.92214 18.5552L14.0438 0L23.5328 5.1403ZM52 5.1403L42.764 22.191L37.0706 23.8209C37.661 22.5672 38.3779 21.5642 39.2214 20.8119C40.1492 19.9761 41.1192 19.5582 42.1314 19.5582C44.5775 19.5582 46.8127 20.5612 48.837 22.5672C50.8613 24.4896 51.8735 26.997 51.8735 30.0896C51.8735 33.3493 50.7348 36.1493 48.4574 38.4896C46.2644 40.8299 43.5231 42 40.2336 42C37.1127 42 34.3715 40.8716 32.0097 38.6149C29.7324 36.2746 28.5937 33.4328 28.5937 30.0896C28.5937 28.7522 28.8467 27.206 29.3528 25.4507C29.8589 23.6955 30.871 21.397 32.3893 18.5552L42.6375 0L52 5.1403Z"
+                                            fill="#EE9FB4" />
+                                    </svg>
+                                </div>
+                                <div class="testimonials-content">
+                                    <div class="testimonials-content-top">
+                                        <h3>{{ $review->title }}</h3>
+                                        <p>{{ $review->description }}</p>
+                                    </div>
+                                    <div class="testimonials-content-bottom">
+                                        <div class="testimonials-user">
+                                            <div class="testimonials-user-img">
+                                                <img
+                                                src="{{ asset('themes/' . $currentTheme . '/assets/images/testimonials-user.png') }}">
+                                            </div>
+                                            <div class="testimonials-user-content">
+                                                <div class="testimonilas-star">
+                                                    @for ($i = 0; $i < 5; $i++)
+                                                        <i
+                                                            class="ti ti-star {{ $i < $review->rating_no ? 'text-warning' : '' }} "></i>
+                                                    @endfor
+                                                    <span><b>{{ $review->rating_no }}</b> / 5.0</span>
+                                                </div>
+                                                <div class="testimonials-user-name">
+                                                    <span>
+                                                       <h4>{{ !empty($review->UserData) ? ($review->UserData->first_name ? ($review->UserData->first_name. ',') : '') : '' }}
+                                                        </h4>{{ __('Client') }} 
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,40 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Best Product Title",
+            "slug" :  "best_product_titel",
+            "text" : "<b>Look hot with cool sunglasses</b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" :  "best_product_description",
+            "text" : "This banner could feature a variety of sunglasses and eyeglasses with a catchy headline like Summer Sale! Save up to 50% on Eyewear.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "best_product_image",
+            "text" : "themes/eyewear/assets/images/Prescription-glasses.jpg",
+            "image" : "themes/eyewear/assets/images/Prescription-glasses.jpg",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        },
+        "background_image":{
+            "lable" : "Image",
+            "slug" :  "best_product_image",
+            "text" : "themes/eyewear/assets/images/portrait-of-african.png",
+            "image" : "themes/eyewear/assets/images/portrait-of-african.png",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

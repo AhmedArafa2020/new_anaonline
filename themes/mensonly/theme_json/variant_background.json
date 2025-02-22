@@ -1,0 +1,53 @@
+{
+    "section_name": "VariantBackground - Section",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "Elegance Suits",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Variant Background Sub Title",
+            "slug" :  "variant_background_sub_title",
+            "text" : "Menclo.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : "Clothes that are too tight or too loose will not look good. It is also important to choose clothes that are made from high-quality materials. Well-made clothes will last longer and look better.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Variant Background Button",
+            "slug" :  "variant_background_button",
+            "text" : "Read More",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "button_first":{
+            "lable" : "Slider Slider Sub Title Second",
+            "slug" :  "slider_sub_title_second",
+            "text" : "MODERNWEAR",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Varinat Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/mensonly/assets/images/add-banner-1.png",
+            "image" : "themes/mensonly/assets/images/add-banner-1.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

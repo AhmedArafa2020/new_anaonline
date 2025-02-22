@@ -1,0 +1,39 @@
+{
+    "section_name": "VariantBackground - Section",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section": {
+        "title": {
+            "lable": "Variant Background Title",
+            "slug": "variant_background_title",
+            "text": "<b>Multicolour <br> bed table </b>",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "description": {
+            "lable": "Variant Background Description",
+            "slug": "variant_background_description",
+            "text": "Bed Table is made of MDF solid wood particle board, safe and environmentally friendly. The surface is smooth, non-toxic, not easy to stretch, moisture-proof, scratch-resistant, high-temperature resistant. While the legs are made of aluminum alloy tube.",
+            "type": "textarea",
+            "placeholder": "Please enter here.."
+        },
+        "button": {
+            "lable": "Button",
+            "slug": "variant_background_button",
+            "text": "Show more product",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "image": {
+            "lable": "Varinat Background Image",
+            "slug": "variant_background_image",
+            "text": "themes/homedecor/assets/images/sec-4.png",
+            "image": "themes/homedecor/assets/images/sec-4.png",
+            "type": "photoupload",
+            "placeholder": "Please enter here.."
+        }
+    }
+}

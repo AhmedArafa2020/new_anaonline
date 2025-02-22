@@ -1,0 +1,24 @@
+{
+    "section_name": "Modern - Product",
+    "section_slug": "modern_product",
+    "unique_section_slug": "modern_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Modern Product Title",
+            "slug" :  "modern_product_title",
+            "text" : "Exclusive <br> perfumes",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" :"modern Product Button",
+            "slug" : "modern_product_button",
+            "text" : "Check more products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

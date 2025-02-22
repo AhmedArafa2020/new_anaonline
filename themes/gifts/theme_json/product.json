@@ -1,0 +1,24 @@
+{
+    "section_name": "Product",
+    "section_slug": "product",
+    "unique_section_slug": "product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Title",
+            "slug" :  "product_title",
+            "text" : "Wedding Gifts",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Product Button",
+            "slug" :  "product_button",
+            "text" : "More Products",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

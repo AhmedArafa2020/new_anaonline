@@ -1,0 +1,23 @@
+{
+    "section_name": "Review",
+    "section_slug": "review",
+    "unique_section_slug": "review",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Review Title",
+            "slug" :  "review_title",
+            "text" : "<b> ALL  PRODUCTS </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },"sub_title":{
+            "lable" : "Review Sub Title",
+            "slug" :  "review_sub_title",
+            "text" : "<b> About </b>our shoes",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

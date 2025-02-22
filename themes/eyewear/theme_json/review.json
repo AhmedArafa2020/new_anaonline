@@ -1,0 +1,25 @@
+{
+    "section_name": "Review",
+    "section_slug": "review",
+    "unique_section_slug": "review",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Review Title",
+            "slug" :  "review_title",
+            "text" : "<b> Testimonials </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Review Image",
+            "slug" :  "review_image",
+            "text" : "themes/eyewear/assets/images/testimonial-left-img.png",
+            "image": "themes/eyewear/assets/images/testimonial-left-img.png",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

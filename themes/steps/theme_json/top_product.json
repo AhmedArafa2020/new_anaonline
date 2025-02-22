@@ -1,0 +1,25 @@
+{
+    "section_name": "",
+    "section_slug": "top_product",
+    "unique_section_slug": "top_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "top_product_title",
+            "text" : "FEATURED",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "top_product_image",
+            "text" : "themes/steps/assets/images/two-coll.jpg",
+            "image": "themes/steps/assets/images/two-coll.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

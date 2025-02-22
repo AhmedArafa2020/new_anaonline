@@ -1,0 +1,47 @@
+{
+    "section_name": "Variant Background",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "Best <b> Pro Gaming </b> </br> Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : "More powerful hardware not only betters their experiences in games they're currently playing, but it also gives many players access to titles with more demanding specifications.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image_left":{
+            "lable" : "Variant Background Image",
+            "slug" :  "variant_background_image_left",
+            "text" : "themes/gaming/assets/images/product-cpu.png",
+            "image" : "themes/gaming/assets/images/product-cpu.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "image_right":{
+            "lable" : "Variant Background Image Second",
+            "slug" :  "variant_background_image_right",
+            "text" : "themes/gaming/assets/images/double.cpu.png",
+            "image" : "themes/gaming/assets/images/double.cpu.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" :"Variant Background Button",
+            "slug" : "variant_background_button",
+            "text" : "show producs",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

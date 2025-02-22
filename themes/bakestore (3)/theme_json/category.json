@@ -1,0 +1,46 @@
+{
+    "section_name": "Category",
+    "section_slug": "category",
+    "unique_section_slug": "category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Category Title",
+            "slug" :  "category_title",
+            "text" : "Breads",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Category Description",
+            "slug" :  "category_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Category Button",
+            "slug" :  "category_image",
+            "text" : "Check More Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Category Image",
+            "slug" :  "category_image",
+            "text" : "themes/bakestore/assets/images/card-img-1.png",
+            "image" : "themes/bakestore/assets/images/card-img-1.png",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        },
+        "check_more_product_button":{
+            "lable" : "Category Slider Button",
+            "slug" :  "category_check_more_product_button",
+            "text" : "Check More Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "section_name": "VariantBackground - Section",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "<b>Immerse yourself </b> <br> in the chocolate flavor",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : "The flavor of this chocolate is unlike anything you've ever tried before, and it's sure to make your mouth water.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Variant Background Button",
+            "slug" :  "variant_background_button",
+            "text" : "check more product",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+
+        "image":{
+            "lable" : "Varinat Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/chocolate/assets/images/chocolate4.png",
+            "image" : "themes/chocolate/assets/images/chocolate4.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

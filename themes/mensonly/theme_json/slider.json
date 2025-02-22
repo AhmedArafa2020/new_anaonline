@@ -1,0 +1,68 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : ["<b>Unique clothes </b> <br>for special occasions "],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : ["Menclo"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : ["Men's Only is a book by Shaunti Feldhahn that aims to help men understand the inner lives of women. The book is based on a national survey of women, as well as hundreds of interviews."],
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Slider Button",
+            "slug" :  "slider_button",
+            "text" : ["Go to Shop"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button_first":{
+            "lable" : "Slider Slider Sub Title Second",
+            "slug" :  "slider_sub_title_second",
+            "text" : ["MODERNWEAR"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Slider Image",
+            "slug" :  "slider_image",
+            "text" : ["themes/mensonly/assets/images/banner-main-img.png"],
+            "image": ["themes/mensonly/assets/images/banner-main-img.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "button_second":{
+            "lable" : "Video Title",
+            "slug" :  "slider_video_title",
+            "text" : ["Play Video"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

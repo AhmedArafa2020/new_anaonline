@@ -1,0 +1,46 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : " +5,000 books <br><b>in one place</b>",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : "Featured Books:",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Slider First Button",
+            "slug" :  "slider_button",
+            "text" : "Show audiobooks",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "Slider Second Button",
+            "slug" :  "slider_second_button",
+            "text" : "Find products",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Slider Image",
+            "slug" :  "slider_image",
+            "text" : "themes/books/assets/images/Hero-main.jpg",
+            "image": "themes/books/assets/images/Hero-main.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

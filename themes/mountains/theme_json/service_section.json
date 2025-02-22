@@ -1,0 +1,32 @@
+{
+    "section_name": "Service Section",
+    "section_slug": "service_section",
+    "unique_section_slug": "service_section",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "service_section_title",
+            "text" : ["Finished products","Large and frequent", "Free shipping"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" :  "service_section_description",
+            "text" : ["products and gift wrapping","promotions with discounts","on any order from $ 150"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "service_section_image",
+            "text" : ["themes/odor/assets/images/gift-bag.svg","themes/odor/assets/images/discount.svg","themes/odor/assets/images/trolly.svg"],
+            "image": ["themes/odor/assets/images/gift-bag.svg","themes/odor/assets/images/discount.svg","themes/odor/assets/images/trolly.svg"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

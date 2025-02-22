@@ -1,0 +1,60 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "lable_x":{
+            "lable" : "Slider Horizontal Lable",
+            "slug" :  "slider_lable_x",
+            "text" : "Explore",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "lable_y":{
+            "lable" : "Slider Vertical Lable",
+            "slug" :  "slider_lable_y",
+            "text" : "Explore",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_lable",
+            "text" : "Trendmark",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : "<span>Sneakers 2024</span> Limited Edition",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },"background_image":{
+            "lable" : "Image",
+            "slug" :  "slider_background_image",
+            "text" : "themes/steps/assets/images/ellipse.png",
+            "image": "themes/steps/assets/images/ellipse.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "button_second":{
+            "lable" : "Slider Second Button",
+            "slug" :  "slider_second_button",
+            "text" : "play video",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "video": {
+            "lable": "Video",
+            "slug": "slider_video",
+            "text": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type": "text",
+            "placeholder": "Please select file"
+        }
+    }
+}

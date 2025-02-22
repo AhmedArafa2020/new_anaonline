@@ -1,0 +1,38 @@
+{
+    "section_name": "Product - Category",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section": {
+        "title": {
+            "lable": "Product Category Title",
+            "slug": "product_category_title",
+            "text": "Interiors",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "button": {
+            "lable": "Product Category Button",
+            "slug": "product_category_button",
+            "text": "Show more products",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "sub_title": {
+            "lable": "Modern Product Sub Title",
+            "slug": "modern_product_sub_title",
+            "text": "This style is all about expressing your individuality, and often features bright colors, eclectic patterns, and vintage finds.",
+            "type": "text",
+            "placeholder": "Please enter here.."
+        },
+        "button_second":{
+            "lable" : "Product Card Button",
+            "slug" :  "product_card_button",
+            "text" : "Show More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

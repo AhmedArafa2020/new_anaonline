@@ -1,0 +1,90 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Section Title",
+            "slug" :  "footer_title",
+            "text" : "+00 544-213-615",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Footer Section Sub Title",
+            "slug" :  "footer_sub_title",
+            "text" : "Call and take more info:",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "We offer a curated selection of clothing and accessories that are carefully chosen to cater to diverse tastes and preferences.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/mensonly/assets/images/youtube.png",
+                    "image":"themes/mensonly/assets/images/youtube.png"
+                },{
+                    "text":"themes/mensonly/assets/images/facebook.png",
+                    "image":"themes/mensonly/assets/images/facebook.png"
+                },{
+                    "text":"themes/mensonly/assets/images/insta.png",
+                    "image":"themes/mensonly/assets/images/insta.png"
+                },{
+                    "text":"themes/mensonly/assets/images/twitter.png",
+                    "image":"themes/mensonly/assets/images/twitter.png"
+                }
+            ]
+        },
+        "newsletter_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_title",
+            "text" : "Unique clothes for special occasions",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_sub_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_sub_title",
+            "text" : "Fashion Style Design Trend is your ultimate destination for staying ahead.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_description": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_description",
+            "text" : "Subscribe to get the latest news, updates and offers. Don’t worry, we won’t send spam!",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "copy_right": {
+            "lable" : "Copy Rights",
+            "slug" :  "footer_copy_right",
+            "text" : "© 2023 Mensonly. All rights reserved",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 2,
+            "footer_menu_ids":[]
+        }
+    }
+}

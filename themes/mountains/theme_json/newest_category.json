@@ -1,0 +1,38 @@
+{
+    "section_name": "Newest Category",
+    "section_slug": "newest_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Newest Category Title",
+            "slug" :  "newest_category_title",
+            "text" : "OUR CATEGORY",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Newest Category Title",
+            "slug" :  "newest_category_subtitle",
+            "text" : "MOUNTAIN",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Newest Category Description",
+            "slug" :  "newest_category_description",
+            "text" : "FEATURE PRODUCT",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Newest Category Button",
+            "slug" :  "newest_category_button",
+            "text" : "all products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

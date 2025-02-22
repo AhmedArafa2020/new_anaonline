@@ -1,0 +1,67 @@
+{
+    "section_name": "Modern - Product",
+    "section_slug": "modern_product",
+    "unique_section_slug": "modern_product",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "service_title":{
+            "lable" : "Main Title",
+            "slug" :  "modern_product_service_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_sub_title":{
+            "lable" : "Contant Description Subtitle",
+            "slug" :  "modern_product_service_sub_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_description_first":{
+            "lable" : "Contant Description First",
+            "slug" :  "modern_product_service_description_first",
+            "text" : " Anti-reflective. It can help with glare, reflections, halos around light, and make for a nicer look. According to a study from the University of Cologne in Köln, Germany and the University of Groningen in the Netherlands, the stereotype that people with glasses look smart “dates back to the Middle Ages, when monks used glasses. ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_description_second":{
+            "lable" : "Contant Description Second",
+            "slug" :  "modern_product_service_description_second",
+            "text" : " Anti-reflective. It can help with glare, reflections, halos around light, and make for a nicer look. According to a study from the University of Cologne in Köln, Germany and the University of Groningen in the Netherlands, the stereotype that people with glasses look smart “dates back to the Middle Ages, when monks used glasses.  ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_button":{
+            "lable" : "Contant Button",
+            "slug" :  "modern_product_service_button",
+            "text" : "go to shop",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "title":{
+            "lable" : "Title",
+            "slug" :  "modern_product_title",
+            "text" : ["<b>Modern</b> and <b>timeless clothes</b> from the best stylists","<b>Modern</b> and <b>timeless clothes</b> from the best stylists","<b>Modern</b> and <b>timeless clothes</b> from the best stylists"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "modern_product_button",
+            "text" : ["go to shop","go to shop","go to shop"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "modern_product_image",
+            "text" : ["themes/style/assets/images/banner1.png","themes/style/assets/images/banner2.png","themes/style/assets/images/banner3.png"],
+            "image": ["themes/style/assets/images/banner1.png","themes/style/assets/images/banner2.png","themes/style/assets/images/banner3.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

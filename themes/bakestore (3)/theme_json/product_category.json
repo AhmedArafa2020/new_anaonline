@@ -1,0 +1,54 @@
+{
+    "section_name": "Product - Category",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Category Title",
+            "slug" :  "product_category_title",
+            "text" : "<b>Bread baked with </b> <br> love every day.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "product_category_image",
+            "text" : "themes/bakestore/assets/images/chocolate2.png",
+            "image": "themes/bakestore/assets/images/chocolate2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "sub_title":{
+            "lable" : "Product Category Sub title",
+            "slug" :  "product_category_sub_title",
+            "text" : "Bakery",
+            "type" : "text",
+            "placeholder" : "Please select.."
+        },
+        "description":{
+            "lable" : "Product Category Description",
+            "slug" :  "product_category_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Product Category Button",
+            "slug" :  "product_category_button",
+            "text" : "Shope More",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Product Category Image",
+            "slug" :  "Product Category_image",
+            "text" : "themes/bakestore/assets/images/chocolate2.png",
+            "image": "themes/bakestore/assets/images/chocolate2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

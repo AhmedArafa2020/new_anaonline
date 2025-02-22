@@ -1,0 +1,68 @@
+{
+    "section_name": "Variant Background",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "service_title":{
+            "lable" : "Main Title",
+            "slug" :  "variant_background_service_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists.",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_sub_title":{
+            "lable" : "Sub Title",
+            "slug" :  "variant_background_service_sub_title",
+            "text" : "style.",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_description_first":{
+            "lable" : "Description",
+            "slug" :  "variant_background_service_description_first",
+            "text" : "Seasonal Fashion Trends Write about the latest trends for the current season. Include tips on how to incorporate these trends into everyday outfits.",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_button":{
+            "lable" : "Button",
+            "slug" :  "variant_background_service_button",
+            "text" : "go to shop",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/style/assets/images/positive-banner.jpg",
+            "image": "themes/style/assets/images/positive-banner.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        } ,
+        "background_image_second":{
+            "lable" : "Award Logo",
+            "slug" :  "variant_background_image_second",
+            "text" : "themes/style/assets/images/award-logo.png",
+            "image": "themes/style/assets/images/award-logo.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }, 
+        "title":{
+            "lable" : "Title",
+            "slug" :  "variant_background_product_title",
+            "text" : ["Positive <b>ratings</b>","Fast <b>orders</b>","Solid <b>products</b>"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Number",
+            "slug" :  "variant_background_product_button",
+            "text" : ["21","37","40"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

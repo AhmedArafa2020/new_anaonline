@@ -1,0 +1,32 @@
+{
+    "section_name": "Best Product",
+    "section_slug": "best_product_second",
+    "unique_section_slug": "best_product_second",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "best_product_second_title",
+            "text" :  "Bestseller",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "best_product_second_button",
+            "text" : "More Products",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "best_product_second_image",
+            "text" : "themes/gifts/assets/img/review-main.png",
+            "image": "themes/gifts/assets/img/review-main.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }       
+    }
+}

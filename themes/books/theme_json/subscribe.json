@@ -1,0 +1,55 @@
+{
+    "section_name": "Subscribe - Section",
+    "section_slug": "subscribe",
+    "unique_section_slug": "subscribe",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Subscribe Title",
+            "slug" :  "subscribe_title",
+            "text" : "<b>Subscribe newsletter and <br><b>get -20% off </b>", 
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Subscribe Description",
+            "slug" :  "subscribe_description",
+            "text" : "The intellectual content in a physical book need not be a composition, nor even be called a book.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Subscribe subtitle",
+            "slug" :  "subscribe_sub_title",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Subscribe Image",
+            "slug" :  "subscribe_image",
+            "text" : "themes/books/assets/images/newslatter-img-1.png",
+            "image" : "themes/books/assets/images/newslatter-img-1.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "image_left":{
+            "lable" : "Subscribe Image Left",
+            "slug" :  "subscribe_image_left",
+            "text" : "themes/books/assets/images/newslatter-img-2.png",
+            "image" : "themes/books/assets/images/newslatter-img-2.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "image_right":{
+            "lable" : "Subscribe Image Right",
+            "slug" :  "subscribe_image_right",
+            "text" : "themes/books/assets/images/newslatter-img-3.png",
+            "image" : "themes/books/assets/images/newslatter-img-3.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

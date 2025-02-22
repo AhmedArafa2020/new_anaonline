@@ -1,0 +1,54 @@
+{
+    "section_name": "Modern - Product",
+    "section_slug": "modern_product",
+    "unique_section_slug": "modern_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Modern Product Title",
+            "slug" :  "modern_product_titel",
+            "text" : "<b>Immerse yourself </b> <br> in the chocolate flavor",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Modern Product Sub Title",
+            "slug" :  "modern_product_sub_title",
+            "text" : "<b> Bakery </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Modern Product Button",
+            "slug" :  "modern_product_button",
+            "text" : "Play Video",
+            "type" : "button",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Modern Product Description",
+            "slug" :  "modern_product_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Modern Product Image",
+            "slug" :  "modern_product_background_image",
+            "text" : "themes/bakestore/assets/images/bg2.png",
+            "image": "themes/bakestore/assets/images/bg2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

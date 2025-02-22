@@ -1,0 +1,31 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "best Product Title",
+            "slug" :  "best_product_title",
+            "text" : "<b>Bread baked with </b> <br> love every day.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Best product Description",
+            "slug" :  "best_product_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Product Button",
+            "slug" :  "best_product_button",
+            "text" : "Check more products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

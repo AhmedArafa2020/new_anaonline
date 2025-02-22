@@ -1,0 +1,39 @@
+{
+    "section_name": "Service Section",
+    "section_slug": "service_section",
+    "unique_section_slug": "service_section",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "service_title":{
+            "lable" : "Title",
+            "slug" :  "service_section_title",
+            "text" : "About <b>our fashion</b> clothes store",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Sub Title",
+            "slug" :  "service_section_sub_title",
+            "text" : ["Fast delivery","Many offers", "24/7 support"],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" :  "service_section_description",
+            "text" : [" Track one or multiple parcels with Delhivery Tracking, use your tracking number to track the status of your parcel. Track orders from Delhivery App and get ... "," Buy Offer Store Online in India - Choose from a variety of options. Get Upto  OFF on the latest collection of Offer Store and enjoy "," 24/7 customer support is a model where customers can get their issues resolved anytime.This guide will show you how to provide 24/7 customer ... "],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "service_section_image",
+            "text" : ["themes/style/assets/images/icon2.png","themes/style/assets/images/icon2.png","themes/style/assets/images/icon2.png"],
+            "image": ["themes/style/assets/images/icon2.png","themes/style/assets/images/icon2.png","themes/style/assets/images/icon2.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

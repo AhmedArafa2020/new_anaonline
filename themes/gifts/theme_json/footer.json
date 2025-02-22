@@ -1,0 +1,90 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Section Title",
+            "slug" :  "footer_title",
+            "text" : "+00 544-213-615",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Footer Section Sub Title",
+            "slug" :  "footer_sub_title",
+            "text" : "Call and take more info:",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Footer Section Description",
+            "slug" :  "footer_description",
+            "text" : "Gifts is a lifestyle retailer dedicated to inspiring customers through unique combination",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/gifts/assets/images/youtube.png",
+                    "image":"themes/gifts/assets/images/youtube.png"
+                },{
+                    "text":"themes/gifts/assets/images/facebook.png",
+                    "image":"themes/gifts/assets/images/facebook.png"
+                },{
+                    "text":"themes/gifts/assets/images/insta.png",
+                    "image":"themes/gifts/assets/images/insta.png"
+                },{
+                    "text":"themes/gifts/assets/images/twitter.png",
+                    "image":"themes/gifts/assets/images/twitter.png"
+                }
+            ]
+        },
+        "newsletter_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_title",
+            "text" : "<b>Gifts for </b> <br> all occasions",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_sub_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_sub_title",
+            "text" : "Gifts is a lifestyle retailer dedicated to inspiring customers through unique combination",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_description": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_description",
+            "text" : "Gifts is a lifestyle retailer dedicated to inspiring customers through unique combination",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "copy_right": {
+            "lable" : "Copy Rights",
+            "slug" :  "footer_copy_right",
+            "text" : "© 2024, Gifts. All rights reserved",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }, 
+        "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 3,
+            "footer_menu_ids":[]
+        }
+    }
+}

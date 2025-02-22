@@ -1,0 +1,31 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product",
+    "unique_section_slug": "best_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "best Product Title",
+            "slug" :  "best_product_title",
+            "text" : "Immerse yourself <br> in the chocolate flavor",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Best product Description",
+            "slug" :  "best_product_description",
+            "text" : "Our expert chocolatiers have taken the seeds of the cacao tree and fermented them to develop the most intense bitter taste.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Product Button",
+            "slug" :  "best_product_button",
+            "text" : "Check more products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

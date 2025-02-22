@@ -1,0 +1,24 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Blog Title",
+            "slug" :  "blog_title",
+            "text" : "Top sneakers trends <b> for 2022 year </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Blog Button",
+            "slug" :  "blog_button",
+            "text" : "Read more",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

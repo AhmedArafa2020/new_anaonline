@@ -1,0 +1,47 @@
+
+{
+    "section_name": "Product",
+    "section_slug": "product",
+    "unique_section_slug": "product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "button":{
+            "lable" : "product  Button",
+            "slug" :  "product_button",
+            "text" : "Special offer",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "product Sub Title",
+            "slug" :  "product_sub_title",
+            "text" : "Get 1 storage for 30 days free. More ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "title":{
+            "lable" : "product Title",
+            "slug" :  "product_title",
+            "text" : "<b> Fast Delivers </b> Easy Travel",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+
+        "description":{
+            "lable" : "product Description",
+            "slug" :  "product_description",
+            "text" : "If you send numerous boxes in different sizes, Box on Demand could be an alternative. We supply you with endless corrugated cardboard which you can then machine-specifically tailor to the size of the items to be shipped.If you send numerous boxes in different sizes, Box on Demand could be an alternative.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "product Button Second",
+            "slug" :  "product_button_second",
+            "text" : "Get your storage",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

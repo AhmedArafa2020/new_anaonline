@@ -1,0 +1,24 @@
+{
+    "section_name": "Newest - Category",
+    "section_slug": "newest_category",
+    "unique_section_slug": "newest_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Newest category Title",
+            "slug" :  "newest_category_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Newest Category Description",
+            "slug" :  "newest_category_description",
+            "text" : " Specialized glasses may be used for viewing specific visual information, for example 3D glasses for 3D films (stereoscopy). Sometimes glasses are worn purely for fashion or aesthetic purposes. Even with glasses used for vision correction, a wide range of fashions are available, using plastic, metal, wire, and other materials for frames. ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "section_name": "",
+    "section_slug": "best_product_second",
+    "unique_section_slug": "best_product_second",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "best_product_second_title",
+            "text" : "FEATURED",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "best_product_second_image",
+            "text" : "themes/steps/assets/images/home2.png",
+            "image": "themes/steps/assets/images/home2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

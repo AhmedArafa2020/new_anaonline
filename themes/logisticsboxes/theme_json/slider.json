@@ -1,0 +1,68 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "button":{
+            "lable" : "Slider Button",
+            "slug" :  "slider_button",
+            "text" : "Special Offer",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider Sub Title",
+            "slug" :  "slider_sub_title",
+            "text" : "Get 1 storage for 30 days free. More",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : "<b>Fast Delivers </b> Easy Travel",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : "This carrying box with pre-punched handle holes and side access is especially stable when stacked. Two tabs on each side and corresponding slots on the undersides of the crates interlock in the stack and prevent slipping of the crates even with higher stacks.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "service_title":{
+            "lable" : "Slider Search Title",
+            "slug" :  "slider_service_title",
+            "text" : "Search your package:",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "slider_sub_description":{
+            "lable" : "Slider Sub Description",
+            "slug" :  "slider_slider_sub_description",
+            "text" : "Enter the package number or email address. We will find the package for you!",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "service_button":{
+            "lable" : "Serch Button",
+            "slug" :  "slider_service_button",
+            "text" : "Find Package",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Slider Background Image",
+            "slug" :  "slider_background_image",
+            "text" : "themes/logisticsboxes/assets/images/banner-image.jpg",
+            "image": "themes/logisticsboxes/assets/images/banner-image.jpg",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

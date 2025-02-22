@@ -1,0 +1,31 @@
+{
+    "section_name": "Product - Banner",
+    "section_slug": "product_banner_slider",
+    "unique_section_slug": "product_banner_slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "product_banner_slider_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Deacription",
+            "slug" :  "product_banner_slider_description",
+            "text" : " Explore the evolution of fashion through different eras, from ancient times to modern-day. Discuss key trends, styles, and cultural influences.",
+            "type" : "textarea",    
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "product_banner_slider_button",
+            "text" : "Go to shop",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

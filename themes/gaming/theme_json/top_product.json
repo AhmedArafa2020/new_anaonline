@@ -1,0 +1,24 @@
+{
+    "section_name": "Top - Product",
+    "section_slug": "top_product",
+    "unique_section_slug": "top_product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Top Product Title",
+            "slug" :  "top_product_title",
+            "text" : "Bestsellers <b>of the week </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Product Button",
+            "slug" :  "top_product_button",
+            "text" : "Show products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "section_name": "Variant Background",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "<b>Exclusive  </b> <br> perfumes",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : " Exclusive perfumes Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Variant Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/odor/assets/images/ring-slider3.png",
+            "image" : "themes/odor/assets/images/ring-slider3.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Variant Background subtitle",
+            "slug" :  "variant_background_sub_title",
+            "text" : "Check More Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

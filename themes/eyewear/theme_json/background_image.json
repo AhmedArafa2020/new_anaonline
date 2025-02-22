@@ -1,0 +1,32 @@
+{
+    "section_name": "BackgroundImage - Section",
+    "section_slug": "background_image",
+    "unique_section_slug": "background_image",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Background Image Title",
+            "slug" :  "background_image_title",
+            "text" : "<b>Get new shades and get new ideas </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Background Image Description",
+            "slug" :  "background_image_description",
+            "text" : "Sunglasses can protect the eyes from the sun's harmful rays. These rays can cause cataracts, macular degeneration, and other eye problems.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Background Image",
+            "slug" :  "background_image",
+            "text" : "themes/eyewear/assets/images/section-banner.jpg",
+            "image" : "themes/eyewear/assets/images/section-banner.jpg",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

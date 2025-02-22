@@ -1,0 +1,46 @@
+{
+    "section_name": "Product - Category",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Category Title",
+            "slug" :  "product_category_title",
+            "text" : "<b>Immerse yourself  </b> <br> in the chocolate flavor ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Image",
+            "slug" :  "product_category_image",
+            "text" : "themes/chocolate/assets/images/chocolate2.png",
+            "image": "themes/chocolate/assets/images/chocolate2.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "subtitle":{
+            "lable" : "Product Category Subtitle",
+            "slug" :  "product_category_subtitle",
+            "text" : "Chocolaterie",
+            "type" : "text",
+            "placeholder" : "Please select.."
+        },
+        "description":{
+            "lable" : "Product Category Description",
+            "slug" :  "product_category_description",
+            "text" : "The new chocolate website is here! Introducing the worsted-weight, semi-knitted, and super bulky chocolate website pattern - perfect for those who love chocolate but don't want to deal with all the steaming, boiling, scraping, and kneading involved in making it.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Product Category Button",
+            "slug" :  "product_category_button",
+            "text" : "Show More",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        }
+    }
+}

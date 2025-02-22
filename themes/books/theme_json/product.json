@@ -1,0 +1,39 @@
+{
+    "section_name": "Product",
+    "section_slug": "product",
+    "unique_section_slug": "product",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Product Title",
+            "slug" :  "product_title",
+            "text" : "Books <b>Online Store</b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Product Description",
+            "slug" :  "product_description",
+            "text" : "In some wealthier nations, the sale of printed books has decreased because of the increased usage of e-books.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Product Image",
+            "slug" :  "product_image",
+            "text" : "themes/books/assets/images/Category-image.png",
+            "image" : "themes/books/assets/images/Category-image.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        },
+        "show_more_button":{
+            "lable" : "Show More Button",
+            "slug" :  "product_show_more_button",
+            "text" : "Show More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

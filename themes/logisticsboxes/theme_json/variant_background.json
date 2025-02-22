@@ -1,0 +1,33 @@
+
+{
+    "section_name": "VariantBackground - Section",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "multi-inner-list",
+    "loop_number": 3,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : ["<b>Send the parcel in </b> a favorite place for your client.","<b>Send the parcel in </b> a favorite place for your client.","<b>Send the parcel in </b> a favorite place for your client."],
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : ["LogisticsBoxes has a team of experienced professionals who are experts in all aspects of logistics. They are committed to providing their customers with the best possible service, and they are always looking for new ways to improve their offerings. ","LogisticsBoxes has a team of experienced professionals who are experts in all aspects of logistics. They are committed to providing their customers with the best possible service, and they are always looking for new ways to improve their offerings. ","LogisticsBoxes has a team of experienced professionals who are experts in all aspects of logistics. They are committed to providing their customers with the best possible service, and they are always looking for new ways to improve their offerings. "],
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "image":{
+            "lable" : "Varinat Background Image",
+            "slug" :  "variant_background_image",
+            "text" : ["themes/logisticsboxes/assets/images/service1.png","themes/logisticsboxes/assets/images/service2.png","themes/logisticsboxes/assets/images/service3.png"],
+            "image": ["themes/logisticsboxes/assets/images/service1.png","themes/logisticsboxes/assets/images/service2.png","themes/logisticsboxes/assets/images/service3.png"],
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }
+    }
+}

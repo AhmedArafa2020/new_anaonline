@@ -1,0 +1,39 @@
+{
+    "section_name": "Homepage",
+    "section_slug": "best_product_second",
+    "unique_section_slug": "best_product_second",
+    "section_enable": "on",
+    "array_type": "multie-inner-list",
+    "loop_number": 3,
+    "section":{
+        "service_title":{
+            "lable" : "Title",
+            "slug" :  "best_product_second_title",
+            "text" : "<b>Modern</b> and <b>timeless clothes</b> from the best stylists.",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "service_description":{
+            "lable" : "Title",
+            "slug" :  "best_product_second_description",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Lable Title",
+            "slug" :  "best_product_second_sub_title",
+            "text" : ["<b>modern</b> and <b> timeless clothes</b>","<b>modern</b> and <b> timeless clothes</b>","<b>modern</b> and <b> timeless clothes</b>"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "image":{
+            "lable" : "Lable Image",
+            "slug" :  "best_product_second_sub_title",
+            "text" : ["themes/assets/style/icon1.png","themes/assets/style/icon1.png","themes/assets/style/icon1.png"],
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        }
+        
+    }
+}

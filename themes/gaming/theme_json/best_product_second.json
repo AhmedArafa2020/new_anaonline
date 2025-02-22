@@ -1,0 +1,18 @@
+{
+    "section_name": "Best - Product",
+    "section_slug": "best_product_second",
+    "unique_section_slug": "best_product_second",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "image":{
+            "lable" : "Image",
+            "slug" :  "best_product_second_image",
+            "text" : "themes/gaming/assets/images/product-cpu.png",
+            "image" : "themes/gaming/assets/images/product-cpu.png",
+            "type" : "file",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

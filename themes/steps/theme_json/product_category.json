@@ -1,0 +1,47 @@
+{
+    "section_name": "All Showes Section",
+    "section_slug": "product_category",
+    "unique_section_slug": "product_category",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "product_category_title",
+            "text" : "All the Sneakers",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Sub Title",
+            "slug" :  "product_category_sub_title",
+            "text" : "ALL PRODUCTS",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "product_category_button",
+            "text" : "SHOW MORE",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "image_right":{
+            "lable" : "Right Image",
+            "slug" :  "product_category_image_right",
+            "text" : "themes/steps/assets/images/banner-image.png",
+            "image": "themes/steps/assets/images/banner-image.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "image_left":{
+            "lable" : "Left Image",
+            "slug" :  "product_category_image_left",
+            "text" : "themes/steps/assets/images/banner-image.png",
+            "image": "themes/steps/assets/images/banner-image.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        }    
+    }
+}

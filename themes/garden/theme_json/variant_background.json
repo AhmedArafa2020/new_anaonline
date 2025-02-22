@@ -1,0 +1,55 @@
+
+{
+    "section_name": "VariantBackground - Section",
+    "section_slug": "variant_background",
+    "unique_section_slug": "variant_background",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Variant Background Title",
+            "slug" :  "variant_background_title",
+            "text" : "Create a tropical interior <b>in your home.</b> ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Variant Background Sub Title",
+            "slug" :  "variant_background_sub_title",
+            "text" : "Plants&Pots",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Variant Background Description",
+            "slug" :  "variant_background_description",
+            "text" : "These high-quality, smartly designed plant pots are produced in an environmentally-friendly way with automatic production lines and quality assurance.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Video Title",
+            "slug" :  "slider_video_title",
+            "text" : "Play Video",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        },
+        "image":{
+            "lable" : "Varinat Background Image",
+            "slug" :  "variant_background_image",
+            "text" : "themes/garden/assets/images/banner1.png",
+            "image" : "themes/garden/assets/images/banner1.png",
+            "type" : "photoupload",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

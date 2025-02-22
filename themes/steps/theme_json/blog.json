@@ -1,0 +1,31 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Title",
+            "slug" :  "blog_title",
+            "text" : " <b> ALL PRODUCTS </b>",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "sub_title":{
+            "lable" : "Sub Title",
+            "slug" :  "blog_sub_title",
+            "text" : " <b> From </b> the blog",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" : "Button",
+            "slug" :  "blog_button",
+            "text" : "Load More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

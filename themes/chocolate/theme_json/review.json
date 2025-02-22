@@ -1,0 +1,31 @@
+{
+    "section_name": "Review",
+    "section_slug": "review",
+    "unique_section_slug": "review",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Review Title",
+            "slug" :  "review_title",
+            "text" : "Testimonials",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Review Description",
+            "slug" :  "review_description",
+            "text" : "With its rich in carbohydrates and small amount of the stimulating alkaloids the obromine and caffeine, chocolate is an excellent source of quick energy and a rich source of flavor.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" :"Review Button",
+            "slug" : "review_button",
+            "text" : "Read More",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

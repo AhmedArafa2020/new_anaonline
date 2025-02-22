@@ -1,0 +1,31 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Blog Title",
+            "slug" :  "blog_title",
+            "text" : "Best <b> Pro </br> Gaming </b>  Blog",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Blog Description",
+            "slug" :  "description",
+            "text" : " Gaming Product means any intangible asset, good or interest that can be bought or sold or otherwise is the subject of an activity constituting a Gaming Business.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "button":{
+            "lable" :"Blog Button",
+            "slug" : "blog_button",
+            "text" : "Show Products",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

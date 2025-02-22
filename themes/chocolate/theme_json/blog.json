@@ -1,0 +1,24 @@
+{
+    "section_name": "Blog",
+    "section_slug": "blog",
+    "unique_section_slug": "blog",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Blog Title",
+            "slug" :  "blog_title",
+            "text" : " Immerse yourself in <br>the chocolate flavor",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Description",
+            "slug" :  "description",
+            "text" : "A blog, short for weblog, is a frequently updated web page used for personal commentary or business content.",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}

@@ -1,0 +1,106 @@
+{
+    "section_name": "Homepage Slider",
+    "section_slug": "slider",
+    "unique_section_slug": "slider",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Slider Title",
+            "slug" :  "slider_title",
+            "text" : "Immerse yourself in the chocolate flavor ",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "sub_title":{
+            "lable" : "Slider SubTitle",
+            "slug" :  "slider_sub_title",
+            "text" : "Chocolaterie",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "description":{
+            "lable" : "Slider Description",
+            "slug" :  "slider_description",
+            "text" : "The new chocolate website is here! Introducing the worsted-weight, semi-knitted, and super bulky chocolate website pattern - perfect for those who love chocolate but don't want to deal with all the steaming, boiling, scraping, and kneading involved in making it.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here..."
+        },
+        "button":{
+            "lable" : "Slider Button",
+            "slug" :  "slider_button",
+            "text" : "Check more products",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "background_image":{
+            "lable" : "Background Image",
+            "slug" :  "slider_background_image",
+            "text" : "themes/chocolate/assets/images/home-bg.png",
+            "image": "themes/chocolate/assets/images/home-bg.png",
+            "type" : "file",
+            "placeholder" : "Please select file"
+        },
+        "service_title": {
+            "lable": "Service Title",
+            "slug": "slider_service_title",
+            "text": "<b>Finished products</b><span>products and gift wrapping</span>",
+            "type": "text",
+            "placeholder": "Please enter here..."
+        },
+        "service_second_title": {
+            "lable": "Service Title",
+            "slug": "slider_service_second_title",
+            "text": "<b>Finished products</b><span>products and gift wrapping</span>",
+            "type": "text",
+            "placeholder": "Please enter here..."
+        },
+        "service_third_title": {
+            "lable": "Service Title",
+            "slug": "slider_service_third_title",
+            "text": "<b>Finished products</b><span>products and gift wrapping</span>",
+            "type": "text",
+            "placeholder": "Please enter here..."
+        },
+        "service_image": {
+            "lable": "Service Description",
+            "slug": "slider_service_image",
+            "text" : "themes/chocolate/assets/images/gift-bag.svg",
+            "image": "themes/chocolate/assets/images/gift-bag.svg",
+            "type": "file",
+            "placeholder": "Please enter here..."
+        },
+        "service_second_image": {
+            "lable": "Service Description",
+            "slug": "slider_service_second_image",
+            "text" : "themes/chocolate/assets/images/discount.svg",
+            "image": "themes/chocolate/assets/images/discount.svg",
+            "type": "file",
+            "placeholder": "Please enter here..."
+        },
+        "service_third_image": {
+            "lable": "Service Description",
+            "slug": "slider_service_third_image",
+            "text" : "themes/chocolate/assets/images/trolly.svg",
+            "image": "themes/chocolate/assets/images/trolly.svg",
+            "type": "file",
+            "placeholder": "Please enter here..."
+        },
+        "button_second":{
+            "lable" : "Video Title",
+            "slug" :  "slider_video_title",
+            "text" : "Play Video",
+            "type" : "text",
+            "placeholder" : "Please enter here..."
+        },
+        "video":{
+            "lable" : "Video",
+            "slug" :  "slider_video",
+            "text" : "https://www.youtube.com/embed/9xwazD5SyVg",
+            "image": "https://www.youtube.com/embed/9xwazD5SyVg",
+            "type" : "text",
+            "placeholder" : "Please select file"
+        }
+    }
+}

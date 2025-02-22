@@ -1,0 +1,76 @@
+{
+    "section_name": "Footer - Section",
+    "section_slug": "footer",
+    "unique_section_slug": "footer",
+    "section_enable": "on",
+    "array_type": "inner-list",
+    "loop_number": 1,
+    "section":{
+        "title":{
+            "lable" : "Footer Section Title",
+            "slug" :  "footer_title",
+            "text" : "Share : ",
+            "type" : "text",
+            "placeholder" : "Please enter here.."
+        },
+        "description":{
+            "lable" : "Footer Description",
+            "slug" :  "footer_description",
+            "text" : "Games is a lifestyle retailer dedicated to inspiring customers through unique combination",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "footer_link":{
+            "lable" : "Footer Links",
+            "slug" :  "footer_links",
+            "text" : "Footer Links",
+            "type" : "array",
+            "loop_number" : 4,
+            "social_link":["https://www.youtube.com/","https://www.facebook.com/","https://www.instagram.com/","https://www.twitter.com/"],
+            "social_icon":[
+                {
+                    "text":"themes/gaming/assets/images/youtube.png",
+                    "image":"themes/gaming/assets/images/youtube.png"
+                },{
+                    "text":"themes/gaming/assets/images/facebook.png",
+                    "image":"themes/gaming/assets/images/facebook.png"
+                },{
+                    "text":"themes/gaming/assets/images/insta.png",
+                    "image":"themes/gaming/assets/images/insta.png"
+                },{
+                    "text":"themes/gaming/assets/images/twitter.png",
+                    "image":"themes/gaming/assets/images/twitter.png"
+                }
+            ]
+        },
+        "newsletter_title": {
+            "lable" : "Footer Newsletter Title",
+            "slug" :  "footer_newsletter_title",
+            "text" : "Subscribe newsletter and get -20% off",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+        "newsletter_sub_title": {
+            "lable" : "Footer Newsletter Subtitle",
+            "slug" :  "footer_newsletter_sub_title",
+            "text" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        },
+            "footer_menu_type": {
+            "lable" : "Footer Menu Type",
+            "slug" :  "footer_menu_type",
+            "text" : "footer_menu_bar",
+            "type" : "array",
+            "loop_number" : 2,
+            "footer_menu_ids":[]
+        },
+        "copy_right":{
+            "lable" : "Footer Copyright",
+            "slug" :  "footer_copy_right",
+            "text" : "© 2023 Gaming. All rights reserved",
+            "type" : "textarea",
+            "placeholder" : "Please enter here.."
+        }
+    }
+}
