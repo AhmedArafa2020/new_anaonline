@@ -53,6 +53,40 @@ if (!function_exists('getMenu')) {
         } else {
             event(new \App\Events\CompanyMenuEvent($menu));
         }
+        // 🚀 Add Auto Poster Section (No Permissions)
+        $menu->menu[] = [
+            'category' => 'Marketing',
+            'title' => 'Auto Poster',
+            'icon' => 'share',
+            'name' => 'auto_poster',
+            'parent' => null,
+            'order' => 99, // Adjust order as needed
+          //  'route' => '#!',
+        ];
+
+        // Facebook Auto Poster
+        $menu->menu[] = [
+            'category' => 'Auto Poster',
+            'title' => 'Facebook Connection',
+            'icon' => 'facebook',
+            'name' => 'facebook_auto_poster',
+            'parent' => 'auto_poster',
+            'order' => 100,
+            'route' => 'product-facebook-auto-poster',
+        ];
+
+        // Instagram Auto Poster
+        $menu->menu[] = [
+            'category' => 'Auto Poster',
+            'title' => 'Instagram Connection',
+            'icon' => 'instagram',
+            'name' => 'instagram_auto_poster',
+            'parent' => 'auto_poster',
+            'order' => 101,
+            'route' => 'product-instagram-auto-poster',
+        ];
+
+
         return generateMenu($menu->menu, null);
     }
 }
@@ -1100,7 +1134,7 @@ if (!function_exists('getThemeMainOrDraftSectionJson')) {
         } else {
             $json_data = arrayToObject(array: objectToArray($json_data));
         }
-        
+
         if (isset($json_data->section_name)) {
             $json_data->section_name = __($json_data->section_name);
         }
@@ -2589,7 +2623,7 @@ if (!function_exists('getSideMenu')) {
             $sortedModules = $sideMenuItems->sortBy(function ($module) use ($orderMap) {
                 return isset($orderMap[$module->id]) ? $orderMap[$module->id] : $module->order;
             });
-            
+
             if ($sideMenuItems->isEmpty()) {
                 event(new \App\Events\CompanyMenuEvent($menu));
                 return generateMenu($menu->menu, null);

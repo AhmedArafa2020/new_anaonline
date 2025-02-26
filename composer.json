@@ -30,7 +30,7 @@
         "laravel/cashier-paddle": "^1.9",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
-        "laravel/socialite": "^5.16",
+        "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.9",
         "league/flysystem-aws-s3-v3": "^3.28",
         "league/oauth2-client": "^2.7",

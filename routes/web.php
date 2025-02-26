@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutoposterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -168,8 +169,16 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
     Route::get('user-info/{id}', [UserController::class, 'userInfo'])->name('user.info');
     Route::post('user-unable', [UserController::class, 'userUnable'])->name('user.unable');
     Route::get('user-enable-login/{id}', [UserController::class, 'userLoginManage'])->name('users.enable.login');
+//      Route::get('/autoposter', [AutoposterController::class, 'index']store-group-page)->name('autoposter.index');
+      Route::get('product-facebook-auto-poster', [AutoPosterController::class, 'facebookLogin'])->name('product-facebook-auto-poster');
+      Route::get('/login/facebook', [AutoPosterController::class,'redirectToFacebook'])->name('login.facebook');
+      Route::post('/store-group-page', [AutoPosterController::class,'storeGroupPage'])->name('store-group-page');
+      Route::get('product-instagram-auto-poster', [AutoPosterController::class, 'instagramLogin'])->name('product-instagram-auto-poster');
+      Route::get('/login/facebook/callback', [AutoPosterController::class,'handleFacebookCallback']);
+      Route::get('/post/create', [AutoPosterController::class, 'showPostForm'])->name('social.form');
+      Route::post('/post/store', [AutoPosterController::class, 'postToSocialMedia'])->name('social.post');
 
-    //*************************country-state-city**********************
+      //*************************country-state-city**********************
     Route::resource('countries', CountryController::class);
     Route::resource('state', StateController::class);
     Route::resource('city', CityController::class);
@@ -346,7 +355,7 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
     //PayU
     Route::post('/plan-pay-with-payu', [PayUPaymentController::class, 'planPayWithPayU'])->name('plan.pay.with.payu');
     Route::any('/plan-payu-payment/status/{plan_id}', [PayUPaymentController::class, 'planGetPayUStatus'])->name('plan.payu.status');
-    
+
     // Paynow
     Route::post('plan-pay-with/paynow', [PaynowController::class, 'planPayWithPaynow'])->name('plan.pay.with.Paynow');
     Route::get('plan-get-Paynow-status/{plan_id}', [PaynowController::class, 'planGetPaynowStatus'])->name('plan.get.Paynow.status');
@@ -678,7 +687,7 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
     Route::get('/customer-filter-data', [CustomerController::class, 'CustomFilterData'])->name('customer.filter.data');
     Route::get('/customer-status', [CustomerController::class, 'customerStatus'])->name('update.customer.status');
     Route::get('/customer-timeline/{id}', [CustomerController::class, 'customerTimeline'])->name('customer.timeline');
-    
+
     Route::get('customer-grid', [CustomerController::class, 'customer_grid_view'])->name('customer.grid');
 
     // Order Route

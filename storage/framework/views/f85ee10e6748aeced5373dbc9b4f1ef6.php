@@ -44,7 +44,7 @@
     function removeCollapseClass() {
         var navbar = document.querySelector('.dash-navbar');
         if (navbar && navbar.classList.contains('collapse-sidebar')) {
-            navbar.classList.remove('collapse-sidebar'); 
+            navbar.classList.remove('collapse-sidebar');
         }
     }
 
@@ -56,4 +56,5 @@
 
     window.addEventListener('load', checkScreenWidth);
     window.addEventListener('resize', checkScreenWidth);
-</script><?php /**PATH C:\laragon\www\anaonline\resources\views/partision/sidebar.blade.php ENDPATH**/ ?>
+</script>
+<?php /**PATH C:\laragon\www\anaonline\resources\views/partision/sidebar.blade.php ENDPATH**/ ?>

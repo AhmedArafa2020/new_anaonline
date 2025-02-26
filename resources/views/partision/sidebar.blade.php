@@ -42,7 +42,7 @@
     function removeCollapseClass() {
         var navbar = document.querySelector('.dash-navbar');
         if (navbar && navbar.classList.contains('collapse-sidebar')) {
-            navbar.classList.remove('collapse-sidebar'); 
+            navbar.classList.remove('collapse-sidebar');
         }
     }
 

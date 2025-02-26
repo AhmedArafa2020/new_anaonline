@@ -70,9 +70,9 @@ return [
         'redirect' => '',
     ],
     'facebook' => [
-        'client_id' => '',
-        'client_secret' => '',
-        'redirect' => '',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URI'),
     ],
     'nmi' => [
         'endpoint' => env('NMI_API_ENDPOINT'),
