@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use Illuminate\Support\Facades\Cookie;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 use Qirolab\Theme\Theme;
 use App\Mail\CommonEmailTemplate;
 use App\Models\EmailTemplateLang;
@@ -334,7 +336,7 @@ class Utility extends Model
         ];
     }
 
-    public static function upload_file($request, $key_name, $name, $path, $custom_validation = [], $image = '')
+    public static function upload_file_old($request, $key_name, $name, $path, $custom_validation = [], $image = '')
     {
         try {
             $store_id = getCurrentStore() ?? 1;
@@ -389,7 +391,7 @@ class Utility extends Model
                 }
 
                 if (empty($image)) {
-                    $validator = \Validator::make($request->all(), [
+                    $validator = Validator::make($request->all(), [
                         $key_name => $validation
                     ]);
                 }
@@ -408,23 +410,23 @@ class Utility extends Model
                     if ($settings['storage_setting'] == 'local') {
                         $path = 'uploads/' . $path . '/';
                         createAndSetPermissionsRecursively($path, 'theme');
-                        // if (!\Storage::disk('theme')->exists($path)) { 
+                        // if (!\Storage::disk('theme')->exists($path)) {
                         //     $oldUmask = umask(0);
                         //     // Temporarily disable permission mask
                         //     \Storage::disk('theme')->makeDirectory($path, 0777, true); // Recursively create directories with permissions
                         //     umask($oldUmask); // Restore the original umask
                         //     // Check if chmod exists
                         //     if (function_exists('chmod')) {
-                        //         $fullPath = \Storage::disk('theme')->path($path); 
+                        //         $fullPath = \Storage::disk('theme')->path($path);
                         //         @chmod($fullPath, 0777); // Set permissions if possible
                         //         @chmod('uploads/themes/'.APP_THEME(), 0777);
                         //     }
-                        // } elseif (\Storage::disk('theme')->exists($path)) { 
+                        // } elseif (\Storage::disk('theme')->exists($path)) {
                         //     // Check if chmod exists
                         //     if (function_exists('chmod')) {
                         //         $fullPath = \Storage::disk('theme')->path($path);
                         //         @chmod($fullPath, 0777); // Set permissions if possible
-                        //         @chmod('uploads/themes/'.APP_THEME(), 0777); 
+                        //         @chmod('uploads/themes/'.APP_THEME(), 0777);
                         //     }
                         // }
                         $image = !empty($image) ? $image : $request->file($key_name);
@@ -478,6 +480,85 @@ class Utility extends Model
                 'msg' => $e->getMessage(),
             ];
             return $res;
+        }
+    }
+    public static function upload_file($request, $key_name, $name, $path, $custom_validation = [], $image = '')
+    {
+        try {
+            $store_id = getCurrentStore() ?? 1;
+            $settings = Setting::where('created_by', 1)->pluck('value', 'name')->toArray();
+            if (!isset($settings['storage_setting'])) {
+                $settings = Utility::Seting();
+            }
+
+            if (!empty($settings['storage_setting'])) {
+                // Set max file size and mime types based on storage type
+                if ($settings['storage_setting'] == 'wasabi') {
+                    $max_size = !empty($settings['wasabi_max_upload_size']) ? $settings['wasabi_max_upload_size'] : '2048';
+                    $mimes = !empty($settings['wasabi_storage_validation']) ? $settings['wasabi_storage_validation'] : '';
+                } elseif ($settings['storage_setting'] == 's3') {
+                    $max_size = !empty($settings['s3_max_upload_size']) ? $settings['s3_max_upload_size'] : '2048';
+                    $mimes = !empty($settings['s3_storage_validation']) ? $settings['s3_storage_validation'] : '';
+                } else {
+                    $max_size = !empty($settings['local_storage_max_upload_size']) ? $settings['local_storage_max_upload_size'] : '2048';
+                    $mimes = !empty($settings['local_storage_validation']) ? $settings['local_storage_validation'] : '';
+                }
+
+                $file = !empty($image) ? $image : $request->file($key_name);
+
+                if (count($custom_validation) > 0) {
+                    $validation = $custom_validation;
+                } else {
+                    $validation = [
+                        'mimes:' . $mimes,
+                        'max:' . $max_size,
+                    ];
+                }
+
+                if (empty($image)) {
+                    $validator = Validator::make($request->all(), [
+                        $key_name => $validation
+                    ]);
+
+                    if ($validator->fails()) {
+                        return [
+                            'flag' => 0,
+                            'msg' => $validator->messages()->first(),
+                        ];
+                    }
+                }
+
+                $name = time() . '_' . $name; // Ensure unique filename
+                $destinationPath = public_path('uploads/' . $path); // Final storage path
+
+                // Create directory if it does not exist
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0777, true);
+                }
+
+                // Move the uploaded file to the destination path
+                $file->move($destinationPath, $name);
+
+                $image_url = url('uploads/' . $path . '/' . $name); // Public URL
+
+                return [
+                    'flag' => 1,
+                    'msg'  => 'success',
+                    'url'  => 'uploads/' . $path . '/' . $name,
+                    'image_path' => 'uploads/' . $path . '/' . $name,
+                    'full_url' => $image_url
+                ];
+            } else {
+                return [
+                    'flag' => 0,
+                    'msg' => __('Please set proper configuration for storage.'),
+                ];
+            }
+        } catch (\Exception $e) {
+            return [
+                'flag' => 0,
+                'msg' => $e->getMessage(),
+            ];
         }
     }
 
@@ -793,12 +874,12 @@ class Utility extends Model
     public static function GetCacheSize()
     {
         $file_size = 0;
-        foreach (\File::allFiles(storage_path('/framework')) as $file) {
+        foreach (File::allFiles(storage_path('/framework')) as $file) {
             try {
                 $file_size += $file->getSize();
             } catch (\Exception $e) {
                 // Log the error message and continue
-                \Log::error("Error getting size for file: " . $file->getPathname() . " - " . $e->getMessage());
+                Log::error("Error getting size for file: " . $file->getPathname() . " - " . $e->getMessage());
                 continue;
             }
         }
@@ -850,10 +931,10 @@ class Utility extends Model
 
     public static function  changeStorageLimit($createdId, $file_path)
     {
-        $files =  \File::glob(base_path($file_path));
+        $files =  File::glob(base_path($file_path));
         $fileSize = 0;
         foreach ($files as $file) {
-            $fileSize += \File::size($file);
+            $fileSize += File::size($file);
         }
 
         $image_size = number_format($fileSize / 1048576, 2);
@@ -866,8 +947,8 @@ class Utility extends Model
 
         $status = false;
         foreach ($files as $key => $file) {
-            if (\File::exists($file)) {
-                $status = \File::delete($file);
+            if (File::exists($file)) {
+                $status = File::delete($file);
             }
         }
 
@@ -1021,16 +1102,16 @@ class Utility extends Model
                         //    umask($oldUmask); // Restore the original umask
                         //    // Check if chmod exists
                         //    if (function_exists('chmod')) {
-                        //         $fullPath = \Storage::disk('theme')->path($path); 
+                        //         $fullPath = \Storage::disk('theme')->path($path);
                         //         @chmod($fullPath, 0777); // Set permissions if possible
                         //         @chmod('uploads/themes/'.APP_THEME(), 0777);
                         //    }
-                        // } elseif (\Storage::disk('theme')->exists($path)) { 
+                        // } elseif (\Storage::disk('theme')->exists($path)) {
                         //     // Check if chmod exists
                         //     if (function_exists('chmod')) {
                         //         $fullPath = \Storage::disk('theme')->path($path);
                         //         @chmod($fullPath, 0777); // Set permissions if possible
-                        //         @chmod('uploads/themes/'.APP_THEME(), 0777); 
+                        //         @chmod('uploads/themes/'.APP_THEME(), 0777);
                         //     }
                         // }
                         \Storage::disk('theme')->putFileAs(

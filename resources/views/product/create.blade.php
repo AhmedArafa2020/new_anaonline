@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Storage; @endphp
 @extends('layouts.app')
 
 @section('page-title')
@@ -55,16 +56,16 @@
                         'id' => 'maincategory_id',
                     ]) !!}
                   </div>
-                  <div class=" col-sm-6 col-12 subcategory_id_div" data_val='0'>
-                    {!! Form::label('', __('Subcategory'), ['class' => 'form-label']) !!}
-                    <span>
-                      {!! Form::select('subcategory_id', [], null, [
-                          'class' => 'form-control',
-                          'data-role' => 'tagsinput',
-                          'id' => 'subcategory-dropdown',
-                      ]) !!}
-                    </span>
-                  </div>
+                    <div class="col-sm-6 col-12 subcategory_id_div" data_val='0'>
+                        {!! Form::label('', __('Subcategory'), ['class' => 'form-label']) !!}
+                        <span>
+                            {!! Form::select('subcategory_id', [], null, [
+                                'class' => 'form-control',
+                                'id' => 'subcategory-dropdown',
+                                'name' => 'subcategory_id'
+                            ]) !!}
+                        </span>
+                    </div>
                   <div class="col-md-6 col-12 switch-width">
                     {{ Form::label('tax_id', __('Taxs'), ['class' => ' form-label']) }}
                     <select name="tax_id[]" data-role="tagsinput" id="tax_id" multiple>
@@ -135,26 +136,26 @@
               <div class="product-stock-div p-3 pb-0">
                   <h4>{{ __('Product Stock') }}</h4>
                   <div class="row form-group row-gap">
-                    @if ($stock_management == 'on')
-                      <div class=" col-md-6 col-12">
-                        <div class="product-stock-top d-flex ">
-                        <div class="form-check form-switch">
-                          <input type="hidden" name="track_stock" value="0">
-                          <input type="checkbox" class="form-check-input enable_product_stock" name="track_stock"
-                            id="enable_product_stock" value="1">
-                          <label class="form-check-label" for="enable_product_stock"></label>
-                        </div>
-                        {!! Form::label('', __('Stock Management'), ['class' => 'form-label']) !!}
-                      </div>
-                    </div>
-                    @else
-                      <div class="col-md-6 col-12 product_stock">
-                        {!! Form::label('', __('Stock Management'), ['class' => 'form-label']) !!}<br>
-                        <label name="trending" value=""><small>Disabled in <a
-                              href="{{ route('setting.index') . '#Brand_Setting ' }}"> store
-                              setting</a></small></label>
-                      </div>
-                    @endif
+                      @if ($stock_management == 'on')
+                          <div class="col-md-6 col-12">
+                              <div class="product-stock-top d-flex">
+                                  <div class="form-check form-switch">
+                                      <!-- Hidden field to ensure track_stock is always submitted -->
+                                      <input type="hidden" name="track_stock" value="0">
+                                      <input type="checkbox" class="form-check-input enable_product_stock" name="track_stock"
+                                             id="enable_product_stock" value="1" {{ old('track_stock', 0) == 1 ? 'checked' : '' }}>
+                                      <label class="form-check-label" for="enable_product_stock"></label>
+                                  </div>
+                                  {!! Form::label('', __('Stock Management'), ['class' => 'form-label']) !!}
+                              </div>
+                          </div>
+                      @else
+                          <div class="col-md-6 col-12 product_stock">
+                              {!! Form::label('', __('Stock Management'), ['class' => 'form-label']) !!}<br>
+                              <label for="trending"><small>Disabled in <a href="{{ route('setting.index') . '#Brand_Setting' }}">store setting</a></small></label>
+                          </div>
+                      @endif
+
                   </div>
                   <div class="row row-gap">
                       <div class="col-12 stock_stats">
@@ -192,10 +193,10 @@
                         {!! Form::label('', __('Stock'), ['class' => 'form-label']) !!}
                         {!! Form::number('product_stock', null, ['class' => 'form-control productStock']) !!}
                       </div>
-                      <div class="col-md-6 col-12">
-                        {!! Form::label('', __('Low stock threshold'), ['class' => 'form-label']) !!}
-                        {!! Form::number('low_stock_threshold', $low_stock_threshold, ['class' => 'form-control', 'min' => '0']) !!}
-                      </div>
+                        <div class="col-md-6 col-12">
+                            {!! Form::label('', __('Low stock threshold'), ['class' => 'form-label']) !!}
+                            {!! Form::number('low_stock_threshold', old('low_stock_threshold', $low_stock_threshold ?? 0), ['class' => 'form-control', 'min' => '0']) !!}
+                        </div>
                       <div class="col-12 mb-3">
                         {!! Form::label('', __('Allow BackOrders:'), ['class' => 'form-label']) !!}
                         <div class="form-check m-1">
@@ -275,10 +276,10 @@
                     </div>
 
                   </div>
-                  
+
                 </div>
               </div>
-          
+
             <div class="product-image-sec border rounded mb-4 mt-4">
             <h5 class="mb-3 p-3 border-bottom">{{ __('Product Image') }}</h5>
             <div class="card p-3 pt-0">
@@ -286,7 +287,7 @@
                 <div class="row row-gap">
                   <div class="col-12">
                       {{ Form::label('sub_images', __('Upload Product Images'), ['class' => 'form-label f-w-800']) }}<span class="text-danger">*</span>
-                        <div class="dropzone dropzone-multiple" data-toggle="dropzone1" data-dropzone-url="http://"
+                        <div  id="product_image" name="product_image[]" class="dropzone dropzone-multiple" data-toggle="dropzone1" data-dropzone-url="http://"
                             data-dropzone-multiple>
                             <!-- Dropzone message with icon -->
                             <div class="dz-message d-flex flex-column mb-2">
@@ -369,9 +370,9 @@
                 </div>
               </div>
 
-          
+
             </div>
-          </div> 
+          </div>
           <div class="card border">
                 <div class="card-body p-3 pb-0 ">
                   <div class="row row-gap">
@@ -391,10 +392,10 @@
                     </div>
                   </div>
                 </div>
-              </div> 
-             
+              </div>
+
         </div>
-        
+
         <div class="col-lg-5 col-12">
           <div class="product-info-right border mb-4 rounded">
             <h5 class="mb-0 p-3 border-bottom">{{ __('About product') }}</h5>
@@ -463,14 +464,14 @@
           @stack('addwholesalefields')
           @stack('ProductPageSetting')
         </div>
-        
+
         <!-- <div class="col-12"> -->
           <!-- <div class="row"> -->
             <!-- <div class="col-md-6 col-12"> -->
-              
+
             <!-- </div> -->
-           
-           
+
+
           <!-- </div> -->
         <!-- </div> -->
       </div>
@@ -482,10 +483,50 @@
 @endsection
 
 @push('custom-script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
   <script src="{{ asset('js/repeater.js') }}"></script>
 
+<script>
+    $(document).ready(function() {
+        $('#maincategory_id').on('change', function() {
+            console.log("Category changed!"); // Debugging
 
+            var id = $(this).val();
+            var val = $('.subcategory_id_div').attr('data_val');
+
+            console.log("Selected Category ID: ", id); // Debugging
+
+            $.ajax({
+                url: "{{ route('get.product.subcategory') }}",
+                type: "POST",
+                data: {
+                    id: id,
+                    val: val,
+                    _token: "{{ csrf_token() }}" // CSRF token
+                },
+                beforeSend: function() {
+                    console.log("AJAX request sent..."); // Debugging
+                    $('#subcategory-dropdown').html('<option>Loading...</option>');
+                },
+                success: function(response) {
+                    console.log("AJAX Success Response: ", response); // Debugging
+
+                    // ✅ Only update options, do not replace <select>
+                    $('#subcategory-dropdown').empty().append(response.html).trigger('change');
+                },
+                error: function(xhr) {
+                    console.log("AJAX Error: ", xhr.responseText); // Debugging
+                }
+            });
+        });
+    });
+
+
+
+
+</script>
   <script>
     $(document).ready(function() {
       // tag
@@ -503,32 +544,7 @@
           };
         }
       });
-      // main-cat
-      $('#maincategory_id').on('change', function() {
-        var id = $(this).val();
-        var val = $('.subcategory_id_div').attr('data_val');
-        var data = {
-          id: id,
-          val: val
-        }
-        $.ajax({
-          url: "{{ route('get.product.subcategory') }}",
-          type: 'POST',
-          data: data,
-          success: function(response) {
-            $('#loader').fadeOut();
-            $.each(response, function(key, value) {
-              $("#subcategory-dropdown").append('<option value="' + value
-                .id + '">' + value.name + '</option>');
-            });
-            var val = $('.subcategory_id_div').attr('data_val', 0);
-            $('.subcategory_id_div span').html(response.html);
-            comman_function();
-          },
 
-
-        })
-      });
 
       var link = $('.slug').val();
       var focusOutCalled = false;
@@ -621,7 +637,7 @@
         $('.custom_field').show();
       }
     });
-    
+
     $('#custom_field_repeater_basic').repeater({
                 initEmpty: false,
                 defaultValues: {
@@ -815,183 +831,346 @@
   </script>
 
   {{-- Dropzones  --}}
-  <script>
-    var Dropzones = function() {
-      var e = $('[data-toggle="dropzone1"]'),
-        t = $(".dz-preview");
+{{--  <script>--}}
+{{--      var Dropzones = function() {--}}
+{{--          var e = $('[data-toggle="dropzone1"]');--}}
 
-      var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-      e.length && (Dropzone.autoDiscover = !1, e.each(function() {
-        var e, a, n, o, i;
-        e = $(this), a = void 0 !== e.data("dropzone-multiple"), n = e.find(t), o = void 0, i = {
-          url: "{{ route('product.store') }}",
-          headers: {
-            'x-csrf-token': CSRF_TOKEN,
-          },
-          thumbnailWidth: null,
-          thumbnailHeight: null,
-          previewsContainer: n.get(0),
-          previewTemplate: n.html(),
-          maxFiles: 10,
-          parallelUploads: 10,
-          autoProcessQueue: false,
-          uploadMultiple: true,
-          acceptedFiles: a ? null : "image/*",
-          success: function(file, response) {
-            if (response.flag == "success") {
-              show_toastr('success', response.msg, 'success');
-              window.location.href = "{{ route('product.create') }}";
-            } else {
-              show_toastr('Error', response.msg, 'error');
+{{--          if (e.length === 0) {--}}
+{{--              console.error("Dropzone element not found in the DOM!");--}}
+{{--              return;--}}
+{{--          }--}}
+
+{{--          console.log("Initializing Dropzone...");--}}
+
+{{--          Dropzone.autoDiscover = false;--}}
+{{--          e.each(function() {--}}
+{{--              var dzElement = $(this);--}}
+
+{{--              // Destroy existing Dropzone instance if already initialized--}}
+{{--              if (dzElement.get(0).dropzone) {--}}
+{{--                  dzElement.get(0).dropzone.destroy();--}}
+{{--              }--}}
+
+{{--              dzElement.dropzone({--}}
+{{--                  url: "{{ route('product.store') }}",--}}
+{{--                  headers: {--}}
+{{--                      'x-csrf-token': $('meta[name="csrf-token"]').attr('content'),--}}
+{{--                  },--}}
+{{--                  maxFiles: 10,--}}
+{{--                  parallelUploads: 10,--}}
+{{--                  autoProcessQueue: false,--}}
+{{--                  uploadMultiple: true,--}}
+{{--                  acceptedFiles: "image/*",--}}
+{{--                  success: function(file, response) {--}}
+{{--                      if (response.flag == "success") {--}}
+{{--                          show_toastr('success', response.msg, 'success');--}}
+{{--                          window.location.href = "{{ route('product.create') }}";--}}
+{{--                      } else {--}}
+{{--                          show_toastr('Error', response.msg, 'error');--}}
+{{--                      }--}}
+{{--                  },--}}
+{{--                  error: function(file, response) {--}}
+{{--                      show_toastr('Error', response.error || response, 'error');--}}
+{{--                  }--}}
+{{--              });--}}
+{{--          });--}}
+
+{{--          console.log("Dropzone successfully initialized.");--}}
+{{--      };--}}
+
+{{--      // Ensure Dropzone initializes after page load--}}
+{{--      $(document).ready(function() {--}}
+{{--          Dropzones();--}}
+{{--      });--}}
+
+
+{{--    $('#submit-all').on('click', function() {--}}
+{{--        console.log("Submitting form data...");--}}
+
+{{--        $('#submit-all').attr('disabled', true);--}}
+{{--      var fd = new FormData();--}}
+
+{{--      var file = document.getElementById('cover_image').files[0];--}}
+{{--      var preview_video = document.getElementById('preview_video').files[0];--}}
+
+{{--      var downloadable_product = document.getElementById('downloadable_product').files[0];--}}
+{{--      var inputs = $(".downloadable_product_variant");--}}
+{{--      var downloadable_product_variant = [];--}}
+{{--      for (var i = 0; i < inputs.length; i++) {--}}
+{{--        var files = $(inputs[i]).prop('files');--}}
+{{--        var dataValue = $(inputs[i]).data('value');--}}
+{{--        downloadable_product_variant.push({--}}
+{{--          key: dataValue,--}}
+{{--          file: files--}}
+{{--        });--}}
+{{--        if (files && files.length > 0) {--}}
+{{--          for (var j = 0; j < files.length; j++) {--}}
+{{--            fd.append(dataValue, files[j]);--}}
+{{--          }--}}
+{{--        }--}}
+{{--      }--}}
+{{--      // // Append Summernote content to FormData--}}
+{{--      // fd.append('description', $('#description').summernote('code'));--}}
+{{--      // fd.append('specification', $('#specification').summernote('code'));--}}
+{{--      // fd.append('detail', $('#detail').summernote('code'));--}}
+{{--      // if (file) {--}}
+{{--      //   fd.append('cover_image', file);--}}
+{{--      // }--}}
+{{--      // if (preview_video) {--}}
+{{--      //   fd.append('preview_video', preview_video);--}}
+{{--      // }--}}
+{{--      // if (downloadable_product) {--}}
+{{--      //   fd.append('downloadable_product', downloadable_product);--}}
+{{--      // }--}}
+
+
+
+{{--      // var files = $('[data-toggle="dropzone1"]').get(0).dropzone.getAcceptedFiles();--}}
+{{--      // $.each(files, function(key, file) {--}}
+{{--      //   fd.append('product_image[' + key + ']', $('[data-toggle="dropzone1"]')[0].dropzone--}}
+{{--      //     .getAcceptedFiles()[key]); // attach dropzone image element--}}
+{{--      // });--}}
+
+{{--      var other_data = $('#choice_form').serializeArray();--}}
+
+{{--      $.each(other_data, function(key, input) {--}}
+{{--        fd.append(input.name, input.value);--}}
+{{--      });--}}
+
+{{--      var checkCartQuantityModule = "{{ module_is_active('CartQuantityControl') ? 'yes' : 'no' }}";--}}
+
+{{--      if (checkCartQuantityModule === 'yes') {--}}
+
+{{--        var cartQuantityValidationCheck = $(".cartQuantityValidationCheck").val();--}}
+{{--        if (cartQuantityValidationCheck === 'false') {--}}
+{{--          show_toastr('Error', 'Please correct the error message before submitting the form.');--}}
+{{--          return false;--}}
+{{--        } else {--}}
+{{--          $.ajax({--}}
+{{--            url: "{{ route('product.store') }}",--}}
+{{--            headers: {--}}
+{{--              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--            },--}}
+{{--            data: fd,--}}
+{{--            contentType: false,--}}
+{{--            processData: false,--}}
+{{--            type: 'POST',--}}
+{{--            success: function(data) {--}}
+{{--              $('#loader').fadeOut();--}}
+{{--              if (data.flag == "success") {--}}
+{{--                $('#submit-all').attr('disabled', true);--}}
+
+{{--                window.location.href = "{{ route('product.index') }}" + '?id=1';--}}
+
+{{--              } else {--}}
+{{--                show_toastr('Error', data.msg, 'error');--}}
+{{--                $('#submit-all').attr('disabled', false);--}}
+{{--              }--}}
+{{--            },--}}
+{{--            error: function(data) {--}}
+{{--              $('#loader').fadeOut();--}}
+{{--              $('#submit-all').attr('disabled', false);--}}
+{{--              // Dropzones.removeFile(file);--}}
+{{--              if (data.error) {--}}
+{{--                show_toastr('Error', data.error, 'error');--}}
+{{--              } else {--}}
+{{--                show_toastr('Error', data, 'error');--}}
+{{--              }--}}
+{{--            },--}}
+{{--          });--}}
+{{--        }--}}
+{{--      } else {--}}
+{{--        $.ajax({--}}
+{{--          url: "{{ route('product.store') }}",--}}
+{{--          headers: {--}}
+{{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--          },--}}
+{{--          data: fd,--}}
+{{--          contentType: false,--}}
+{{--          processData: false,--}}
+{{--          type: 'POST',--}}
+{{--          success: function(data) {--}}
+{{--            $('#loader').fadeOut();--}}
+{{--            if (data.flag == "success") {--}}
+{{--              $('#submit-all').attr('disabled', true);--}}
+
+{{--              window.location.href = "{{ route('product.index') }}" + '?id=1';--}}
+
+{{--            } else {--}}
+{{--              show_toastr('Error', data.msg, 'error');--}}
+{{--              $('#submit-all').attr('disabled', false);--}}
+{{--            }--}}
+{{--          },--}}
+{{--          error: function(data) {--}}
+{{--            $('#loader').fadeOut();--}}
+{{--            $('#submit-all').attr('disabled', false);--}}
+{{--            // Dropzones.removeFile(file);--}}
+{{--            if (data.error) {--}}
+{{--              show_toastr('Error', data.error, 'error');--}}
+{{--            } else {--}}
+{{--              show_toastr('Error', data, 'error');--}}
+{{--            }--}}
+{{--          },--}}
+{{--        });--}}
+{{--      }--}}
+
+{{--    });--}}
+{{--  </script>--}}
+{{--    The Last working script--}}
+    <script>
+        var Dropzones = function() {
+            var e = $('[data-toggle="dropzone1"]');
+
+            if (e.length === 0) {
+                console.error("Dropzone element not found in the DOM!");
+                return;
             }
-          },
-          error: function(file, response) {
-            // Dropzones.removeFile(file);
-            if (response.error) {
-              show_toastr('Error', response.error, 'error');
-            } else {
-              show_toastr('Error', response, 'error');
-            }
-          },
-          init: function() {
-            var myDropzone = this;
 
-            this.on("addedfile", function(e) {
-              !a && o && this.removeFile(o), o = e
-            })
-          }
-        }, n.html(""), e.dropzone(i)
-      }))
-    }()
+            console.log("Initializing Dropzone...");
 
-    $('#submit-all').on('click', function() {
-      $('#submit-all').attr('disabled', true);
-      var fd = new FormData();
+            Dropzone.autoDiscover = false;
+            e.each(function() {
+                var dzElement = $(this);
 
-      var file = document.getElementById('cover_image').files[0];
-      var preview_video = document.getElementById('preview_video').files[0];
+                // Destroy existing Dropzone instance if already initialized
+                if (dzElement.get(0).dropzone) {
+                    dzElement.get(0).dropzone.destroy();
+                }
 
-      var downloadable_product = document.getElementById('downloadable_product').files[0];
-      var inputs = $(".downloadable_product_variant");
-      var downloadable_product_variant = [];
-      for (var i = 0; i < inputs.length; i++) {
-        var files = $(inputs[i]).prop('files');
-        var dataValue = $(inputs[i]).data('value');
-        downloadable_product_variant.push({
-          key: dataValue,
-          file: files
+                dzElement.dropzone({
+                    url: "{{ route('product.store') }}",
+                    headers: {
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content'),
+                    },
+                    maxFiles: 10,
+                    parallelUploads: 10,
+                    autoProcessQueue: false,
+                    uploadMultiple: true,
+                    acceptedFiles: "image/*",
+                    success: function(file, response) {
+                        if (response.flag === "success") {
+                            show_toastr('success', response.msg, 'success');
+                            window.location.href = "{{ route('product.create') }}";
+                        } else {
+                            show_toastr('Error', response.msg, 'error');
+                        }
+                    },
+                    error: function(file, response) {
+                        show_toastr('Error', response.error || response, 'error');
+                    }
+                });
+            });
+
+            console.log("Dropzone successfully initialized.");
+        };
+
+        // Ensure Dropzone initializes after page load
+        $(document).ready(function() {
+            Dropzones();
         });
-        if (files && files.length > 0) {
-          for (var j = 0; j < files.length; j++) {
-            fd.append(dataValue, files[j]);
-          }
-        }
-      }
-      // Append Summernote content to FormData
-      fd.append('description', $('#description').summernote('code'));
-      fd.append('specification', $('#specification').summernote('code'));
-      fd.append('detail', $('#detail').summernote('code'));
-      if (file) {
-        fd.append('cover_image', file);
-      }
-      if (preview_video) {
-        fd.append('preview_video', preview_video);
-      }
-      if (downloadable_product) {
-        fd.append('downloadable_product', downloadable_product);
-      }
 
+        $('#submit-all').on('click', function() {
+            console.log("Submitting form data...");
 
+            $('#submit-all').attr('disabled', true);
+            var fd = new FormData();
 
-      var files = $('[data-toggle="dropzone1"]').get(0).dropzone.getAcceptedFiles();
-      $.each(files, function(key, file) {
-        fd.append('product_image[' + key + ']', $('[data-toggle="dropzone1"]')[0].dropzone
-          .getAcceptedFiles()[key]); // attach dropzone image element
-      });
+            // Files from file inputs
+            var file = document.getElementById('cover_image').files[0];
+            var preview_video = document.getElementById('preview_video').files[0];
+            var downloadable_product = document.getElementById('downloadable_product').files[0];
 
-      var other_data = $('#choice_form').serializeArray();
-
-      $.each(other_data, function(key, input) {
-        fd.append(input.name, input.value);
-      });
-
-      var checkCartQuantityModule = "{{ module_is_active('CartQuantityControl') ? 'yes' : 'no' }}";
-
-      if (checkCartQuantityModule == 'yes') {
-
-        var cartQuantityValidationCheck = $(".cartQuantityValidationCheck").val();
-        if (cartQuantityValidationCheck == 'false') {
-          show_toastr('Error', 'Please correct the error message before submitting the form.');
-          return false;
-        } else {
-          $.ajax({
-            url: "{{ route('product.store') }}",
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            data: fd,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function(data) {
-              $('#loader').fadeOut();
-              if (data.flag == "success") {
-                $('#submit-all').attr('disabled', true);
-
-                window.location.href = "{{ route('product.index') }}" + '?id=1';
-
-              } else {
-                show_toastr('Error', data.msg, 'error');
-                $('#submit-all').attr('disabled', false);
-              }
-            },
-            error: function(data) {
-              $('#loader').fadeOut();
-              $('#submit-all').attr('disabled', false);
-              // Dropzones.removeFile(file);
-              if (data.error) {
-                show_toastr('Error', data.error, 'error');
-              } else {
-                show_toastr('Error', data, 'error');
-              }
-            },
-          });
-        }
-      } else {
-        $.ajax({
-          url: "{{ route('product.store') }}",
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          data: fd,
-          contentType: false,
-          processData: false,
-          type: 'POST',
-          success: function(data) {
-            $('#loader').fadeOut();
-            if (data.flag == "success") {
-              $('#submit-all').attr('disabled', true);
-              
-              window.location.href = "{{ route('product.index') }}" + '?id=1';
-
-            } else {
-              show_toastr('Error', data.msg, 'error');
-              $('#submit-all').attr('disabled', false);
+            if (file) {
+                fd.append('cover_image', file);
             }
-          },
-          error: function(data) {
-            $('#loader').fadeOut();
-            $('#submit-all').attr('disabled', false);
-            // Dropzones.removeFile(file);
-            if (data.error) {
-              show_toastr('Error', data.error, 'error');
-            } else {
-              show_toastr('Error', data, 'error');
-            }
-          },
-        });
-      }
 
-    });
-  </script>
+            if (preview_video) {
+                fd.append('preview_video', preview_video);
+            }
+            if (downloadable_product) {
+                fd.append('downloadable_product', downloadable_product);
+            }
+
+            // Handle downloadable product variants
+            var inputs = $(".downloadable_product_variant");
+            var downloadable_product_variant = [];
+            for (var i = 0; i < inputs.length; i++) {
+                var files = $(inputs[i]).prop('files');
+                var dataValue = $(inputs[i]).data('value');
+                downloadable_product_variant.push({
+                    key: dataValue,
+                    file: files
+                });
+                if (files && files.length > 0) {
+                    for (var j = 0; j < files.length; j++) {
+                        fd.append(dataValue, files[j]);
+                    }
+                }
+            }
+
+            // Append Summernote content to FormData (Uncomment if needed)
+            // fd.append('description', $('#description').summernote('code'));
+            // fd.append('specification', $('#specification').summernote('code'));
+            // fd.append('detail', $('#detail').summernote('code'));
+
+            // Append other form data
+            var other_data = $('#choice_form').serializeArray();
+            $.each(other_data, function(key, input) {
+                fd.append(input.name, input.value);
+            });
+
+            // Check if CartQuantityControl module is active
+            var checkCartQuantityModule = "{{ module_is_active('CartQuantityControl') ? 'yes' : 'no' }}";
+
+            // Handle cart quantity validation if the module is active
+            if (checkCartQuantityModule === 'yes') {
+                var cartQuantityValidationCheck = $(".cartQuantityValidationCheck").val();
+                if (cartQuantityValidationCheck === 'false') {
+                    show_toastr('Error', 'Please correct the error message before submitting the form.');
+                    $('#submit-all').attr('disabled', false);
+                    return false;
+                }
+            }
+
+            // Submit the form via AJAX
+            $.ajax({
+                url: "{{ route('product.store') }}",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: fd,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                beforeSend: function() {
+                    $('#loader').fadeIn();
+                },
+                success: function(data) {
+                    $('#loader').fadeOut();
+                    if (data.flag == "success") {
+                        window.location.href = "{{ route('product.index') }}" + '?id=1';
+                    } else {
+                        show_toastr('Error', data.msg, 'error');
+                        $('#submit-all').attr('disabled', false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#loader').fadeOut();
+                    $('#submit-all').attr('disabled', false);
+
+                    // Check if the server response contains a message
+                    var errorMessage = 'Unknown error occurred';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message; // Laravel typically sends a "message" field
+                    } else if (xhr.responseText) {
+                        errorMessage = xhr.responseText; // Fall back to raw responseText if no JSON message is found
+                    }
+
+                    show_toastr('Error', errorMessage, 'error');
+                    console.error('AJAX Error:', errorMessage);  // Log detailed error in console for debugging
+                }
+            });
+        })
+    </script>
+
 @endpush

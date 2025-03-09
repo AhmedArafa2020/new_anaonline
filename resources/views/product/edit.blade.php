@@ -148,7 +148,7 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                             <div class="col-md-6 col-12 product_stock">
                                 {!! Form::label('', __('Stock Management'), ['class' => 'form-label']) !!}<br>
                                 <label name="trending" value="">
-                                    <small>{{ __('Disabled in') }} 
+                                    <small>{{ __('Disabled in') }}
                                         <a href="{{ route('setting.index') . '#Brand_Setting ' }}"> {{ __('store') }} {{ __('setting') }}</a>
                                     </small>
                                 </label>
@@ -273,7 +273,7 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                         </div>
                     </div>
                 </div>
-          
+
                 <!--Image code-->
                 <div class="product-image-sec border rounded mb-4 mt-4">
                     <h5 class="mb-3 p-3 border-bottom">{{ __('Product Image') }}</h5>
@@ -427,7 +427,7 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card border">
                         <div class="card-body p-3 pb-0 ">
                             <div class="row row-gap">
@@ -553,9 +553,9 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                                 </div>
                             </div>
                         </div>
-                    </div>    
+                    </div>
         </div>
-        
+
         <div class="col-lg-5 col-12">
             <div class="product-info-right border mb-4 rounded">
                 <h5 class="mb-0 p-3 border-bottom">{{ __('About product') }}</h5>
@@ -648,7 +648,7 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                     </div>
                 </div>
             </div>
-            
+
             @stack('editsizeguidefields')
             @stack('editwholesalefields')
             @stack('EditProductPageSetting')
@@ -663,6 +663,11 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/repeater.js') }}"></script>
     <script src="{{ asset('assets/css/summernote/summernote-bs4.js') }}"></script>
+    <!-- Dropzone CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css">
+
+    <!-- Dropzone JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
     <script>
         $(document).ready(function() {
             attribute_option_data();
@@ -980,30 +985,240 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
     </script>
 
     {{-- Dropzones  --}}
-    <script>
-        var Dropzones = function() {
-            var e = $('[data-toggle="dropzone1"]'),
-                t = $(".dz-preview");
+{{--    <script>--}}
+{{--        var Dropzones = function() {--}}
+{{--            var e = $('[data-toggle="dropzone1"]'),--}}
+{{--                t = $(".dz-preview");--}}
 
-            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            e.length && (Dropzone.autoDiscover = !1, e.each(function() {
-                var e, a, n, o, i;
-                e = $(this), a = void 0 !== e.data("dropzone-multiple"), n = e.find(t), o = void 0, i = {
+{{--            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');--}}
+{{--            e.length && (Dropzone.autoDiscover = !1, e.each(function() {--}}
+{{--                var e, a, n, o, i;--}}
+{{--                e = $(this), a = void 0 !== e.data("dropzone-multiple"), n = e.find(t), o = void 0, i = {--}}
+{{--                    url: "{{ route('product.store') }}",--}}
+{{--                    headers: {--}}
+{{--                        'x-csrf-token': CSRF_TOKEN,--}}
+{{--                    },--}}
+{{--                    thumbnailWidth: null,--}}
+{{--                    thumbnailHeight: null,--}}
+{{--                    previewsContainer: n.get(0),--}}
+{{--                    previewTemplate: n.html(),--}}
+{{--                    maxFiles: 10,--}}
+{{--                    parallelUploads: 10,--}}
+{{--                    autoProcessQueue: false,--}}
+{{--                    uploadMultiple: true,--}}
+{{--                    acceptedFiles: a ? null : "image/*",--}}
+{{--                    success: function(file, response) {--}}
+{{--                        if (response.flag == "success") {--}}
+{{--                            show_toastr('success', response.msg, 'success');--}}
+{{--                            window.location.href = "{{ route('product.create') }}";--}}
+{{--                        } else {--}}
+{{--                            show_toastr('Error', response.msg, 'error');--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    error: function(file, response) {--}}
+{{--                        // Dropzones.removeFile(file);--}}
+{{--                        if (response.error) {--}}
+{{--                            show_toastr('Error', response.error, 'error');--}}
+{{--                        } else {--}}
+{{--                            show_toastr('Error', response, 'error');--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    init: function() {--}}
+{{--                        var myDropzone = this;--}}
+
+{{--                        this.on("addedfile", function(e) {--}}
+{{--                            !a && o && this.removeFile(o), o = e--}}
+{{--                        })--}}
+{{--                    }--}}
+{{--                }, n.html(""), e.dropzone(i)--}}
+{{--            }))--}}
+{{--        };--}}
+
+{{--        $('#submit-all').on('click', function() {--}}
+
+{{--            $('#submit-all').attr('disabled', true);--}}
+{{--            var fd = new FormData();--}}
+
+{{--            var file = document.getElementById('cover_image').files[0];--}}
+{{--            var preview_video = document.getElementById('preview_video').files[0];--}}
+
+{{--            var downloadable_product = document.getElementById('downloadable_product').files[0];--}}
+{{--            var inputs = $(".downloadable_product_variant");--}}
+{{--            var downloadable_product_variant = [];--}}
+{{--            for (var i = 0; i < inputs.length; i++) {--}}
+{{--                var files = $(inputs[i]).prop('files');--}}
+{{--                var dataValue = $(inputs[i]).data('value');--}}
+{{--                downloadable_product_variant.push({--}}
+{{--                    key: dataValue,--}}
+{{--                    file: files--}}
+{{--                });--}}
+{{--                if (files && files.length > 0) {--}}
+{{--                    for (var j = 0; j < files.length; j++) {--}}
+{{--                        fd.append(dataValue, files[j]);--}}
+{{--                    }--}}
+{{--                }--}}
+{{--            }--}}
+{{--            // Append Summernote content to FormData--}}
+
+{{--            if (file) {--}}
+{{--                fd.append('cover_image', file);--}}
+{{--            }--}}
+{{--            if (preview_video) {--}}
+{{--                fd.append('preview_video', preview_video);--}}
+{{--            }--}}
+{{--            if (downloadable_product) {--}}
+{{--                fd.append('downloadable_product', downloadable_product);--}}
+{{--            }--}}
+
+
+
+{{--            var files = $('[data-toggle="dropzone1"]').get(0).dropzone.getAcceptedFiles();--}}
+{{--            $.each(files, function(key, file) {--}}
+{{--                fd.append('product_image[' + key + ']', $('[data-toggle="dropzone1"]')[0].dropzone--}}
+{{--                    .getAcceptedFiles()[key]); // attach dropzone image element--}}
+{{--            });--}}
+
+{{--            var other_data = $('#choice_form').serializeArray();--}}
+
+{{--            $.each(other_data, function(key, input) {--}}
+{{--                fd.append(input.name, input.value);--}}
+{{--            });--}}
+
+{{--            var checkCartQuantityModule = "{{ module_is_active('CartQuantityControl') ? 'yes' : 'no' }}";--}}
+
+{{--            if (checkCartQuantityModule == 'yes') {--}}
+
+{{--                var cartQuantityValidationCheck = $(".cartQuantityValidationCheck").val();--}}
+
+{{--                if (cartQuantityValidationCheck == 'false') {--}}
+{{--                    show_toastr('Error', 'Please correct the error message before submitting the form.');--}}
+{{--                    return false;--}}
+{{--                } else {--}}
+{{--                    $.ajax({--}}
+{{--                        url: "{{ route('product.update', $product->id) }}",--}}
+{{--                        headers: {--}}
+{{--                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                        },--}}
+{{--                        data: fd,--}}
+{{--                        contentType: false,--}}
+{{--                        processData: false,--}}
+{{--                        type: 'POST',--}}
+{{--                        success: function(data) {--}}
+{{--                            $('#loader').fadeOut();--}}
+{{--                            if (data.flag == "success") {--}}
+{{--                                $('#submit-all').attr('disabled', true);--}}
+{{--                                localStorage.setItem('success_msg', data.msg);--}}
+{{--                                window.location.href = "{{ route('product.index') }}" + '?id=2';--}}
+{{--                            } else {--}}
+{{--                                show_toastr('Error', data.msg, 'error');--}}
+{{--                                $('#submit-all').attr('disabled', false);--}}
+{{--                            }--}}
+{{--                        },--}}
+{{--                        error: function(data) {--}}
+{{--                            $('#loader').fadeOut();--}}
+
+{{--                            $('#submit-all').attr('disabled', false);--}}
+{{--                            // Dropzones.removeFile(file);--}}
+{{--                            if (data.error) {--}}
+{{--                                show_toastr('Error', data.error, 'error');--}}
+{{--                            } else {--}}
+{{--                                show_toastr('Error', data, 'error');--}}
+{{--                            }--}}
+{{--                        },--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            } else {--}}
+{{--                $.ajax({--}}
+{{--                    url: "{{ route('product.update', $product->id) }}",--}}
+{{--                    headers: {--}}
+{{--                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                    },--}}
+{{--                    data: fd,--}}
+{{--                    contentType: false,--}}
+{{--                    processData: false,--}}
+{{--                    type: 'POST',--}}
+{{--                    success: function(data) {--}}
+{{--                        $('#loader').fadeOut();--}}
+{{--                        if (data.flag == "success") {--}}
+{{--                            $('#submit-all').attr('disabled', true);--}}
+{{--                            window.location.href = "{{ route('product.index') }}" + '?id=2';--}}
+
+
+{{--                        } else {--}}
+{{--                            show_toastr('Error', data.msg, 'error');--}}
+{{--                            $('#submit-all').attr('disabled', false);--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                    error: function(data) {--}}
+{{--                        $('#loader').fadeOut();--}}
+
+{{--                        $('#submit-all').attr('disabled', false);--}}
+{{--                        // Dropzones.removeFile(file);--}}
+{{--                        if (data.error) {--}}
+{{--                            show_toastr('Error', data.error, 'error');--}}
+{{--                        } else {--}}
+{{--                            show_toastr('Error', data, 'error');--}}
+{{--                        }--}}
+{{--                    },--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--        // Product Attribute--}}
+{{--        $(document).ready(function() {--}}
+{{--            $(document).on("change", ".product_attribute", function() {--}}
+
+{{--                if ($('.enable_product_variant').prop('checked') == true) {--}}
+{{--                    $(".use_for_variation").removeClass("d-none");--}}
+{{--                } else {--}}
+{{--                    $(".use_for_variation").addClass("d-none");--}}
+{{--                }--}}
+{{--            });--}}
+
+{{--            if ($('#enable_product_variant').prop('checked') == true) {--}}
+{{--                $('.product-price-div').hide();--}}
+{{--                $('.product-stock-div').hide();--}}
+{{--                $('.product-weight').hide();--}}
+{{--            }--}}
+{{--        });--}}
+{{--    </script>--}}
+
+
+
+    <script>
+        // Initialize Dropzones
+        var Dropzones = function() {
+            var e = $('[data-toggle="dropzone1"]');
+
+            if (e.length === 0) {
+                console.error("Dropzone element not found in the DOM!");
+                return;
+            }
+
+            console.log("Initializing Dropzone...");
+
+            Dropzone.autoDiscover = false;
+            e.each(function() {
+                var dzElement = $(this);
+
+                // Destroy existing Dropzone instance if already initialized
+                if (dzElement.get(0).dropzone) {
+                    console.log("Destroying existing Dropzone instance...");
+                    dzElement.get(0).dropzone.destroy();
+                }
+
+                // Initialize Dropzone
+                dzElement.dropzone({
                     url: "{{ route('product.store') }}",
                     headers: {
-                        'x-csrf-token': CSRF_TOKEN,
+                        'x-csrf-token': $('meta[name="csrf-token"]').attr('content'),
                     },
-                    thumbnailWidth: null,
-                    thumbnailHeight: null,
-                    previewsContainer: n.get(0),
-                    previewTemplate: n.html(),
                     maxFiles: 10,
                     parallelUploads: 10,
                     autoProcessQueue: false,
                     uploadMultiple: true,
-                    acceptedFiles: a ? null : "image/*",
+                    acceptedFiles: "image/*",
                     success: function(file, response) {
-                        if (response.flag == "success") {
+                        if (response.flag === "success") {
                             show_toastr('success', response.msg, 'success');
                             window.location.href = "{{ route('product.create') }}";
                         } else {
@@ -1011,169 +1226,134 @@ $low_stock_threshold = \App\Models\Utility::GetValueByName('low_stock_threshold'
                         }
                     },
                     error: function(file, response) {
-                        // Dropzones.removeFile(file);
-                        if (response.error) {
-                            show_toastr('Error', response.error, 'error');
-                        } else {
-                            show_toastr('Error', response, 'error');
-                        }
-                    },
-                    init: function() {
-                        var myDropzone = this;
-
-                        this.on("addedfile", function(e) {
-                            !a && o && this.removeFile(o), o = e
-                        })
+                        show_toastr('Error', response.error || response, 'error');
                     }
-                }, n.html(""), e.dropzone(i)
-            }))
-        }()
+                });
 
+                console.log("Dropzone successfully initialized.");
+            });
+        };
+
+        // Ensure Dropzone initializes after page load
+        $(document).ready(function() {
+            Dropzones();
+        });
+
+        // Handle form submission
         $('#submit-all').on('click', function() {
+            console.log("Submitting form data...");
 
             $('#submit-all').attr('disabled', true);
             var fd = new FormData();
 
+            // Files from file inputs
             var file = document.getElementById('cover_image').files[0];
             var preview_video = document.getElementById('preview_video').files[0];
-
             var downloadable_product = document.getElementById('downloadable_product').files[0];
-            var inputs = $(".downloadable_product_variant");
-            var downloadable_product_variant = [];
-            for (var i = 0; i < inputs.length; i++) {
-                var files = $(inputs[i]).prop('files');
-                var dataValue = $(inputs[i]).data('value');
-                downloadable_product_variant.push({
-                    key: dataValue,
-                    file: files
-                });
-                if (files && files.length > 0) {
-                    for (var j = 0; j < files.length; j++) {
-                        fd.append(dataValue, files[j]);
-                    }
-                }
-            }
-            // Append Summernote content to FormData
 
             if (file) {
                 fd.append('cover_image', file);
             }
+
             if (preview_video) {
                 fd.append('preview_video', preview_video);
             }
+
             if (downloadable_product) {
                 fd.append('downloadable_product', downloadable_product);
             }
 
+            // Append Dropzone files to FormData
+            var dropzoneElement = $('[data-toggle="dropzone1"]')[0];
+            if (dropzoneElement && dropzoneElement.dropzone) {
+                var dropzoneInstance = dropzoneElement.dropzone;
+                var acceptedFiles = dropzoneInstance.getAcceptedFiles();
+                console.log("Accepted Files:", acceptedFiles); // Log accepted files
+                $.each(acceptedFiles, function(key, file) {
+                    fd.append('product_image[' + key + ']', file);
+                });
+            } else {
+                console.error('Dropzone instance not found or not initialized.');
+                show_toastr('Error', 'Dropzone instance not found or not initialized.', 'error');
+                $('#submit-all').attr('disabled', false);
+                return;
+            }
 
-
-            var files = $('[data-toggle="dropzone1"]').get(0).dropzone.getAcceptedFiles();
-            $.each(files, function(key, file) {
-                fd.append('product_image[' + key + ']', $('[data-toggle="dropzone1"]')[0].dropzone
-                    .getAcceptedFiles()[key]); // attach dropzone image element
-            });
-
+            // Append other form data to FormData
             var other_data = $('#choice_form').serializeArray();
-
             $.each(other_data, function(key, input) {
                 fd.append(input.name, input.value);
             });
 
+            // Check if CartQuantityControl module is active
             var checkCartQuantityModule = "{{ module_is_active('CartQuantityControl') ? 'yes' : 'no' }}";
 
-            if (checkCartQuantityModule == 'yes') {
-
+            if (checkCartQuantityModule === 'yes') {
                 var cartQuantityValidationCheck = $(".cartQuantityValidationCheck").val();
-
-                if (cartQuantityValidationCheck == 'false') {
+                if (cartQuantityValidationCheck === 'false') {
                     show_toastr('Error', 'Please correct the error message before submitting the form.');
+                    $('#submit-all').attr('disabled', false);
                     return false;
-                } else {
-                    $.ajax({
-                        url: "{{ route('product.update', $product->id) }}",
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        data: fd,
-                        contentType: false,
-                        processData: false,
-                        type: 'POST',
-                        success: function(data) {
-                            $('#loader').fadeOut();
-                            if (data.flag == "success") {
-                                $('#submit-all').attr('disabled', true); 
-                                localStorage.setItem('success_msg', data.msg);
-                                window.location.href = "{{ route('product.index') }}" + '?id=2';
-                            } else {
-                                show_toastr('Error', data.msg, 'error');
-                                $('#submit-all').attr('disabled', false);
-                            }
-                        },
-                        error: function(data) {
-                            $('#loader').fadeOut();
-
-                            $('#submit-all').attr('disabled', false);
-                            // Dropzones.removeFile(file);
-                            if (data.error) {
-                                show_toastr('Error', data.error, 'error');
-                            } else {
-                                show_toastr('Error', data, 'error');
-                            }
-                        },
-                    });
                 }
-            } else {
-                $.ajax({
-                    url: "{{ route('product.update', $product->id) }}",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    type: 'POST',
-                    success: function(data) {
-                        $('#loader').fadeOut();
-                        if (data.flag == "success") {
-                            $('#submit-all').attr('disabled', true);
-                            window.location.href = "{{ route('product.index') }}" + '?id=2';
-
-
-                        } else {
-                            show_toastr('Error', data.msg, 'error');
-                            $('#submit-all').attr('disabled', false);
-                        }
-                    },
-                    error: function(data) {
-                        $('#loader').fadeOut();
-
-                        $('#submit-all').attr('disabled', false);
-                        // Dropzones.removeFile(file);
-                        if (data.error) {
-                            show_toastr('Error', data.error, 'error');
-                        } else {
-                            show_toastr('Error', data, 'error');
-                        }
-                    },
-                });
             }
-        });  
+
+            // Submit the form via AJAX
+            $.ajax({
+                url: "{{ route('product.update', $product->id) }}",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: fd,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                beforeSend: function() {
+                    $('#loader').fadeIn();
+                },
+                success: function(data) {
+                    $('#loader').fadeOut();
+                    if (data.flag === "success") {
+                        $('#submit-all').attr('disabled', true);
+                        localStorage.setItem('success_msg', data.msg);
+                        window.location.href = "{{ route('product.index') }}" + '?id=2';
+                    } else {
+                        show_toastr('Error', data.msg, 'error');
+                        $('#submit-all').attr('disabled', false);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    $('#loader').fadeOut();
+                    $('#submit-all').attr('disabled', false);
+
+                    // Check if the server response contains a message
+                    var errorMessage = 'Unknown error occurred';
+                    if (xhr.responseJSON && xhr.responseJSON.message) {
+                        errorMessage = xhr.responseJSON.message; // Laravel typically sends a "message" field
+                    } else if (xhr.responseText) {
+                        errorMessage = xhr.responseText; // Fall back to raw responseText if no JSON message is found
+                    }
+
+                    show_toastr('Error', errorMessage, 'error');
+                    console.error('AJAX Error:', errorMessage);  // Log detailed error in console for debugging
+                }
+            });
+        });
+
         // Product Attribute
         $(document).ready(function() {
             $(document).on("change", ".product_attribute", function() {
-
-                if ($('.enable_product_variant').prop('checked') == true) {
+                if ($('.enable_product_variant').prop('checked') === true) {
                     $(".use_for_variation").removeClass("d-none");
                 } else {
                     $(".use_for_variation").addClass("d-none");
                 }
             });
 
-            if ($('#enable_product_variant').prop('checked') == true) {
+            if ($('#enable_product_variant').prop('checked') === true) {
                 $('.product-price-div').hide();
                 $('.product-stock-div').hide();
                 $('.product-weight').hide();
             }
         });
     </script>
-@endpush
+    @endpush

@@ -29,7 +29,7 @@
                         class="big-logo invoice_logo img_setting" id="categoryImage" width="200px">
             </div>
         </div>
-        
+
     </div>
     <div class="form-group col-md-6">
         {!! Form::label('upload_icon_image', __('Icon'), ['class' => 'form-label']) !!}
@@ -40,7 +40,7 @@
                         class="ti ti-upload px-1"></i>{{ __('Choose File Here') }}
                 </div>
                 <input type="file" class="form-control file d-none"
-                    name="icon_path" id="upload_icon_image"
+                    name="icon_image" id="upload_icon_image"
                     data-filename="logo_update"
                     onchange="document.getElementById('categoryIcon').src = window.URL.createObjectURL(this.files[0])">
             </label>

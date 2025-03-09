@@ -1810,7 +1810,7 @@ class PaymentService
                 }
             }
         }
-        
+
         $slug = !empty($requests_data['slug']) ? $requests_data['slug'] : '';
         $store = Cache::remember('store_' . $slug, 3600, function () use ($slug) {
                 return Store::where('slug',$slug)->first();
@@ -3908,7 +3908,7 @@ class PaymentService
             \Workdo\CheckoutAttachment\app\Models\CheckoutAttachment::CheckoutAttachmentStore($slug, $request);
         }
         $user = \Auth::user();
-        
+
         $sslcommerz_pay_store_id = $payment_setting['sslcommerz_pay_store_id'];
         $sslcommerz_pay_secret_key = $payment_setting['sslcommerz_pay_secret_key'];
 
@@ -3968,5 +3968,5 @@ class PaymentService
             \Log::error($e->getMessage());
             return redirect()->route('checkout', $slug)->with('error', __('Something went wrong, Please try again.'));
         }
-    } 
+    }
 }

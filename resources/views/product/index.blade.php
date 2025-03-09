@@ -35,7 +35,7 @@
         </a>
 
         <a href="{{ route('product.create') }}" class="btn btn-sm btn-primary" data-title="{{ __('Create New Product') }}"
-            data-bs-toggle="tooltip" title="{{ __('Add New Product') }}">
+            data-bs-toggle="tooltip" title="{{ __('Add New  Product') }}">
             <i class="ti ti-plus"></i>
         </a>
     </div>

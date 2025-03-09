@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\MainCategory;
 use App\Models\TaxOption;
 use Illuminate\Support\Facades\Cache;
-use DB;
+
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -249,12 +250,12 @@ class Product extends Model
                 $saleEnableArray = json_decode($flashsale->sale_product, true);
                 $startDate = \Carbon\Carbon::parse($flashsale->start_date . ' ' . $flashsale->start_time);
                 $endDate = \Carbon\Carbon::parse($flashsale->end_date . ' ' . $flashsale->end_time);
-    
+
                 if ($endDate < $startDate) {
                     $endDate->addDay();
                 }
                 $currentDateTime->setTimezone($startDate->getTimezone());
-    
+
                 if ($currentDateTime >= $startDate && $currentDateTime <= $endDate) {
                     if (is_array($saleEnableArray) && in_array($productId, $saleEnableArray)) {
                         $latestSales[$productId] = [
@@ -347,7 +348,7 @@ class Product extends Model
             ->where('theme_id', $store->theme_id)
             ->pluck('value', 'name')->toArray();
         });
-        
+
         date_default_timezone_set('Asia/Kolkata');
         $currentDateTime = \Carbon\Carbon::now()->toDateTimeString();
         $sale_product = Cache::remember("flash_sale_{$store->theme_id}_{$store->id}", 3600, function () use ($store) {
@@ -367,7 +368,7 @@ class Product extends Model
                     $saleEnableArray = json_decode($flashsale->sale_product, true);
                     $startDate = \Carbon\Carbon::parse($flashsale['start_date'] . ' ' . $flashsale['start_time']);
                     $endDate = \Carbon\Carbon::parse($flashsale['end_date'] . ' ' . $flashsale['end_time']);
-        
+
                     if ($endDate < $startDate) {
                         $endDate->addDay();
                     }
@@ -387,7 +388,7 @@ class Product extends Model
                 $saleEnableArray = json_decode($flashsale->sale_product, true);
                 $startDate = \Carbon\Carbon::parse($flashsale['start_date'] . ' ' . $flashsale['start_time']);
                 $endDate = \Carbon\Carbon::parse($flashsale['end_date'] . ' ' . $flashsale['end_time']);
-    
+
                 if ($endDate < $startDate) {
                     $endDate->addDay();
                 }

@@ -20,6 +20,7 @@ use App\Models\ProductVariant;
 use App\Models\ProductImage;
 use App\Models\ProductBrand;
 use App\Models\ProductLabel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\NotifyUser;
 use App\Models\ShopifyConection;
@@ -28,6 +29,8 @@ use App\DataTables\ProductDataTable;
 use Illuminate\Support\Facades\Cache;
 use App\Models\TaxOption;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -79,20 +82,21 @@ class ProductController extends Controller
         ];
         $tag = Tag::where('store_id', getCurrentStore())->where('theme_id', APP_THEME())->pluck('name', 'id');
         $ProductAttribute = ProductAttribute::where('theme_id', APP_THEME())->where('store_id', getCurrentStore())->pluck('name', 'id');
-        
-        
+
+
         return view('product.create', compact('link', 'MainCategory', 'ProductAttribute', 'Tax', 'Tax_status', 'Shipping', 'preview_type', 'tag', 'brands', 'labels'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store_old(Request $request)
     {
-        
+//        dd($request);
+
         if (auth()->user() && auth()->user()->isAbleTo('Create Product')) {
             try {
-                $user = \Auth::user();
+                $user = Auth::user();
                 $creator = User::find($user->creatorId());
                 $total_products = $user->countProducts();
                 $plan = Plan::find($creator->plan_id);
@@ -103,8 +107,8 @@ class ProductController extends Controller
                         'name' => 'required',
                         'maincategory_id' => 'required',
                         'cover_image' => 'required',
-                        'product_image' => 'required',
-                        'status' => 'required',
+                       // 'product_image' => 'required',
+                       // 'status' => 'required',
                         'variant_product' => 'required',
                         'price' => 'required|numeric|min:0',
                         'sale_price' => 'nullable|numeric|min:0|lt:price',
@@ -117,15 +121,15 @@ class ProductController extends Controller
                         'name' => 'required',
                         'maincategory_id' => 'required',
                         'cover_image' => 'required',
-                        'product_image' => 'required',
-                        'status' => 'required',
-                        'variant_product' => 'required',
+                      //  'product_image' => 'required',
+                       // 'status' => 'required',
+                     //   'variant_product' => 'required',
                         'brand_id' => 'nullable',
                         'label_id' => 'nullable',
                     ];
                 }
 
-                $validator = \Validator::make($request->all(), $rules,[
+                $validator = Validator::make($request->all(), $rules,[
                      'sale_price.lt' => __('The sale price must be less than the regular price.')
                 ]);
                 $request->sale_price = $request->sale_price ? $request->sale_price : 0;
@@ -136,7 +140,7 @@ class ProductController extends Controller
 
                     return $msg;
                 }
-
+//dd($request);
                 $totalImageSize = 0;
                 if ($request->hasFile('cover_image')) {
                     $totalImageSize += $request->file('cover_image')->getSize();
@@ -152,7 +156,7 @@ class ProductController extends Controller
                         $totalImageSize += File::size($image);
                     }
                 }
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $totalImageSize);
+                $result = Utility::updateStorageLimit(Auth::user()->creatorId(), $totalImageSize);
                 if ($result != 1) {
                     $msg['flag'] = 'error';
                     $msg['msg'] = $result;
@@ -287,7 +291,7 @@ class ProductController extends Controller
                             $Product->stock_order_status = '';
                             $Product->low_stock_threshold = !empty($request->low_stock_threshold) ? $request->low_stock_threshold :  '';
                         }
-                       
+
 
                         if (!empty($request->downloadable_product)) {
 
@@ -337,37 +341,37 @@ class ProductController extends Controller
                         $Product->store_id = getCurrentStore();
                         $Product->theme_id = APP_THEME();
                         $Product->created_by = \Auth::user()->id;
-                        if (module_is_active('CartQuantityControl')) {
-                            \Workdo\CartQuantityControl\app\Models\CartQuantityControl::saveData($Product, $request->minimum_quantity, $request->maximum_quantity);
-                        }
+//                        if (module_is_active('CartQuantityControl')) {
+//                            \Workdo\CartQuantityControl\app\Models\CartQuantityControl::saveData($Product, $request->minimum_quantity, $request->maximum_quantity);
+//                        }
 
                         $Product->save();
-                        if (module_is_active('PartialPayments')) {
-                            \Workdo\PartialPayments\app\Models\PartialPayments::saveData($Product,$request->all());
-                        }
-                        if (module_is_active('SizeGuideline')) {
-                            \Workdo\SizeGuideline\app\Models\SizeGuideline::saveData($Product, $request->size_chart_title, $request->size_chart_information,$request->all());
-                        }
-                        if (module_is_active('WholesaleProduct')) {
-                            \Workdo\WholesaleProduct\app\Models\WholesaleProduct::saveData($Product, $request->wholesale_repeater_basic);
-                        }
-                        if (module_is_active('ProductBarCode')) {
-                            \Workdo\ProductBarCode\app\Models\ProductBarCode::saveData($Product);
-                        }
+//                        if (module_is_active('PartialPayments')) {
+//                            \Workdo\PartialPayments\app\Models\PartialPayments::saveData($Product,$request->all());
+//                        }
+//                        if (module_is_active('SizeGuideline')) {
+//                            \Workdo\SizeGuideline\app\Models\SizeGuideline::saveData($Product, $request->size_chart_title, $request->size_chart_information,$request->all());
+//                        }
+//                        if (module_is_active('WholesaleProduct')) {
+//                            \Workdo\WholesaleProduct\app\Models\WholesaleProduct::saveData($Product, $request->wholesale_repeater_basic);
+//                        }
+//                        if (module_is_active('ProductBarCode')) {
+//                            \Workdo\ProductBarCode\app\Models\ProductBarCode::saveData($Product);
+//                        }
 
-                        if (module_is_active('HubSpot')) {
-                            $setting = getAdminAllSetting(auth()->user()->id, getCurrentStore(), APP_THEME());
-                            if (isset($setting['hubspot_is_enable']) && $setting['hubspot_is_enable'] == 'on') {
-                                \Workdo\HubSpot\app\Models\HubSpotProductService::saveData($Product, $request->all());
-                            }
-                        }
+//                        if (module_is_active('HubSpot')) {
+//                            $setting = getAdminAllSetting(auth()->user()->id, getCurrentStore(), APP_THEME());
+//                            if (isset($setting['hubspot_is_enable']) && $setting['hubspot_is_enable'] == 'on') {
+//                                \Workdo\HubSpot\app\Models\HubSpotProductService::saveData($Product, $request->all());
+//                            }
+//                        }
 
-                       
-                        if (module_is_active('AdditionalCustomFields')) {
-                            $settingController = new \Workdo\AdditionalCustomFields\app\Http\Controllers\SettingController();
-                            $settingController->saveData($Product, $request->all());
-                        }
-                       
+
+//                        if (module_is_active('AdditionalCustomFields')) {
+//                            $settingController = new \Workdo\AdditionalCustomFields\app\Http\Controllers\SettingController();
+//                            $settingController->saveData($Product, $request->all());
+//                        }
+
                         if (!empty($Product))
                         {
                             //webhook
@@ -610,27 +614,27 @@ class ProductController extends Controller
                             $product->tag_id =  implode(',', $tag_product_id);
                         }
                         $product->save();
-                        if (module_is_active('PartialPayments')) {
-                            \Workdo\PartialPayments\app\Models\PartialPayments::saveData($product,$request->all());
-                        }
-                        if (module_is_active('SizeGuideline')) {
+//                        if (module_is_active('PartialPayments')) {
+//                            \Workdo\PartialPayments\app\Models\PartialPayments::saveData($product,$request->all());
+//                        }
+//                        if (module_is_active('SizeGuideline')) {
+//
+//                            \Workdo\SizeGuideline\app\Models\SizeGuideline::saveData($product, $request->size_chart_title,$request->size_chart_information,$request->all());
+//                        }
+//                        if (module_is_active('WholesaleProduct')) {
+//                            \Workdo\WholesaleProduct\app\Models\WholesaleProduct::saveData($product, $request->wholesale_repeater_basic);
+//                        }
+//                        if (module_is_active('ProductBarCode')) {
+//
+//                            \Workdo\ProductBarCode\app\Models\ProductBarCode::saveData($product);
+//                        }
+//
+//                        if (module_is_active('AdditionalCustomFields')) {
+//                            $settingController = new \Workdo\AdditionalCustomFields\app\Http\Controllers\SettingController();
+//                            $settingController->saveData($product, $request->all());
+//                        }
 
-                            \Workdo\SizeGuideline\app\Models\SizeGuideline::saveData($product, $request->size_chart_title,$request->size_chart_information,$request->all());
-                        }
-                        if (module_is_active('WholesaleProduct')) {
-                            \Workdo\WholesaleProduct\app\Models\WholesaleProduct::saveData($product, $request->wholesale_repeater_basic);
-                        }
-                        if (module_is_active('ProductBarCode')) {
 
-                            \Workdo\ProductBarCode\app\Models\ProductBarCode::saveData($product);
-                        }
-                  
-                        if (module_is_active('AdditionalCustomFields')) {
-                            $settingController = new \Workdo\AdditionalCustomFields\app\Http\Controllers\SettingController();
-                            $settingController->saveData($product, $request->all());
-                        }
-                  
-                
                         if (!empty($product))
                         {
                             //webhook
@@ -817,7 +821,7 @@ class ProductController extends Controller
                 $msg['msg'] =  __('Product saved successfully.');
                 return $msg;
             } catch (\Exception $e) {
-                \Log::info(['error' => $e]);
+                Log::info(['error' => $e]);
                 $msg['flag'] = 'error';
                 $msg['msg'] = $e->getMessage();
                 return $msg;
@@ -826,6 +830,356 @@ class ProductController extends Controller
             return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
+
+    public function store(Request $request)
+    {
+        // Check user permissions
+        if (!auth()->user() || !auth()->user()->isAbleTo('Create Product')) {
+            return $this->errorResponse(__('Permission denied.'));
+        }
+
+        try {
+            Log::info('Starting product creation.');
+
+            // Validate the request
+            $validator = $this->validateRequest($request);
+            if ($validator->fails()) {
+                Log::error('Validation failed: ', $validator->errors()->all());
+                return $this->errorResponse($validator->getMessageBag()->first());
+            }
+
+            // Check storage limit
+            $storageCheck = $this->checkStorageLimit($request);
+            if ($storageCheck !== true) {
+                Log::error('Storage limit check failed: ' . $storageCheck);
+                return $this->errorResponse($storageCheck);
+            }
+
+            // Save the product
+            $product = $this->saveProduct($request);
+            if (!$product) {
+                Log::error('Product creation failed.');
+                return $this->errorResponse(__('Product creation failed.'));
+            }
+
+            // Save product images
+            $this->saveProductImages($request, $product);
+
+            // Call webhook
+            $this->callWebhook($product);
+
+            Log::info('Product saved successfully.');
+            return $this->successResponse(__('Product saved successfully.'));
+        } catch (\Exception $e) {
+            Log::error('Product creation failed: ' . $e->getMessage());
+            return $this->errorResponse($e->getMessage());
+        }
+    }
+
+    /**
+     * Validate the request data.
+     */
+    private function validateRequest($request)
+    {
+        $rules = [
+            'name' => 'required',
+            'maincategory_id' => 'required',
+            'cover_image' => 'required',
+            'variant_product' => 'required',
+            'price' => 'required|numeric|min:0',
+            'sale_price' => 'nullable|numeric|min:0|lt:price',
+        ];
+
+        return Validator::make($request->all(), $rules, [
+            'sale_price.lt' => __('The sale price must be less than the regular price.'),
+        ]);
+
+    }
+
+    /**
+     * Check storage limit for file uploads.
+     */
+    private function checkStorageLimit($request)
+    {
+        $totalImageSize = 0;
+
+        // Calculate total size of files to be uploaded
+        if ($request->hasFile('cover_image')) {
+            $totalImageSize += $request->file('cover_image')->getSize();
+        }
+        if ($request->hasFile('preview_video')) {
+            $totalImageSize += $request->file('preview_video')->getSize();
+        }
+        if ($request->hasFile('downloadable_product')) {
+            $totalImageSize += $request->file('downloadable_product')->getSize();
+        }
+        if (!empty($request->product_image)) {
+            foreach ($request->product_image as $image) {
+                $totalImageSize += File::size($image);
+            }
+        }
+
+        Log::info('Total file size to upload: ' . $totalImageSize);
+
+        // Check storage limit
+        $result = Utility::updateStorageLimit(Auth::user()->creatorId(), $totalImageSize);
+        Log::info('Storage limit check result: ' . $result);
+
+        // Handle the result
+        if ($result === true || $result === 1) {
+            return true; // Storage limit is sufficient
+        } else {
+            return $result; // Return the error message
+        }
+    }
+
+    /**
+     * Save the product to the database.
+     */
+    private function saveProduct_old($request)
+    {
+        $user = Auth::user();
+        $creator = User::find($user->creatorId());
+        $plan = Plan::find($creator->plan_id);
+        $store_id = Store::where('id', getCurrentStore())->first();
+
+        // Check product limit
+        $total_products = $user->countProducts();
+        if ($total_products >= $plan->max_products && $plan->max_products != -1) {
+            throw new \Exception(__('Your Product limit is over, Please upgrade plan.'));
+        }
+
+        // Prepare product data
+        $productData = $this->prepareProductData($request);
+
+        // Log the product data before saving
+        Log::info('Product data before save: ', $productData);
+
+        // Save the product
+        $product = new Product();
+        $product->fill($productData);
+        $product->store_id = getCurrentStore();
+        $product->theme_id = APP_THEME();
+        $product->created_by = $user->id;
+        $product->save();
+
+        return $product;
+    }
+    private function saveProduct($request)
+    {
+        $user = Auth::user();
+        $creator = User::find($user->creatorId());
+        $plan = Plan::find($creator->plan_id);
+        $store_id = Store::where('id', getCurrentStore())->first();
+
+        // Check product limit
+        $total_products = $user->countProducts();
+        if ($total_products >= $plan->max_products && $plan->max_products != -1) {
+            throw new \Exception(__('Your Product limit is over, Please upgrade plan.'));
+        }
+
+        // Prepare product data
+        $productData = $this->prepareProductData($request);
+
+        // Log the product data before saving
+        Log::info('Product data before save: ', $productData);
+
+        // Save the product
+        $product = new Product();
+        $product->fill($productData);
+        $product->store_id = getCurrentStore();
+        $product->theme_id = APP_THEME();
+        $product->created_by = $user->id;
+        $product->save();
+
+        return $product;
+    }
+    /**
+     * Prepare product data for saving.
+     */
+    private function prepareProductData($request)
+    {
+        $data = $request->all();
+
+        // Handle attributes and options
+        if ($request->has('attribute_no')) {
+            $data['attribute_options'] = $this->prepareAttributeOptions($request);
+            $data['product_attributes'] = implode(',', $request->attribute_no);
+        } else {
+            $data['product_attributes'] = '0'; // Ensure this is a string, not an array
+            $data['attribute_options'] = json_encode([]);
+        }
+
+        // Ensure attribute_id is a string, not an array
+        if (isset($data['attribute_id']) && is_array($data['attribute_id'])) {
+            $data['attribute_id'] = implode(',', $data['attribute_id']);
+        }
+
+        // Prepare product_attribute as a JSON string
+        if ($request->has('attribute_no')) {
+            $productAttribute = [];
+            foreach ($request->attribute_no as $key => $no) {
+                $str = 'attribute_options_' . $no;
+                $item = [
+                    'attribute_id' => $no,
+                    'values' => !empty($request[$str]) ? explode(',', implode('|', $request[$str])) : [],
+                    'visible_attribute_' . $no => $request['visible_attribute_' . $no],
+                    'for_variation_' . $no => $request['for_variation_' . $no],
+                ];
+                $productAttribute[] = $item;
+            }
+            $data['product_attribute'] = json_encode($productAttribute); // Save as JSON string
+        } else {
+            $data['product_attribute'] = json_encode([]); // Default to empty JSON array
+        }
+
+        // Ensure description and other fields are strings
+        $data['description'] = is_array($data['description']) ? implode(' ', $data['description']) : $data['description'];
+        $data['specification'] = is_array($data['specification']) ? implode(' ', $data['specification']) : $data['specification'];
+        $data['detail'] = is_array($data['detail']) ? implode(' ', $data['detail']) : $data['detail'];
+
+        // Handle file uploads
+        $dir = 'themes/' . APP_THEME() . '/uploads';
+        if ($request->hasFile('cover_image')) {
+
+            $fileName = rand(10, 100) . '_' . time() . "_" . $request->cover_image->getClientOriginalName();
+            $path = Utility::upload_file($request, 'cover_image', $fileName, $dir, []);
+            $data['cover_image_path'] = $path['url'] ?? null;
+            $data['cover_image_url'] = $path['full_url'] ?? null;
+        }
+
+        // Handle downloadable_product upload
+        if ($request->hasFile('downloadable_product')) {
+            $fileName = rand(10, 100) . '_' . time() . "_" . $request->downloadable_product->getClientOriginalName();
+            $path = Utility::upload_file($request, 'downloadable_product', $fileName, $dir, []);
+            $data['downloadable_product'] = $path['url'] ?? null; // Save the correct path
+        }
+// Generate slug if not provided
+        if (isset($request->slug) && !empty($request->slug)) {
+            $data['slug'] = $request->slug; // Use the provided slug
+        } else {
+            $data['slug'] = Product::slugs($request->name); // Generate slug using Product::slugs
+        }
+        return $data;
+
+    }
+
+    /**
+     * Prepare attribute options for the product.
+     */
+    private function prepareAttributeOptions($request)
+    {
+        $attributeOptions = [];
+        foreach ($request->attribute_no as $key => $no) {
+            $str = 'attribute_options_' . $no;
+            $item = [
+                'attribute_id' => $no,
+                'values' => !empty($request[$str]) ? explode(',', implode('|', $request[$str])) : [],
+                'visible_attribute_' . $no => $request['visible_attribute_' . $no],
+                'for_variation_' . $no => $request['for_variation_' . $no],
+            ];
+            $attributeOptions[] = $item;
+        }
+        return json_encode($attributeOptions); // Ensure this is a JSON string
+    }
+
+    /**
+     * Save product images.
+     */
+    private function saveProductImages($request, $product)
+    {
+        if (!empty($request->product_image)) {
+            $dir = 'themes/' . APP_THEME() . '/uploads';
+            foreach ($request->product_image as $key => $image) {
+                $fileName = rand(10, 100) . '_' . time() . "_" . $image->getClientOriginalName();
+                $path = Utility::keyWiseUpload_file($request, 'product_image', $fileName, $dir, $key, []);
+                if (isset($path['url'])) {
+                    $productImage = new ProductImage();
+                    $productImage->product_id = $product->id;
+                    $productImage->image_path = $path['url'];
+                    $productImage->image_url = $path['full_url'];
+                    $productImage->theme_id = $product->theme_id;
+                    $productImage->store_id = $product->store_id;
+                    $productImage->save();
+                }
+            }
+        }
+    }
+
+    /**
+     * Call webhook after product creation.
+     */
+    private function callWebhook($product)
+    {
+        $module = 'New Product';
+        $webhook = Utility::webhook($module, $product->store_id);
+        if ($webhook) {
+            $parameter = json_encode($product);
+            $status = Utility::WebhookCall($webhook['url'], $parameter, $webhook['method']);
+            if ($status !== true) {
+                Log::warning('Webhook call failed.');
+            }
+        }
+    }
+
+    /**
+     * Return a success response.
+     */
+    private function successResponse($message)
+    {
+        return ['flag' => 'success', 'msg' => $message];
+    }
+
+    /**
+     * Return an error response.
+     */
+    private function errorResponse($message)
+    {
+        return ['flag' => 'error', 'msg' => $message];
+    }
+
+    /*
+     *
+     * New Structure of  Copy Product
+     */
+// In ProductController.php
+    public function copy($id)
+    {
+        try {
+            // Find the original product
+            $originalProduct = Product::findOrFail($id);
+
+            // Duplicate the product
+            $newProduct = $originalProduct->replicate();
+            $newProduct->name = $originalProduct->name . ' (Copy)'; // Append "Copy" to the name
+            $newProduct->slug = Product::slugs($newProduct->name); // Generate a new unique slug
+            $newProduct->save();
+
+            // Duplicate product images
+            if ($originalProduct->images) {
+                foreach ($originalProduct->images as $image) {
+                    $newImage = $image->replicate();
+                    $newImage->product_id = $newProduct->id;
+                    $newImage->save();
+                }
+            }
+
+            // Duplicate product attributes (if applicable)
+            if ($originalProduct->product_attribute) {
+                $newProduct->product_attribute = $originalProduct->product_attribute;
+                $newProduct->save();
+            }
+
+            // Redirect to the new product's edit page or show a success message
+            return redirect()->route('product.edit', $newProduct->id)
+                ->with('success', __('Product copied successfully.'));
+        } catch (\Exception $e) {
+            Log::error('Product copy failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', __('Failed to copy product.'));
+        }
+    }
+
+    //End of new structure
 
     /**
      * Display the specified resource.
@@ -888,7 +1242,7 @@ class ProductController extends Controller
 
         $brands = ProductBrand::where('status', 1)->where('theme_id', APP_THEME())->where('store_id', getCurrentStore())->pluck('name', 'id')->prepend('Select Brand', '');
         $labels = ProductLabel::where('status', 1)->where('theme_id', APP_THEME())->where('store_id', getCurrentStore())->pluck('name', 'id')->prepend('Select Label', '');
-       
+
         $compact = ['link', 'product', 'MainCategory', 'Tax', 'Tax_status', 'Shipping', 'preview_type', 'ProductAttribute', 'SubCategory', 'product_image', 'get_tax', 'get_datas', 'tag', 'get_tags', 'brands', 'labels'];
         return view('product.edit', compact($compact));
     }
@@ -896,9 +1250,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update_old(Request $request, Product $product)
     {
-       
+
         if (auth()->user() && auth()->user()->isAbleTo('Edit Products')) {
             $dir        = 'themes/' . APP_THEME() . '/uploads';
             if ($request->variant_product == 0) {
@@ -1555,12 +1909,248 @@ class ProductController extends Controller
                 $settingController = new \Workdo\AdditionalCustomFields\app\Http\Controllers\SettingController();
                 $settingController->saveData($product, $request->all());
             }
-            
+
             $msg['flag'] = 'success';
             $msg['msg'] =__('Product update successfully.');
             return $msg;
         } else {
             return redirect()->back()->with('error', __('Permission denied.'));
+        }
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        if (auth()->user() && auth()->user()->isAbleTo('Edit Products')) {
+            try {
+                $dir = 'themes/' . APP_THEME() . '/uploads';
+
+                // Validation rules
+                $rules = [
+                    'name' => 'required',
+                    'maincategory_id' => 'required',
+                    'status' => 'required',
+                    'variant_product' => 'required',
+                    'brand_id' => 'nullable',
+                    'label_id' => 'nullable',
+                ];
+
+                if ($request->variant_product == 0) {
+                    $rules['price'] = 'numeric|min:0';
+                    $rules['sale_price'] = 'nullable|numeric|min:0|lt:price';
+                }
+
+                $validator = Validator::make($request->all(), $rules, [
+                    'sale_price.lt' => __('The sale price must be less than the regular price.')
+                ]);
+
+                if ($validator->fails()) {
+                    $messages = $validator->getMessageBag();
+                    return response()->json([
+                        'flag' => 'error',
+                        'msg' => $messages->first(),
+                    ], 400);
+                }
+
+                $request->sale_price = $request->sale_price ? $request->sale_price : 0;
+
+                // Calculate total image size
+                $totalImageSize = 0;
+                if ($request->hasFile('cover_image')) {
+                    $totalImageSize += $request->file('cover_image')->getSize();
+                }
+                if ($request->hasFile('preview_video')) {
+                    $totalImageSize += $request->file('preview_video')->getSize();
+                }
+                if ($request->hasFile('downloadable_product')) {
+                    $totalImageSize += $request->file('downloadable_product')->getSize();
+                }
+                if (!empty($request->product_image)) {
+                    foreach ($request->product_image as $image) {
+                        $totalImageSize += File::size($image);
+                    }
+                }
+
+                // Check storage limit
+                $result = Utility::updateStorageLimit(Auth::user()->creatorId(), $totalImageSize);
+                if ($result != 1) {
+                    return response()->json([
+                        'flag' => 'error',
+                        'msg' => $result,
+                    ], 400);
+                }
+
+                // Handle file uploads
+                if ($request->hasFile('cover_image')) {
+                    $file_path = $product->cover_image_path;
+
+                    if ($result == 1) {
+                        Utility::changeStorageLimit(Auth::user()->creatorId(), $file_path);
+
+                        $fileName = rand(10, 100) . '_' . time() . "_" . $request->cover_image->getClientOriginalName();
+                        $path = Utility::upload_file($request, 'cover_image', $fileName, $dir, []);
+                        if (File::exists(base_path($product->cover_image_path))) {
+                            File::delete(base_path($product->cover_image_path));
+                        }
+                    } else {
+                        return response()->json([
+                            'flag' => 'error',
+                            'msg' => $result,
+                        ], 400);
+                    }
+                    $product->cover_image_path = $path['url'];
+                    $product->cover_image_url = $path['full_url'];
+                }
+
+                // Update product fields
+                $product->name = $request->name;
+                $product->slug = $request->slug ?? Product::slugs($request->name);
+                $product->description = $request->description;
+                $product->specification = $request->specification;
+                $product->detail = $request->detail;
+                $product->stock_status = $request->stock_status;
+                $product->product_weight = $request->product_weight;
+                $product->maincategory_id = $request->maincategory_id;
+                $product->subcategory_id = $request->subcategory_id;
+                $product->brand_id = $request->brand_id ?? null;
+                $product->label_id = $request->label_id ?? null;
+                $product->tax_status = $request->tax_status;
+
+                if (!empty($request->tax_id)) {
+                    $product->tax_id = implode(',', $request->tax_id);
+                } elseif (empty($request->tax_id)) {
+                    $product->tax_id = null;
+                } else {
+                    $tax = Tax::where('store_id', getCurrentStore())->where('theme_id', APP_THEME())->first();
+                    if (isset($tax)) {
+                        $product->tax_id = $tax->id;
+                    }
+                }
+
+                $product->preview_type = $request->preview_type;
+                if (!empty($request->video_url)) {
+                    $product->preview_content = $request->video_url;
+                }
+                if (!empty($request->preview_video)) {
+                    $ext = $request->file('preview_video')->getClientOriginalExtension();
+                    $fileName = 'video_' . time() . rand() . '.' . $ext;
+
+                    $dir_video = 'themes/' . APP_THEME() . '/uploads/preview_image';
+                    $file_paths = $product->preview_video;
+
+                    if ($result == 1) {
+                        Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_paths);
+                        $path_video = Utility::upload_file($request, 'preview_video', $fileName, $dir_video, []);
+                        if ($path_video['flag'] == 1) {
+                            $url = $path_video['url'];
+                        } else {
+                            return response()->json([
+                                'flag' => 'error',
+                                'msg' => $path_video['msg'],
+                            ], 400);
+                        }
+                    } else {
+                        return response()->json([
+                            'flag' => 'error',
+                            'msg' => $result,
+                        ], 400);
+                    }
+                    $product->preview_content = $path_video['url'];
+                }
+
+                if (!empty($request->preview_iframe)) {
+                    $product->preview_content = $request->preview_iframe;
+                }
+
+                $product->variant_product = $request->variant_product;
+                $product->shipping_id = $request->shipping_id;
+                $product->status = $request->status;
+                $product->trending = $request->trending;
+
+                if ($request->track_stock == 1) {
+                    $product->track_stock = $request->track_stock;
+                    $product->stock_order_status = $request->stock_order_status;
+                    $product->low_stock_threshold = $request->low_stock_threshold ?? 0;
+                } else {
+                    $product->track_stock = $request->track_stock;
+                    $product->stock_order_status = '';
+                    $product->low_stock_threshold = $request->low_stock_threshold ?? 0;
+                }
+
+                if ($request->custom_field_status == '1') {
+                    $product->custom_field_status = '1';
+                    $product->custom_field = json_encode($request->custom_field_repeater_basic);
+                } else {
+                    $product->custom_field = null;
+                }
+
+                if (!empty($request->downloadable_product)) {
+                    $file_paths = $product->downloadable_product;
+
+                    if ($result == 1) {
+                        Utility::changeStorageLimit(Auth::user()->creatorId(), $file_paths);
+
+                        $fileName = rand(10, 100) . '_' . time() . "_" . $request->downloadable_product->getClientOriginalName();
+                        $path = Utility::upload_file($request, 'downloadable_product', $fileName, $dir, []);
+                        if (File::exists(base_path($product->downloadable_product))) {
+                            File::delete(base_path($product->downloadable_product));
+                        }
+                    } else {
+                        return response()->json([
+                            'flag' => 'error',
+                            'msg' => $result,
+                        ], 400);
+                    }
+                    $product->downloadable_product = $path['url'];
+                }
+
+                // Save product images
+                if (!empty($request->product_image)) {
+                    foreach ($request->product_image as $key => $image) {
+                        $theme_image = $image;
+
+                        if ($result == 1) {
+                            $fileName = rand(10, 100) . '_' . time() . "_" . $image->getClientOriginalName();
+                            $pathss = Utility::keyWiseUpload_file($request, 'product_image', $fileName, $dir, $key, []);
+                        } else {
+                            return response()->json([
+                                'flag' => 'error',
+                                'msg' => $result,
+                            ], 400);
+                        }
+
+                        if (isset($pathss['url'])) {
+                            $ProductImage = new ProductImage();
+                            $ProductImage->product_id = $product->id;
+                            $ProductImage->image_path = $pathss['url'];
+                            $ProductImage->image_url = $pathss['full_url'];
+                            $ProductImage->theme_id = APP_THEME();
+                            $ProductImage->store_id = getCurrentStore();
+                            $ProductImage->save();
+                        }
+                    }
+                }
+
+                // Save product
+                $product->save();
+
+                // Return success response
+                return response()->json([
+                    'flag' => 'success',
+                    'msg' => __('Product updated successfully.'),
+                ], 200);
+
+            } catch (\Exception $e) {
+                Log::error('Product update failed: ' . $e->getMessage());
+                return response()->json([
+                    'flag' => 'error',
+                    'msg' => __('Failed to update product.'),
+                ], 500);
+            }
+        } else {
+            return response()->json([
+                'flag' => 'error',
+                'msg' => __('Permission denied.'),
+            ], 403);
         }
     }
 
@@ -1597,7 +2187,7 @@ class ProductController extends Controller
 
             ProductImage::where('product_id', $product->id)->delete();
 
-            \Workdo\HubSpot\app\Models\HubSpotProductService::where('product_service_id', $Product->id)->delete();
+//            \Workdo\HubSpot\app\Models\HubSpotProductService::where('product_service_id', $Product->id)->delete();
             ProductVariant::where('product_id', $product->id)->delete();
 
             Cart::where('product_id', $product->id)->delete();
@@ -1644,17 +2234,20 @@ class ProductController extends Controller
     {
         $id = $request->id;
         $value = $request->val;
-        $SubCategory = SubCategory::where('maincategory_id', $id)->get();
-        $option = '<option value="">' . __('Select Sub-Category') . '</option>';
-        foreach ($SubCategory as $key => $Category) {
-            $select = $value == $Category->id ? 'selected' : '';
-            $option .= '<option value="' . $Category->id . '" ' . $select . '>' . $Category->name . '</option>';
+
+        // Fetch subcategories based on selected category
+        $subCategories = SubCategory::where('maincategory_id', $id)->get();
+
+        // Start option list with a default placeholder
+        $options = '<option value="">' . __('Select Sub-Category') . '</option>';
+
+        foreach ($subCategories as $subCategory) {
+            $selected = ($value == $subCategory->id) ? 'selected' : '';
+            $options .= '<option value="' . $subCategory->id . '" ' . $selected . '>' . $subCategory->name . '</option>';
         }
 
-        $select =  '<select class="form-control" data-role="tagsinput" id="subcategory_id" name="subcategory_id">' . $option . '</select>';
-        $return['status'] = true;
-        $return['html'] = $select;
-        return response()->json($return);
+        // Return only option elements in JSON response
+        return response()->json(['html' => $options]);
     }
 
     public function attribute_option(Request $request)

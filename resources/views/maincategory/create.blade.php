@@ -1,6 +1,6 @@
 
 {{ Form::open(['route' => 'main-category.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
-
+@csrf
 @if (isset(auth()->user()->currentPlan) && auth()->user()->currentPlan->enable_chatgpt == 'on')
 <div class="d-flex justify-content-end mb-1">
     <a href="#" class="btn btn-primary me-2 ai-btn btn-badge" data-size="lg" data-ajax-popup-over="true" data-url="{{ route('generate',['category']) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Generate') }}" data-title="{{ __('Generate Content With AI') }}">
@@ -21,7 +21,7 @@
             <div class="col-md-12">
             <label for="upload_image">
                 <div class="image-upload bg-primary pointer w-100 logo_update"> <i
-                        class="ti ti-upload px-1"></i>{{ __('Choose File Here') }}
+                        class="ti ti-upload px-1"></i>{{ __('Choose image Here') }}
                 </div>
                 <input type="file" class="form-control file d-none"
                     name="image" id="upload_image"
@@ -42,12 +42,12 @@
             <div class="col-md-12">
             <label for="upload_icon_image">
                 <div class="image-upload bg-primary pointer w-100 logo_update"> <i
-                        class="ti ti-upload px-1"></i>{{ __('Choose File Here') }}
+                        class="ti ti-upload px-1"></i>{{ __('Choose icon Here') }}
                 </div>
                 <input type="file" class="form-control file d-none"
-                    name="icon_image" id="upload_icon_image"
-                    data-filename="logo_update"
-                    onchange="document.getElementById('categoryIcon').src = window.URL.createObjectURL(this.files[0])">
+                       name="icon_image" id="upload_icon_image" data-filename="logo_update"
+                       onchange="document.getElementById('categoryIcon').src = window.URL.createObjectURL(this.files[0])">
+
             </label>
             </div>
             <div class="logo-content mt-3 col-md-12">

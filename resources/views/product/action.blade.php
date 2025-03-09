@@ -10,8 +10,14 @@
     'class' => 'd-inline',
 ]) !!}
 <button type="button" class="btn btn-sm btn-danger show_confirm" data-bs-toggle="tooltip" data-confirm="{{ __('Are You Sure?') }}"
-data-text="{{ __('This action can not be undone. Do you want to continue?') }}" data-text-yes="{{ __('Yes') }}" data-text-no="{{ __('No') }}" 
+data-text="{{ __('This action can not be undone. Do you want to continue?') }}" data-text-yes="{{ __('Yes') }}" data-text-no="{{ __('No') }}"
 title="{{ __('Delete') }}">
     <i class="ti ti-trash"></i>
 </button>
+    <a href="{{ route('products.copy', $product->id) }}" class="btn btn-sm btn-info"
+       data-title="{{ __('Copy Product') }}" data-bs-toggle="tooltip"
+       title="{{ __('Copy Product') }}">
+   <i class="fa fa-copy"></i>
+    </a>
+
 </span>

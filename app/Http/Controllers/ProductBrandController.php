@@ -36,56 +36,64 @@ class ProductBrandController extends Controller
     public function store(Request $request)
     {
         if (auth()->user() && auth()->user()->isAbleTo('Create Product Brand')) {
-            $validator = \Validator::make(
-                $request->all(),
-                [
-                    'name' => 'required'
-                ]
-            );
-            if($validator->fails())
-            {
+
+            // Validate the form
+            $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+                'name' => 'required|string',
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Add validation for logo
+            ]);
+
+            if ($validator->fails()) {
                 $messages = $validator->getMessageBag();
                 return redirect()->back()->with('error', $messages->first());
             }
+
+            // Generate slug
             $slug = ProductBrand::slugs($request->name);
 
-            $url = null;
-            if($request->logo) {
-                $dir        = 'themes/'.APP_THEME().'/uploads';
-                $image_size = $request->file('logo')->getSize();
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-                if ($result == 1)
-                {
-                    $fileName = rand(10,100).'_'.time() . "_" . $request->logo->getClientOriginalName();
-                    $path = Utility::upload_file($request,'logo',$fileName,$dir,[]);
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($path['msg']));
-                    }
-                }
-                else{
-                    return redirect()->back()->with('error', $result);
-                }
-            }else{
-                $url = Storage::url('uploads/default.jpg');
+            // Define the upload directory
+            $directory = 'themes/' . APP_THEME() . '/uploads';
+
+            // Ensure directory exists
+            $fullPath = storage_path('app/public/' . $directory);
+            if (!file_exists($fullPath)) {
+                mkdir($fullPath, 0777, true);  // Create directory if it doesn't exist
             }
 
-            $productBrand                      = new ProductBrand();
-            $productBrand->name                = $request->name;
-            $productBrand->logo                = $url;
-            $productBrand->slug                = $slug;
-            $productBrand->status              = $request->status;
-            $productBrand->is_popular          = $request->is_popular;
-            $productBrand->theme_id            = APP_THEME();
-            $productBrand->store_id            = getCurrentStore();
-            $productBrand->created_by          = auth()->user()->id;
+            // Handle logo upload
+            $logoUrl = asset('storage/uploads/default.jpg');  // Default logo URL if no logo uploaded
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                if ($logo->isValid()) {
+                    $logoName = rand(10, 100) . '_' . time() . '_' . $logo->getClientOriginalName();
+                    // Move the logo to the specified directory
+                    $logoPath = $logo->move($fullPath, $logoName); // Use move() instead of storeAs
+                    $logoUrl = 'storage/' . $directory . '/' . $logoName; // Public URL path
+                } else {
+                    return redirect()->back()->with('error', __('The uploaded logo is invalid.'));
+                }
+            }
+
+
+
+            // Save to the database
+            $productBrand = new ProductBrand();
+            $productBrand->name = $request->name;
+            $productBrand->slug = $slug;
+            $productBrand->logo = $logoUrl;
+            $productBrand->status = $request->status;
+            $productBrand->is_popular = $request->is_popular;
+            $productBrand->theme_id = APP_THEME();
+            $productBrand->store_id = getCurrentStore();
+            $productBrand->created_by = auth()->user()->id;
             $productBrand->save();
+
             return redirect()->back()->with('success', __('Product Brand successfully created.'));
         } else {
             return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
+
 
     /**
      * Display the specified resource.
@@ -109,55 +117,78 @@ class ProductBrandController extends Controller
      */
     public function update(Request $request, ProductBrand $productBrand)
     {
-
         if (auth()->user() && auth()->user()->isAbleTo('Edit Product Brand')) {
 
-            $validator = \Validator::make(
-                $request->all(),
-                [
-                    'name' => 'required',
-                ]
-            );
-            if($validator->fails())
-            {
+            // Validate incoming request
+            $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+                'name' => 'required|string',
+                'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Validate logo
+            ]);
+
+            if ($validator->fails()) {
                 $messages = $validator->getMessageBag();
                 return redirect()->back()->with('error', $messages->first());
             }
 
-            $url = null;
-            if($request->logo) {
-                $file_path = $productBrand->logo;
-                $dir        = 'themes/'.APP_THEME().'/uploads';
-                $image_size = $request->file('logo')->getSize();
-                $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-                if ($result == 1)
-                {
-                    Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_path);
-                    $fileName = rand(10,100).'_'.time() . "_" . $request->logo->getClientOriginalName();
-                    $path = Utility::upload_file($request,'logo',$fileName,$dir,[]);
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($path['msg']));
-                    }
-                }
-                else{
-                    return redirect()->back()->with('error', $result);
-                }
+            // Define the upload directory
+            $dir = 'themes/' . APP_THEME() . '/uploads';
+
+            $productBrand = $productBrand;
+            $productBrand->name = $request->name;
+
+            $totalImageSize = 0;
+
+            // Check if the logo file is uploaded and add its size
+            if ($request->hasFile('logo')) {
+                $totalImageSize += $request->file('logo')->getSize();
             }
 
-            $productBrand->name                = $request->name;
-            if ($url) {
-                $productBrand->logo                = $url;
+            // Update storage limit
+            $result = Utility::updateStorageLimit(auth()->user()->creatorId(), $totalImageSize);
+            if ($result != 1) {
+                return redirect()->back()->with('error', $result);
             }
+
+            // Handle Logo File Upload with move()
+            if ($request->hasFile('logo')) {
+                $file_path = $productBrand->logo;
+
+                // Check if the previous logo file exists, and if so, remove it
+                if (!empty($file_path) && $file_path != '/storage/uploads/default.jpg' && \File::exists(base_path($file_path))) {
+                    Utility::changeStorageLimit(auth()->user()->creatorId(), $file_path);
+                }
+
+                $logo = $request->file('logo');
+                $fileName = rand(10, 100) . '_' . time() . '_' . $logo->getClientOriginalName();
+
+                // Use move() to store the file
+                $path = $logo->move(public_path($dir), $fileName);
+
+                if ($path) {
+                    $url = asset($dir . '/' . $fileName);  // Get public URL from the storage path
+                    $productBrand->logo = $url;
+                } else {
+                    return redirect()->back()->with('error', __('Error saving logo.'));
+                }
+            } else {
+                // If no logo file uploaded, use the default logo
+                $url = Storage::url('uploads/default.jpg');
+                $productBrand->logo = $url;
+            }
+
+            // Update other fields
+            $productBrand->slug = 'brands/' . strtolower(preg_replace("/[^\w]+/", "-", $request->name));
             if (isset($request->status)) {
-                $productBrand->status              = $request->status;
+                $productBrand->status = $request->status;
             }
             if (isset($request->is_popular)) {
-                $productBrand->is_popular          = $request->is_popular;
+                $productBrand->is_popular = $request->is_popular;
             }
-            $productBrand->theme_id            = APP_THEME();
-            $productBrand->store_id            = getCurrentStore();
+            $productBrand->theme_id = APP_THEME();
+            $productBrand->store_id = getCurrentStore();
+            $productBrand->created_by = auth()->user()->id;
+
+            // Save the changes
             $productBrand->save();
 
             return redirect()->back()->with('success', __('Product Brand successfully updated.'));
@@ -165,6 +196,7 @@ class ProductBrandController extends Controller
             return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

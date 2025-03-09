@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutoposterController;
+use App\Http\Controllers\PhotoEditorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
@@ -177,7 +178,16 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
       Route::get('/login/facebook/callback', [AutoPosterController::class,'handleFacebookCallback']);
       Route::get('/post/create', [AutoPosterController::class, 'showPostForm'])->name('social.form');
       Route::post('/post/store', [AutoPosterController::class, 'postToSocialMedia'])->name('social.post');
+      // Photo Editor Routes
+      Route::get('product-photo-editor',  [PhotoEditorController::class,'index'])->name('product-photo-editor');
+      Route::post('savePhoto', [PhotoEditorController::class,'savePhoto'])->name('savePhoto');
+      Route::post('saveEditorPhoto', [PhotoEditorController::class,'saveEditorPhoto'])->name('saveEditorPhoto');
 
+      Route::get('deletePhoto/{id}', [PhotoEditorController::class,'deletePhoto'])->name('deletePhoto');
+      Route::post('product/product-image-remove', [ProductController::class, 'product_image_remove'])->name('product.image.remove');
+      Route::post('get-subcategory', [ProductController::class, 'get_subcategory'])->name('get.subcategory');
+
+      // Photo Editor Routes
       //*************************country-state-city**********************
     Route::resource('countries', CountryController::class);
     Route::resource('state', StateController::class);
@@ -489,7 +499,8 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
 
     Route::post('get-slug', [ProductController::class, 'get_slug'])->name('get.slug');
     Route::post('get-product-subcategory', [ProductController::class, 'get_subcategory'])->name('get.product.subcategory');
-
+// In routes/web.php
+      Route::get('/products/copy/{id}', [ProductController::class, 'copy'])->name('products.copy');
 
 
     // Menus Routes

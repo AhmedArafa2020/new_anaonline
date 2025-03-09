@@ -85,7 +85,27 @@ if (!function_exists('getMenu')) {
             'order' => 101,
             'route' => 'product-instagram-auto-poster',
         ];
+// 🚀 Add photo editor Section (No Permissions)
+        $menu->menu[] = [
+            'category' => 'Marketing',
+            'title' => 'Photo Editor',
+            'icon' => 'photo',
+            'name' => 'photo_editor',
+            'parent' => null,
+            'order' => 102, // Adjust order as needed
+//            'route' => '#!', // Parent menu item doesn't need a route
+        ];
 
+        // Open Photo Editor
+        $menu->menu[] = [
+            'category' => 'Photo Editor',
+            'title' => 'Open Photo Editor',
+            'icon' => 'edit',
+            'name' => 'open_photo_editor',
+            'parent' => 'photo_editor',
+            'order' =>103,
+            'route' => 'product-photo-editor', // Route for the submenu item
+        ];
 
         return generateMenu($menu->menu, null);
     }

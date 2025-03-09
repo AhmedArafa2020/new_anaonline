@@ -24,7 +24,7 @@
   --bs-table-border-color: #333f55;
 }
 [data-bs-theme=dark] .table-hover > tbody > tr:hover > * {
-  --bs-table-bg-state: $body-bg-dark;
+  --bs-table-bg-state:body-bg-dark;
 }
 [data-bs-theme=dark] .table-striped > tbody > tr:nth-of-type(odd) > * {
   --bs-table-bg-type: transparent;

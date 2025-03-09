@@ -878,7 +878,7 @@
     </div>
 </footer>
 <?php if(isset($setting['enable_cookie']) && $setting['enable_cookie'] == 'on'): ?>
-    <?php echo $__env->make('layouts.cookie_consent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('layouts.cookie_consent', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 <?php endif; ?>
 <!-- [ Footer ] end -->
 <!-- Required Js -->

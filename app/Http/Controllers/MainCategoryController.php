@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Models\MainCategory;
 use App\Models\Utility;
+use Aws\Api\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -46,96 +47,85 @@ class MainCategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        if(auth()->user() && auth()->user()->isAbleTo('Create Product Category'))
-        {
-            $store_id = Store::where('id', getCurrentStore())->first();
+        if(auth()->user() && auth()->user()->isAbleTo('Create Product Category')) {
 
-            $validator = \Validator::make(
-                $request->all(), [
-                                   'name' => 'required',
-                                ]
-            );
+            // Validate the form
+            $validator = \Illuminate\Support\Facades\Validator::make($request->all(), [
+                'name' => 'required|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'icon_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
-            if($validator->fails())
-            {
+            if ($validator->fails()) {
                 $messages = $validator->getMessageBag();
                 return redirect()->back()->with('error', $messages->first());
             }
 
+            // Define the upload directory
+            $directory = 'themes/' . APP_THEME() . '/uploads';
 
-            $dir        = 'themes/'.APP_THEME().'/uploads';
-            $totalImageSize = 0;
+            // Ensure directory exists
+            $fullPath = storage_path('app/public/' . $directory);
+            if (!file_exists($fullPath)) {
+                mkdir($fullPath, 0777, true);  // Create directory if it doesn't exist
+            }
+
+            // Handle Image Upload
+            $imageUrl = asset('storage/uploads/default.jpg');  // Default image URL if no image uploaded
             if ($request->hasFile('image')) {
-                $totalImageSize += $request->file('image')->getSize();
+                $image = $request->file('image');
+                if ($image->isValid()) {
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    // Move the image to the specified directory
+                    $imagePath = $image->move($fullPath, $imageName);  // Use move() instead of storeAs
+                    $imageUrl = 'storage/' . $directory . '/' . $imageName; // Public URL path
+                } else {
+                    return redirect()->back()->with('error', __('The uploaded image is invalid.'));
+                }
             }
+
+            // Handle Icon Upload
+            $iconUrl = asset('storage/uploads/default.jpg');  // Default icon URL if no icon uploaded
             if ($request->hasFile('icon_image')) {
-                $totalImageSize += $request->file('icon_image')->getSize();
-            }
-            $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $totalImageSize);
-            if ($result != 1) {
-                return redirect()->back()->with('error', $result);
-            }
-            if($request->image) {
-                if ($result == 1)
-                {
-                    $fileName = rand(10,100).'_'.time() . "_" . $request->image->getClientOriginalName();
-                    $path = Utility::upload_file($request,'image',$fileName,$dir,[]);
-                    if ($path['flag'] == 1) {
-                        $url = $path['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($path['msg']));
-                    }
+                $iconImage = $request->file('icon_image');
+                if ($iconImage->isValid()) {
+                    $iconName = time() . '_' . $iconImage->getClientOriginalName();
+                    // Move the icon to the specified directory
+                    $iconPath = $iconImage->move($fullPath, $iconName);  // Use move() instead of storeAs
+                    $iconUrl = 'storage/' . $directory . '/' . $iconName;  // Public URL path
+                } else {
+                    return redirect()->back()->with('error', __('The uploaded icon is invalid.'));
                 }
-                else{
-                    return redirect()->back()->with('error', $result);
-                }
-            }else{
-                $path['full_url'] = asset(Storage::url('uploads/default.jpg'));
-                $path['url'] = Storage::url('uploads/default.jpg');
             }
 
-            if($request->icon_image) {
-                if ($result == 1)
-                {
-                    $fileName = rand(10,100).'_'.time() . "_" . $request->icon_image->getClientOriginalName();
-                    $paths = Utility::upload_file($request,'icon_image',$fileName,$dir,[]);
-                    if ($paths['flag'] == 1) {
-                        $url = $paths['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($paths['msg']));
-                    }
-                }
-                else{
-                    return redirect()->back()->with('error', $result);
-                }
-            }else{
-                $paths['url'] = Storage::url('uploads/default.jpg');
-            }
-
+            // Save to the database
             $MainCategory = new MainCategory();
-            $MainCategory->name         = $request->name;
-            $MainCategory->slug             =  'collections/' . strtolower(preg_replace("/[^\w]+/", "-", $request->name));
-            $MainCategory->image_url    = $path['full_url'];
-            $MainCategory->image_path   = $path['url'];
-            $MainCategory->icon_path    = $paths['url'];
-            $MainCategory->trending     = $request->trending;
-            $MainCategory->status       = $request->status;
-            $MainCategory->theme_id     = APP_THEME();
-            $MainCategory->store_id     = getCurrentStore();
-
+            $MainCategory->name = $request->name;
+            $MainCategory->slug = 'collections/' . strtolower(preg_replace("/[^\w]+/", "-", $request->name));
+            $MainCategory->image_url = $imageUrl;
+            $MainCategory->image_path = $imageUrl;
+            $MainCategory->icon_path = $iconUrl;
+            $MainCategory->trending = $request->trending;
+            $MainCategory->status = $request->status;
+            $MainCategory->theme_id = APP_THEME();
+            $MainCategory->store_id = getCurrentStore();
             $MainCategory->save();
 
             return redirect()->back()->with('success', __('Category successfully created.'));
-        }
-        else
-        {
+        } else {
             return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -164,98 +154,116 @@ class MainCategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\MainCategory  $mainCategory
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, MainCategory $mainCategory)
     {
+        if (auth()->user() && auth()->user()->isAbleTo('Edit Product Category')) {
 
-        if(auth()->user() && auth()->user()->isAbleTo('Edit Product Category'))
-        {
+            // Validate incoming request
             $validator = \Validator::make(
                 $request->all(), [
-                                   'name' => 'required',
-                               ]
+                    'name' => 'required',
+                ]
             );
-            if($validator->fails())
-            {
+
+            if ($validator->fails()) {
                 $messages = $validator->getMessageBag();
                 return redirect()->back()->with('error', $messages->first());
             }
-            $dir        = 'themes/'.APP_THEME().'/uploads';
+
+            $dir = 'themes/' . APP_THEME() . '/uploads';
 
             $MainCategory = $mainCategory;
             $MainCategory->name = $request->name;
 
             $totalImageSize = 0;
+
+            // Check if image file is uploaded
             if ($request->hasFile('image')) {
                 $totalImageSize += $request->file('image')->getSize();
             }
+            // Check if icon image file is uploaded
             if ($request->hasFile('icon_image')) {
                 $totalImageSize += $request->file('icon_image')->getSize();
             }
+
+            // Update storage limit
             $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $totalImageSize);
             if ($result != 1) {
                 return redirect()->back()->with('error', $result);
             }
-            if(!empty($request->image)) {
-                $file_path =  $mainCategory->image_path;
-                
-                if ($result == 1)
-                {
-                    if (!empty($file_path) && $file_path != '/storage/uploads/default.jpg' && \File::exists(base_path($file_path))) {
-                        Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_path);
-                    }
 
-                    $fileName = rand(10,100).'_'.time() . "_" . $request->image->getClientOriginalName();
-                    $path = Utility::upload_file($request,'image',$fileName,$dir,[]);
-                    if ($path['flag'] == 1) {
-                        $MainCategory->image_url    = $path['full_url'];
-                        $MainCategory->image_path   = $path['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($path['msg']));
-                    }
+            // Handle Image File Upload with move()
+            if ($request->hasFile('image')) {
+                $file_path = $mainCategory->image_path;
+
+                // Check if previous image file exists, and if so, remove it
+                if (!empty($file_path) && $file_path != '/storage/uploads/default.jpg' && \File::exists(base_path($file_path))) {
+                    Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_path);
                 }
-                else{
-                    return redirect()->back()->with('error', $result);
+
+                $image = $request->file('image');
+                $fileName = rand(10, 100) . '_' . time() . "_" . $image->getClientOriginalName();
+
+                // Using move() to store the file
+                $path = $image->move(public_path($dir), $fileName);
+
+                if ($path) {
+                    $url = asset($dir . '/' . $fileName);  // Get public URL from the storage path
+                    $MainCategory->image_url = $url;
+                    $MainCategory->image_path = $dir . '/' . $fileName;
+                } else {
+                    return redirect()->back()->with('error', __('Error saving image.'));
                 }
-            }else{
+            } else {
+                // If no image file uploaded, use default image
                 $path['full_url'] = asset(Storage::url('uploads/default.jpg'));
                 $path['url'] = Storage::url('uploads/default.jpg');
             }
-            if (!empty($request->icon_image)) {
+
+            // Handle Icon Image File Upload with move()
+            if ($request->hasFile('icon_image')) {
                 $file_path = $mainCategory->icon_path;
 
-                if ($result == 1) {
-                    if (!empty($file_path) && $file_path != '/storage/uploads/default.jpg' && \File::exists(base_path($file_path))) {
-                        Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_path);
-                    }
-
-                    $fileName = rand(10, 100) . '_' . time() . "_" . $request->icon_image->getClientOriginalName();
-                    $paths = Utility::upload_file($request, 'icon_image', $fileName, $dir, []);
-                    if ($paths['flag'] == 1) {
-                        $mainCategory->icon_path = $paths['url'];
-                    } else {
-                        return redirect()->back()->with('error', __($paths['msg']));
-                    }
-                } else {
-                    return redirect()->back()->with('error', $result);
+                // Check if previous icon file exists, and if so, remove it
+                if (!empty($file_path) && $file_path != '/storage/uploads/default.jpg' && \File::exists(base_path($file_path))) {
+                    Utility::changeStorageLimit(\Auth::user()->creatorId(), $file_path);
                 }
-            }else{
+
+                $iconImage = $request->file('icon_image');
+                $fileName = rand(10, 100) . '_' . time() . "_" . $iconImage->getClientOriginalName();
+
+                // Using move() to store the file
+                $path = $iconImage->move(public_path($dir), $fileName);
+
+                if ($path) {
+                    $url = asset($dir . '/' . $fileName);  // Get public URL from the storage path
+                    $MainCategory->icon_path = $url;
+                } else {
+                    return redirect()->back()->with('error', __('Error saving icon image.'));
+                }
+            } else {
+                // If no icon file uploaded, use default icon
                 $paths['url'] = Storage::url('uploads/default.jpg');
             }
 
-            $MainCategory->slug         =  'collections/' . strtolower(preg_replace("/[^\w]+/", "-", $request->name));
-            $MainCategory->trending     = $request->trending;
-            $MainCategory->status       = $request->status;
+            // Update other category fields
+            $MainCategory->slug = 'collections/' . strtolower(preg_replace("/[^\w]+/", "-", $request->name));
+            $MainCategory->trending = $request->trending;
+            $MainCategory->status = $request->status;
             $MainCategory->save();
 
             return redirect()->back()->with('success', __('Category successfully updated.'));
-        }
-        else
-        {
+        } else {
             return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

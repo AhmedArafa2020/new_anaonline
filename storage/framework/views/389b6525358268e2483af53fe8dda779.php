@@ -61,6 +61,7 @@
     <meta name="base-url" content="<?php echo e(URL::to('/')); ?>">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
+
     <meta name="title" content="<?php echo e(isset($SuperadminData['metatitle']) ? $SuperadminData['metatitle'] : 'EcommerceGo'); ?>">
     <meta name="keywords" content="<?php echo e(isset($SuperadminData['metakeyword']) ? $SuperadminData['metakeyword'] : 'EcommerceGo, Store with Multi theme and Multi Store'); ?>">
     <meta name="description" content="<?php echo e(isset($SuperadminData['metadesc']) ? $SuperadminData['metadesc'] : 'Discover the efficiency of EcommerceGo, a user-friendly web application by Workdo.io.'); ?>">
@@ -181,9 +182,9 @@
 </head>
 
 <body class="<?php echo e($themeColor ?? 'theme-3'); ?>">
-    <?php echo $__env->make('partision.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('partision.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <?php echo $__env->make('partision.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('partision.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
     <!-- [ Main Content ] start -->
     <div class="dash-container">
@@ -265,8 +266,8 @@
         <h3 class="loader-content"> <?php echo e(__('Loading . . .')); ?> </h3>
     </div>
 
-    <?php echo $__env->make('partision.settingPopup', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php echo $__env->make('partision.footerlink', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('partision.settingPopup', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+    <?php echo $__env->make('partision.footerlink', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     <?php echo $__env->yieldPushContent('scripts'); ?>
     <?php echo $__env->yieldPushContent('custom-script'); ?>
     <?php echo $__env->yieldPushContent('custom-script1'); ?>
@@ -375,7 +376,7 @@
         $setting = getSuperAdminAllSetting();
     ?>
     <?php if(isset($setting['enable_cookie']) && $setting['enable_cookie'] == 'on'): ?>
-        <?php echo $__env->make('layouts.cookie_consent', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php echo $__env->make('layouts.cookie_consent', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     <?php endif; ?>
 </body>
 
