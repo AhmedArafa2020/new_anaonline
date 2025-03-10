@@ -129,7 +129,7 @@
     <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <!-- Scripts -->
-
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     <style>
         {!! isset($setting['storecss']) ? $setting['storecss'] :  '' !!}
 
@@ -269,6 +269,7 @@
     @stack('scripts')
     @stack('custom-script')
     @stack('custom-script1')
+
     <script type="text/javascript">
         function setActiveTheme(themeColor) {
             // Update the --active-theme-border variable based on the theme number
@@ -294,6 +295,61 @@
             }
         })
         </script>
+
+    <!-- BotMan Widget Configuration and Styling -->
+    <script>
+        // BotMan Widget Configuration
+        var botmanWidget = {
+            title: 'Ana Online',
+            aboutText: '🚀 Powered By AdminAnaOnline',
+            aboutLink: 'http://anaonline.test/',
+            introMessage: "✋ Hi! I'm form Ana Online"
+        };
+
+        // Function to force widget styles
+        function forceWidgetStyles() {
+            // Ensure the widget is visible
+            var widget = document.querySelector('.botmanWidget');
+            if (widget) {
+                widget.style.backgroundColor = '#ffffff'; // Set a solid background
+                widget.style.opacity = '1'; // Ensure it's not transparent
+                widget.style.zIndex = '9999'; // Ensure it's above other elements
+            }
+
+            // Force styles for the chat container
+            var chatContainer = document.querySelector('.botmanWidget .chat-container');
+            if (chatContainer) {
+                chatContainer.style.backgroundColor = '#ffffff';
+                chatContainer.style.border = '1px solid #ddd';
+                chatContainer.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+
+            // Force styles for the input field
+            var chatInput = document.querySelector('.botmanWidget .chat-input');
+            if (chatInput) {
+                chatInput.style.backgroundColor = '#f9f9f9';
+                chatInput.style.border = '1px solid #ddd';
+            }
+
+            // Force styles for the messages
+            var messages = document.querySelectorAll('.botmanWidget .message');
+            messages.forEach(function (message) {
+                message.style.backgroundColor = '#f1f1f1';
+                message.style.color = '#333';
+            });
+
+        }
+
+
+
+
+        // Run the function when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', forceWidgetStyles);
+
+        // Run the function again after a short delay to ensure the widget is rendered
+        setTimeout(forceWidgetStyles, 1000); // Adjust delay if needed
+    </script>
+    {{-- END Chatbot Widgit --}}
     <script>
         function add_more_choice_option(i, name) {
 

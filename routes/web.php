@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutoposterController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\PhotoEditorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -502,8 +503,12 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
 // In routes/web.php
       Route::get('/products/copy/{id}', [ProductController::class, 'copy'])->name('products.copy');
 
+     // Chatbot
+      Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
 
-    // Menus Routes
+
+
+      // Menus Routes
     Route::resource('menus', MenuController::class)->except(['update']);
     Route::get('add-cat-to-menu', [MenuController::class, 'addCatToMenu'])->name('menus.addCategory');
     Route::get('add-page-to-menu', [MenuController::class, 'addPageToMenu'])->name('menus.addPage');

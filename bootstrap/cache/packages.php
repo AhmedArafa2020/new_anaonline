@@ -33,6 +33,24 @@
       0 => 'Barryvdh\\DomPDF\\ServiceProvider',
     ),
   ),
+  'botman/botman' => 
+  array (
+    'aliases' => 
+    array (
+      'BotMan' => 'BotMan\\BotMan\\Facades\\BotMan',
+    ),
+    'providers' => 
+    array (
+      0 => 'BotMan\\BotMan\\BotManServiceProvider',
+    ),
+  ),
+  'botman/driver-web' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BotMan\\Drivers\\Web\\Providers\\WebServiceProvider',
+    ),
+  ),
   'codexshaper/laravel-woocommerce' => 
   array (
     'providers' => 

@@ -14,6 +14,8 @@
         "authorizenet/authorizenet": "^2.0",
         "aws/aws-sdk-php": "^3.321",
         "barryvdh/laravel-dompdf": "^3.0",
+        "botman/botman": "^2.8",
+        "botman/driver-web": "^1.5",
         "braintree/braintree_php": "^6.19",
         "codexshaper/laravel-woocommerce": "^3.0",
         "coingate/coingate-php": "^4.1",
