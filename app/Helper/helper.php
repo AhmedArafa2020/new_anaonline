@@ -104,9 +104,22 @@ if (!function_exists('getMenu')) {
             'name' => 'open_photo_editor',
             'parent' => 'photo_editor',
             'order' =>103,
-            'route' => 'product-photo-editor', // Route for the submenu item
+            'route' => 'product-photo-editor',
         ];
-
+        // Add Chatbot Menu Item as Top-Level (Settings-like)
+        $menu->menu[] = [
+            "title" => "Chatbot",
+            "icon" => "message-circle",  // You can use any icon here
+            "name" => "chatbot",
+            "parent" => null,  // No parent, this is a top-level item
+            "order" => 105,  // Order for placement in the menu
+            "ignore_if" => [],  // Optional: Define if conditions for ignoring this menu
+            "depend_on" => [],  // Optional: Define if this depends on other items
+            "route" => "admin.chatbot.index",  // Route for this menu item
+            "module" => "Chatbot",  // Optional: Define module name
+           // "permission" => "Manage Chatbot"  // Optional: Define the permission needed
+        ];
+//        dd($menu->menu);
         return generateMenu($menu->menu, null);
     }
 }

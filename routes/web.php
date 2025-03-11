@@ -505,9 +505,16 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
 
      // Chatbot
       Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
-
-
-
+// Chatbot routes
+      Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
+      Route::post('/chatbot-message', [ChatbotController::class, 'storeMessage'])->name('admin.chatbot-message.store');
+      // New route for the chatbot index page
+      // Chatbot routes
+      Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
+      Route::post('/chatbot-message', [ChatbotController::class, 'storeMessage'])->name('admin.chatbot-message.store');
+      Route::get('/chatbot', [ChatbotController::class, 'index'])->name('admin.chatbot.index');
+      Route::put('/chatbot-message/{id}', [ChatbotController::class, 'storeMessage'])->name('admin.chatbot-message.update'); // Edit route
+      Route::delete('/chatbot-message/{id}', [ChatbotController::class, 'deleteMessage'])->name('admin.chatbot-message.delete'); // Delete route
       // Menus Routes
     Route::resource('menus', MenuController::class)->except(['update']);
     Route::get('add-cat-to-menu', [MenuController::class, 'addCatToMenu'])->name('menus.addCategory');
