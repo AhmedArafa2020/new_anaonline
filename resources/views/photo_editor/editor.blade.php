@@ -11554,7 +11554,7 @@
         $(document).on('click', '.delete-photo', function() {
             var imageId = $(this).data('id');
             $.ajax({
-                url: '/admin/deletePhoto/' + imageId,
+                url: '/deletePhoto/' + imageId,
                 type: 'GET',
                 success: function(response) {
                     alert(response.message);

@@ -28,6 +28,7 @@ class ThemeSettingController extends Controller
      */
     public function index()
     {
+
         if (auth()->user() && auth()->user()->isAbleTo('Manage Themes')) {
             $user = auth()->user();
             $plan = Cache::remember('plan_details_' . $user->id, 3600, function () use ($user) {
@@ -42,7 +43,7 @@ class ThemeSettingController extends Controller
 
             if ((APP_THEME() ?? $user->theme_id)) {
                array_unshift($themes, (APP_THEME() ?? $user->theme_id));
-            } 
+            }
             $themes = array_unique($themes);
             $currentTheme = Theme::active();
             return view('theme_preview.index', compact('themes', 'currentTheme', 'addons'));
@@ -56,6 +57,7 @@ class ThemeSettingController extends Controller
      */
     public function create(Request $request)
     {
+
         if (isset($request->theme_id)) {
             $currentTheme = $request->theme_id;
         } else {
@@ -286,7 +288,7 @@ class ThemeSettingController extends Controller
                 ->first();
             // Check if mapping exists and is published
             $is_publish = ($mapping && $mapping->is_publish == 1) ? true : false;
-    
+
             // Initialize json data from the specified section or use default
             if (isset($request->section_name)) {
                 $sectionName = $request->section_name;
@@ -460,7 +462,7 @@ class ThemeSettingController extends Controller
 
         // Upload Video
         if (isset($array['section']['video']['type']) && $array['section']['video']['type'] == 'file' && isset($array['section']['video']['text']) && gettype($array['section']['video']['text']) == 'object') {
-            
+
             $theme_name = $theme_id;
             $theme_image = $array['section']['video']['text'];
             $upload = $this->uploadThemeMedia($request, $theme_id, $theme_image, $dir);

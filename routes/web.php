@@ -157,7 +157,7 @@ Route::get('pricing', [HomeController::class, 'Pricing'])->name('apps.pricing');
 Route::get('add-on/session/create', [ModuleController::class, 'AddOnSessioncreate'])->name('add-on.session.create');
 Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave'])->name('add-on.session.save');
 
-  Route::middleware(['auth', 'xss', 'setlocate', 'verified'])->group(function () {
+  Route::middleware(['auth', 'setlocate', 'verified'])->group(function () {
 
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::post('/top-brand-category-chart', [HomeController::class, 'top_brand_category_chart'])->name('top.brand.category.chart');
@@ -500,7 +500,7 @@ Route::post('add-on/session/save', [ModuleController::class, 'AddOnSessionSave']
 
     Route::post('get-slug', [ProductController::class, 'get_slug'])->name('get.slug');
     Route::post('get-product-subcategory', [ProductController::class, 'get_subcategory'])->name('get.product.subcategory');
-// In routes/web.php
+
       Route::get('/products/copy/{id}', [ProductController::class, 'copy'])->name('products.copy');
 
      // Chatbot

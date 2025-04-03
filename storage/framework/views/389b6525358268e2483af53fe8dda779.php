@@ -51,7 +51,7 @@
     }
 ?>
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="<?php echo e(str_replace('_', '-', ($setting['currantLang'] ?? app()->getLocale()))); ?>" dir="<?php echo e(isset($setting['SITE_RTL']) && $setting['SITE_RTL'] == 'on'? 'rtl' : ''); ?>" id="html-dir-tag">
 <head>
     <meta charset="utf-8">
@@ -60,7 +60,6 @@
     <meta name="author" content="WorkDo.io" />
     <meta name="base-url" content="<?php echo e(URL::to('/')); ?>">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
-
 
     <meta name="title" content="<?php echo e(isset($SuperadminData['metatitle']) ? $SuperadminData['metatitle'] : 'EcommerceGo'); ?>">
     <meta name="keywords" content="<?php echo e(isset($SuperadminData['metakeyword']) ? $SuperadminData['metakeyword'] : 'EcommerceGo, Store with Multi theme and Multi Store'); ?>">
@@ -129,7 +128,7 @@
     <link rel="stylesheet" href="<?php echo e(asset('css/calendar.css')); ?>">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <!-- Scripts -->
-
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
     <style>
         <?php echo isset($setting['storecss']) ? $setting['storecss'] :  ''; ?>
 
@@ -160,7 +159,7 @@
         }
 
     </style>
-     <?php if(app()->getLocale() == 'ar' || app()->getLocale() == 'he'): ?>
+    <?php if(app()->getLocale() == 'ar' || app()->getLocale() == 'he'): ?>
         <style>
             .select2-selection__rendered {
                 float : right;
@@ -169,9 +168,9 @@
         </style>
     <?php else: ?>
         <style>
-        .select2-selection__rendered {
-            float : left;
-        }
+            .select2-selection__rendered {
+                float : left;
+            }
         </style>
     <?php endif; ?>
     <?php echo $__env->yieldPushContent('css'); ?>
@@ -182,122 +181,177 @@
 </head>
 
 <body class="<?php echo e($themeColor ?? 'theme-3'); ?>">
-    <?php echo $__env->make('partision.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php echo $__env->make('partision.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <?php echo $__env->make('partision.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php echo $__env->make('partision.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <!-- [ Main Content ] start -->
-    <div class="dash-container">
-        <div class="dash-content">
-           <!-- [ breadcrumb ] start -->
-           <div class="page-header">
-                <div class="page-block">
-                    <div class="row row-gap align-items-center">
-                        <div class="col-md-7 col-sm-12">
-                            <div class="page-header-title">
-                                <h4 class="m-b-10"><?php echo $__env->yieldContent('page-title'); ?></h4>
-                            </div>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <?php if(\Request::route()->getName() != 'dashboard'): ?>
-                                        <a href="<?php echo e(route('dashboard')); ?>"><?php echo e(__('Home')); ?></a>
-                                    <?php endif; ?>
-                                </li>
-                                <?php echo $__env->yieldContent('breadcrumb'); ?>
-                            </ul>
+<!-- [ Main Content ] start -->
+<div class="dash-container">
+    <div class="dash-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row row-gap align-items-center">
+                    <div class="col-md-7 col-sm-12">
+                        <div class="page-header-title">
+                            <h4 class="m-b-10"><?php echo $__env->yieldContent('page-title'); ?></h4>
                         </div>
-                        <div class="col-md-5 col-sm-12 d-flex flex-wrap justify-content-sm-end">
-                            <?php echo $__env->yieldContent('action-button'); ?>
-                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <?php if(\Request::route()->getName() != 'dashboard'): ?>
+                                    <a href="<?php echo e(route('dashboard')); ?>"><?php echo e(__('Home')); ?></a>
+                                <?php endif; ?>
+                            </li>
+                            <?php echo $__env->yieldContent('breadcrumb'); ?>
+                        </ul>
+                    </div>
+                    <div class="col-md-5 col-sm-12 d-flex flex-wrap justify-content-sm-end">
+                        <?php echo $__env->yieldContent('action-button'); ?>
                     </div>
                 </div>
             </div>
-            <!-- [ breadcrumb ] end -->
-            <?php echo $__env->yieldContent('content'); ?>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <?php echo $__env->yieldContent('content'); ?>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+
+<?php if(\Request::route()->getName() != 'pos.index'): ?>
+    <div id="commanModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCommanModelLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelCommanModelLabel"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
         </div>
     </div>
-    <!-- [ Main Content ] end -->
 
-    <?php if(\Request::route()->getName() != 'pos.index'): ?>
-        <div id="commanModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCommanModelLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modelCommanModelLabel"></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body"></div>
+    <div id="commanModelOver" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCommanModelLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelCommanModelLabel"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body"></div>
             </div>
         </div>
-
-        <div id="commanModelOver" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelCommanModelLabel"
-        aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="modelCommanModelLabel"></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body"></div>
-                </div>
-            </div>
-        </div>
-    <?php else: ?>
-        <div class="modal fade" id="commonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
-
-    <div id="loader" class="loader-wrapper" style="display: none;">
-        <span class="site-loader"> </span>
-        <h3 class="loader-content"> <?php echo e(__('Loading . . .')); ?> </h3>
     </div>
+<?php else: ?>
+    <div class="modal fade" id="commonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
-    <?php echo $__env->make('partision.settingPopup', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->make('partision.footerlink', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php echo $__env->yieldPushContent('scripts'); ?>
-    <?php echo $__env->yieldPushContent('custom-script'); ?>
-    <?php echo $__env->yieldPushContent('custom-script1'); ?>
-    <script type="text/javascript">
-        function setActiveTheme(themeColor) {
-            // Update the --active-theme-border variable based on the theme number
-            document.documentElement.style.setProperty('--active-theme-border', `var(--bs-${themeColor}-border)`);
-        }
-        setActiveTheme("<?php echo e($themeColor); ?>");
-        $(document).ready(function(){
-            if ($('.select2').length > 0) {
-                $('.select2').select2({
-                    tags: true,
-                    createTag: function (params) {
-                      var term = $.trim(params.term);
-                      if (term === '') {
+
+<div id="loader" class="loader-wrapper" style="display: none;">
+    <span class="site-loader"> </span>
+    <h3 class="loader-content"> <?php echo e(__('Loading . . .')); ?> </h3>
+</div>
+
+<?php echo $__env->make('partision.settingPopup', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php echo $__env->make('partision.footerlink', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php echo $__env->yieldPushContent('scripts'); ?>
+<?php echo $__env->yieldPushContent('custom-script'); ?>
+<?php echo $__env->yieldPushContent('custom-script1'); ?>
+
+<script type="text/javascript">
+    function setActiveTheme(themeColor) {
+        // Update the --active-theme-border variable based on the theme number
+        document.documentElement.style.setProperty('--active-theme-border', `var(--bs-${themeColor}-border)`);
+    }
+    setActiveTheme("<?php echo e($themeColor); ?>");
+    $(document).ready(function(){
+        if ($('.select2').length > 0) {
+            $('.select2').select2({
+                tags: true,
+                createTag: function (params) {
+                    var term = $.trim(params.term);
+                    if (term === '') {
                         return null;
-                      }
-                      return {
+                    }
+                    return {
                         id: term,
                         text: term,
                         newTag: true
-                      };
-                    }
-                });
-            }
-        })
-        </script>
-    <script>
-        function add_more_choice_option(i, name) {
+                    };
+                }
+            });
+        }
+    })
+</script>
+<!-- BotMan Widget Configuration and Styling -->
+<script>
+    // BotMan Widget Configuration
+    var botmanWidget = {
+        title: 'Ana Online',
+        aboutText: '🚀 Powered By AdminAnaOnline',
+        aboutLink: 'http://localhost/ecommercw/',
+        introMessage: "✋ Hi! I'm form Ana Online"
+    };
+
+    // Function to force widget styles
+    function forceWidgetStyles() {
+        // Ensure the widget is visible
+        var widget = document.querySelector('.botmanWidget');
+        if (widget) {
+            widget.style.backgroundColor = '#ffffff'; // Set a solid background
+            widget.style.opacity = '1'; // Ensure it's not transparent
+            widget.style.zIndex = '9999'; // Ensure it's above other elements
+        }
+
+        // Force styles for the chat container
+        var chatContainer = document.querySelector('.botmanWidget .chat-container');
+        if (chatContainer) {
+            chatContainer.style.backgroundColor = '#ffffff';
+            chatContainer.style.border = '1px solid #ddd';
+            chatContainer.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        }
+
+        // Force styles for the input field
+        var chatInput = document.querySelector('.botmanWidget .chat-input');
+        if (chatInput) {
+            chatInput.style.backgroundColor = '#f9f9f9';
+            chatInput.style.border = '1px solid #ddd';
+        }
+
+        // Force styles for the messages
+        var messages = document.querySelectorAll('.botmanWidget .message');
+        messages.forEach(function (message) {
+            message.style.backgroundColor = '#f1f1f1';
+            message.style.color = '#333';
+        });
+
+    }
+
+
+
+
+    // Run the function when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', forceWidgetStyles);
+
+    // Run the function again after a short delay to ensure the widget is rendered
+    setTimeout(forceWidgetStyles, 1000); // Adjust delay if needed
+</script>
+
+<script>
+    function add_more_choice_option(i, name) {
 
         $('#attribute_options').append(
             '<div class="card oprtion"><div class="card-body "><input type="hidden" class="abd" name="attribute_no[]" value="' +
@@ -357,27 +411,27 @@
         $('body').removeClass('note-link-unlink-sample');
     });
 </script>
-    <?php if(Session::has('success')): ?>
-        <script>
-            show_toastr('<?php echo e(__('Success')); ?>', '<?php echo Session::get('success'); ?>', 'success');
-        </script>
+<?php if(Session::has('success')): ?>
+    <script>
+        show_toastr('<?php echo e(__('Success')); ?>', '<?php echo Session::get('success'); ?>', 'success');
+    </script>
         <?php Session::forget('success'); ?>
-    <?php endif; ?>
+<?php endif; ?>
 
-    <?php if(Session::has('error')): ?>
-        <script>
-            show_toastr('<?php echo e(__('Error')); ?>', '<?php echo Session::get('error'); ?>', 'error');
-        </script>
+<?php if(Session::has('error')): ?>
+    <script>
+        show_toastr('<?php echo e(__('Error')); ?>', '<?php echo Session::get('error'); ?>', 'error');
+    </script>
         <?php Session::forget('error'); ?>
-    <?php endif; ?>
+<?php endif; ?>
 
 
-    <?php
-        $setting = getSuperAdminAllSetting();
-    ?>
-    <?php if(isset($setting['enable_cookie']) && $setting['enable_cookie'] == 'on'): ?>
-        <?php echo $__env->make('layouts.cookie_consent', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    <?php endif; ?>
+<?php
+    $setting = getSuperAdminAllSetting();
+?>
+<?php if(isset($setting['enable_cookie']) && $setting['enable_cookie'] == 'on'): ?>
+    <?php echo $__env->make('layouts.cookie_consent', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+<?php endif; ?>
 </body>
 
 </html>
